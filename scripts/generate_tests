@@ -1,0 +1,11 @@
+#!/bin/bash
+
+current_directory=$(pwd)
+package_directory=$current_directory/subjects/SimpleMethods_getMin/src/main/java/
+
+java -classpath ${RANDOOP_JAR}:$package_directory randoop.main.Main gentests --testclass=examples.SimpleMethods --time-limit=5
+
+mkdir -p generated_tests/SimpleMethods_getMin
+mv RegressionTest.java generated_tests/SimpleMethods_getMin/RegressionTest.java
+mv RegressionTest0.java generated_tests/SimpleMethods_getMin/RegressionTest0.java
+
