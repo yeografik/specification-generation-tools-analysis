@@ -1,11 +1,10 @@
 #!/bin/bash
 
-current_directory=$(pwd)
-package_directory=$current_directory/subjects/SimpleMethods_getMin/src/main/java/
+file="scripts/pruebas_subject_names.txt"
 
-java -classpath ${RANDOOP_JAR}:$package_directory randoop.main.Main gentests --testclass=examples.SimpleMethods --time-limit=5
-
-mkdir -p generated_tests/SimpleMethods_getMin
-mv RegressionTest.java generated_tests/SimpleMethods_getMin/RegressionTest.java
-mv RegressionTest0.java generated_tests/SimpleMethods_getMin/RegressionTest0.java
-
+IFS=';' #setting ; as delimiter
+while read -ra line; do
+    #arg 1 is package, arg 2 is project folder name, arg 3 is class to test
+    ./scripts/generate_single_class_tests "${line[0]}" "${line[1]}" "${line[2]}"
+    echo -e "${line[0]};${line[1]};${line[1]}\n"
+done <$file
