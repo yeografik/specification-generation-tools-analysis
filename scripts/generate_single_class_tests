@@ -1,0 +1,28 @@
+#!/bin/bash
+
+function moveGeneratedTests {
+    mkdir -p generated_tests/$1
+    mv RegressionTest.java generated_tests/$1/RegressionTest.java
+    mv RegressionTest0.java generated_tests/$1/RegressionTest0.java
+}
+
+current_directory=$(pwd)
+
+dir="pruebas/subjects/$2"
+echo "dir is: $dir"
+
+if [ ! -d "$dir/build" ]; then  #compile if not done yet
+    cd $dir
+    ./gradlew -q -Dskip.tests jar
+    cd ../../
+fi
+    
+project_classpath=$dir/build/classes/java/main/
+full_class_package=$1.$3
+echo "project_classpath: $project_classpath"
+echo "full_class_package: $full_class_package"
+
+echo "${1}.${3}" > classlist.txt   #write main class in classlist file
+
+jdeps -apionly -v -cp $project_classpath $full_class_package | grep -v '^[A-Za-z]' | sed -E 's/^.* -> ([^ ]+) .*$/\1/' | sort | uniq >> classlist.txt
+
