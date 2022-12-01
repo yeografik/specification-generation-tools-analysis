@@ -6,5 +6,4 @@ IFS=';' #setting ; as delimiter
 while read -ra line; do
     #arg 1 is package, arg 2 is project folder name, arg 3 is class to test
     ./scripts/generate_single_class_tests "${line[0]}" "${line[1]}" "${line[2]}"
-    echo -e "${line[0]};${line[1]};${line[1]}\n"
 done <$file
