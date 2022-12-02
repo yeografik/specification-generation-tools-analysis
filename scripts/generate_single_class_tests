@@ -6,7 +6,8 @@ function moveGeneratedTests {
     mv RegressionTest0.java generated_tests/$1/RegressionTest0.java
 }
 
-dir="pruebas/subjects/$2"
+project_root=$(pwd)
+dir="$project_root/pruebas/subjects/$2"
 randoop_jar="libs/randoop-all-4.3.1.jar"
 
 if [ ! -d "$dir/build" ]; then  #compile if not done yet
@@ -15,7 +16,7 @@ if [ ! -d "$dir/build" ]; then  #compile if not done yet
     cd ../../
 fi
     
-project_classpath=$dir/build/classes/java/main/
+project_classpath="$dir/build/libs/*:$dir/libs/*"
 full_class_package=$1.$3
 
 echo "${1}.${3}" > classlist.txt   #write main class in classlist file
