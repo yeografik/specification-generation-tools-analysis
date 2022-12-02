@@ -7,6 +7,7 @@ function moveGeneratedTests {
 }
 
 dir="pruebas/subjects/$2"
+randoop_jar="libs/randoop-all-4.3.1.jar"
 
 if [ ! -d "$dir/build" ]; then  #compile if not done yet
     cd $dir
@@ -23,6 +24,6 @@ jdeps -apionly -v -cp $project_classpath $full_class_package | grep -v '^[A-Za-z
 
 # queda hacer un file con los parametros para el script, correr randoop para cada subject y mover los tests a un folder
 echo $project_classpath
-java -classpath ${RANDOOP_JAR}:$project_classpath randoop.main.Main gentests --classlist=classlist.txt --time-limit=10
+java -classpath ${randoop_jar}:$project_classpath randoop.main.Main gentests --classlist=classlist.txt --time-limit=10
 
 moveGeneratedTests $2
