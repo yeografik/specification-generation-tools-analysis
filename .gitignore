@@ -1,2 +1,5 @@
 subjects/**/build
 subjects/**/.gradle
+generated_tests
+classlist.txt
+.gradle/
