@@ -5,7 +5,7 @@ GREEN=$(tput setaf 2)
 YELLOW=$(tput setaf 3)
 NORMAL=$(tput sgr0)
 
-file="scripts/pruebas_subject_names.txt"
+file="scripts/subject_names.txt"
 
 IFS=';' #setting ; as delimiter
 while read -ra line; do

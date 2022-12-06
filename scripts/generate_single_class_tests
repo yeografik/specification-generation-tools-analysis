@@ -1,13 +1,14 @@
 #!/bin/bash
 
 project_root=$(pwd)
-dir="$project_root/pruebas/subjects/$2"
+dir="$project_root/subjects/$2"
 randoop_jar="libs/randoop-all-4.3.1.jar"
 
 if [ ! -d "$dir/build" ]; then  #compile if not done yet
+    echo "dir: $dir"
     cd $dir
     ./gradlew -q -Dskip.tests jar
-    cd ../../
+    cd $project_root
 fi
     
 project_classpath="$dir/build/libs/*:$dir/libs/*"
