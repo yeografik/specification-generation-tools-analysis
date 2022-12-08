@@ -1,3 +1,5 @@
+pruebas/**/build
+pruebas/**/.gradle
 subjects/**/build
 subjects/**/.gradle
 generated_tests
