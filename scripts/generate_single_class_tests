@@ -13,7 +13,7 @@ fi
 project_classpath="$dir/build/libs/*:$dir/libs/*"
 full_class_package=$1.$3
 
-echo "${1}.${3}" > classlist.txt   #write main class in classlist file
+echo "${full_class_package}" > classlist.txt   #write main class in classlist file
 #get class dependencies
 jdeps -apionly -v -cp $project_classpath $full_class_package | grep -v '^[A-Za-z]' | sed -E 's/^.* -> ([^ ]+) .*$/\1/' | sort | uniq >> classlist.txt
 

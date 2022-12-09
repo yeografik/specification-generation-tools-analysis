@@ -1,7 +1,7 @@
 jts;Angle_getTurn;Angle
 org.apache.commons.math3.util;ArithmeticUtils_subAndCheck;ArithmeticUtilsNew
 lang3;BooleanUtils_compare;BooleanUtils
-lnag3;BooleanUtils_toBoolean;BooleanUtils
+lang3;BooleanUtils_toBoolean;BooleanUtils
 examples;composite_addChild;Composite
 examples;doublylinkedlistnode_insertRight;DoublyLinkedListNode
 examples;doublylinkedlistnode_remove;DoublyLinkedListNode
