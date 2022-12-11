@@ -17,6 +17,8 @@ echo "${full_class_package}" > classlist.txt   #write main class in classlist fi
 #get class dependencies
 jdeps -apionly -v -cp $project_classpath $full_class_package | grep -v '^[A-Za-z]' | sed -E 's/^.* -> ([^ ]+) .*$/\1/' | sort | uniq >> classlist.txt
 
+./scripts/remove_trivial_classes.sh classlist.txt
+
 output_dir=generated_tests/$2
 mkdir -p $output_dir        #create directory to save generated tests
 rm $output_dir/*.java       #delete old tests if any
