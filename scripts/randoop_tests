@@ -1,0 +1,17 @@
+#!/bin/bash
+#$1 full class package, $2 project classpath, $3 project name, $4 project root
+
+randoop_jar="libs/randoop-all-4.3.1.jar"
+literals="$4/literals.txt"
+
+echo "${1}" > classlist.txt   #write main class in classlist file
+#get class dependencies
+jdeps -apionly -v -cp $2 $1 | grep -v '^[A-Za-z]' | sed -E 's/^.* -> ([^ ]+) .*$/\1/' | sort | uniq >> classlist.txt
+
+./scripts/remove_trivial_classes.sh classlist.txt
+
+output_dir=generated_tests/$3
+mkdir -p $output_dir        #create directory to save generated tests
+rm $output_dir/*.java       #delete old tests if any
+
+java -classpath ${randoop_jar}:$2 randoop.main.Main gentests --classlist=classlist.txt --time-limit=10 --junit-output-dir=$output_dir --literals-level=ALL --literals-file=$literals

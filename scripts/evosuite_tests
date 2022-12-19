@@ -1,0 +1,5 @@
+#!/bin/bash
+#$1: package name, $2 project compilation path
+evosuite_jar="libs/evosuite-1.0.6.jar"
+
+java -jar $evosuite_jar -class $1 -projectCP $2 -Dsearch_budget=10 -Dstopping_condition=MaxTime

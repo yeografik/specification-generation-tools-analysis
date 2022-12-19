@@ -1,4 +1,5 @@
 #!/bin/bash
+#$1 indicates the testing tool to use
 
 RED=$(tput setaf 1) #colors
 GREEN=$(tput setaf 2)
@@ -11,5 +12,5 @@ IFS=';' #setting ; as delimiter
 while read -ra line; do
     #arg 1 is package, arg 2 is project folder name, arg 3 is class to test
     echo -e "\n\n\n${YELLOW}generating tests for ${line[1]}${NORMAL}\n"
-    ./scripts/generate_single_class_tests "${line[0]}" "${line[1]}" "${line[2]}"
+    ./scripts/generate_single_class_tests "${line[0]}" "${line[1]}" "${line[2]}" $1
 done <$file
