@@ -10,7 +10,7 @@ jdeps -apionly -v -cp $2 $1 | grep -v '^[A-Za-z]' | sed -E 's/^.* -> ([^ ]+) .*$
 
 ./scripts/remove_trivial_classes.sh classlist.txt
 
-output_dir=generated_tests/$3
+output_dir=generated_tests/$3/randoop
 mkdir -p $output_dir        #create directory to save generated tests
 rm $output_dir/*.java       #delete old tests if any
 

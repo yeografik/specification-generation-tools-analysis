@@ -22,7 +22,7 @@ if [ $4 == "randoop" ]; then
     ./scripts/randoop_tests $full_class_package $project_classpath $2 $project_root
 elif [ $4 == "evosuite" ]; then
     project_compilation_path="$dir/build/classes/java/main/"
-    ./scripts/evosuite_tests $full_class_package $project_compilation_path
+    ./scripts/evosuite_tests $full_class_package $project_compilation_path $2
 else
     echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $4 ${NORMAL}\n"
 fi
