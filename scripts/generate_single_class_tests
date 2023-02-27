@@ -6,7 +6,6 @@ NORMAL=$(tput sgr0)
 
 project_root=$(pwd)
 dir="$project_root/subjects/$2"
-randoop_jar="libs/randoop-all-4.3.1.jar"
 
 if [ ! -d "$dir/build" ]; then  #compile if not done yet
     cd $dir

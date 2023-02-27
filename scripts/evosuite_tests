@@ -1,9 +1,8 @@
 #!/bin/bash
 #$1: package name, $2 project compilation path, $3 project name
-evosuite_jar="libs/evosuite-1.0.6.jar"
 
 output_dir=generated_tests/$3
 mkdir -p $output_dir        #create directory to save generated tests
 rm $output_dir/evosuite-tests/**/*.java       #delete old tests if any
 
-java -jar $evosuite_jar -class $1 -projectCP $2 -Dsearch_budget=10 -Dstopping_condition=MaxTime -base_dir $output_dir
+java -jar $EVOSUITE_JAR -class $1 -projectCP $2 -Dsearch_budget=10 -Dstopping_condition=MaxTime -base_dir $output_dir
