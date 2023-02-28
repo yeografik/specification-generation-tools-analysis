@@ -2,6 +2,7 @@ pruebas/**/build
 pruebas/**/.gradle
 subjects/**/build
 subjects/**/.gradle
+subjects/**/test
 generated_tests
 evosuite-report
 notes
