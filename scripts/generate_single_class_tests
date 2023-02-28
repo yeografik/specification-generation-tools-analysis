@@ -1,5 +1,5 @@
 #!/bin/bash
-#$1: package name, $2 project name, $3 class name, $4 the testing tool to use
+#$1 package name, $2 project name, $3 class name, $4 the testing tool to use
 
 RED=$(tput setaf 1) #colors
 NORMAL=$(tput sgr0)
@@ -18,7 +18,7 @@ full_class_package=$1.$3
 #generate tests
 if [ $4 == "randoop" ]; then
     project_classpath="$dir/build/libs/*:$dir/libs/*:"
-    ./scripts/randoop_tests $full_class_package $project_classpath $2 $project_root
+    ./scripts/randoop_tests $full_class_package $project_classpath $2 $1
 elif [ $4 == "evosuite" ]; then
     project_compilation_path="$dir/build/classes/java/main/:$dir/build/libs/simple-examples-1.0-SNAPSHOT.jar:"
     ./scripts/evosuite_tests $full_class_package $project_compilation_path $2

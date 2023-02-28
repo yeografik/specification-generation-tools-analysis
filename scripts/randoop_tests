@@ -1,7 +1,5 @@
 #!/bin/bash
-#$1 full class package, $2 project classpath, $3 project name, $4 project root
-
-literals="$4/literals.txt"
+#$1 full class package, $2 project classpath, $3 project name, $4 package name
 
 echo "${1}" > classlist.txt   #write main class in classlist file
 #get class dependencies
@@ -9,8 +7,10 @@ jdeps -apionly -v -cp $2 $1 | grep -v '^[A-Za-z]' | sed -E 's/^.* -> ([^ ]+) .*$
 
 ./scripts/remove_trivial_classes.sh classlist.txt
 
-output_dir=generated_tests/$3/randoop
+package=${4//./\/}   #replace dots with / in package name
+
+output_dir=subjects/$3/src/test/randoop/$package
 mkdir -p $output_dir        #create directory to save generated tests
 rm $output_dir/*.java       #delete old tests if any
 
-java -classpath $RANDOOP_JAR:$2 randoop.main.Main gentests --classlist=classlist.txt --time-limit=10 --junit-output-dir=$output_dir --literals-level=ALL --literals-file=$literals
+java -classpath $RANDOOP_JAR:$2 randoop.main.Main gentests --classlist=classlist.txt --time-limit=10 --junit-output-dir=$output_dir --literals-level=ALL --literals-file=$LITERALS

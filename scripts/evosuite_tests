@@ -1,7 +1,7 @@
 #!/bin/bash
 #$1: package name, $2 project compilation path, $3 project name
 
-output_dir=generated_tests/$3
+output_dir=subjects/$3/src/test/
 mkdir -p $output_dir        #create directory to save generated tests
 rm $output_dir/evosuite-tests/**/*.java       #delete old tests if any
 
