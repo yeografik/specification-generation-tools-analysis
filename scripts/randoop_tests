@@ -9,7 +9,7 @@ jdeps -apionly -v -cp $2 $1 | grep -v '^[A-Za-z]' | sed -E 's/^.* -> ([^ ]+) .*$
 
 package=${4//./\/}   #replace dots with / in package name
 
-output_dir=subjects/$3/src/test/randoop/$package
+output_dir=subjects/$3/src/test/java/randoop/$package
 mkdir -p $output_dir        #create directory to save generated tests
 rm $output_dir/*.java       #delete old tests if any
 
