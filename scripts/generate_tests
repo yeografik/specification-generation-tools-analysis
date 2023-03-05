@@ -8,6 +8,11 @@ NORMAL=$(tput sgr0)
 
 file="scripts/subject_names.txt"
 
+if [ $1 != "randoop" && $1 != "evosuite" ]; then
+    echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $1 ${NORMAL}\n"
+    exit
+elif
+
 IFS=';' #setting ; as delimiter
 while read -ra line; do
     #arg 1 is package, arg 2 is project folder name, arg 3 is class to test
