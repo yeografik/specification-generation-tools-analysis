@@ -1,0 +1,22 @@
+#!/bin/bash
+#$1 project name, $2 the testing tool to use
+
+RED=$(tput setaf 1) #colors
+NORMAL=$(tput sgr0)
+
+cd subjects/$1/
+./gradlew jar                #rebuild subject putting tests in jar
+cd ../../
+
+# javac -g -cp libs/junit-4.12.jar:hamcrest-core-1.3.jar -d subjects/$1/build/classes/java/main/org/apache/commons/math3/util subjects/$1/src/main/java/org/apache/commons/math3/util/*.java subjects/$1/src/test/evosuite-tests/org/apache/commons/math3/util/*.java subjects/$1/src/test/randoop/org/apache/commons/math3/util/*.java
+subject_jar=subjects/$1/build/libs/simple-examples-1.0-SNAPSHOT.jar
+
+if [ $2 == "randoop" ]; then
+    java -cp $subject_jar:$DAIKONDIR daikon.DynComp RegressionTestDriver
+    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --comparability-file=RegressionTestDriver.decls-DynComp RegressionTestDriver
+#elif [ $2 == "evosuite" ]; then
+    #java -cp $subject_jar:$DAIKONDIR:libs/evosuite-standalone-runtime-1.0.6.jar daikon.DynComp RegressionTestDriver
+    #java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --comparability-file=RegressionTestDriver.decls-DynComp RegressionTestDriver
+else
+    echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $4 ${NORMAL}\n"
+fi
