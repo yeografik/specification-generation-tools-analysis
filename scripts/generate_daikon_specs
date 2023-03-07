@@ -1,9 +1,6 @@
 #!/bin/bash
 #$1 project name, $2 the testing tool to use
 
-RED=$(tput setaf 1) #colors
-NORMAL=$(tput sgr0)
-
 cd subjects/$1/
 ./gradlew jar                #rebuild subject putting tests in jar
 cd ../../

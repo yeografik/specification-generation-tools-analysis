@@ -1,9 +1,6 @@
 #!/bin/bash
 #$1 package name, $2 project name, $3 class name, $4 the testing tool to use
 
-RED=$(tput setaf 1) #colors
-NORMAL=$(tput sgr0)
-
 project_root=$(pwd)
 dir="$project_root/subjects/$2"
 
