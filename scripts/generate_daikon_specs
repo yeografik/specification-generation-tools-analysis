@@ -11,9 +11,9 @@ subject_jar=subjects/$1/build/libs/simple-examples-1.0-SNAPSHOT.jar
 if [ $2 == "randoop" ]; then
     java -cp $subject_jar:$DAIKONDIR daikon.DynComp RegressionTestDriver
     java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --comparability-file=RegressionTestDriver.decls-DynComp RegressionTestDriver
-#elif [ $2 == "evosuite" ]; then
-    #java -cp $subject_jar:$DAIKONDIR:libs/evosuite-standalone-runtime-1.0.6.jar daikon.DynComp RegressionTestDriver
-    #java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --comparability-file=RegressionTestDriver.decls-DynComp RegressionTestDriver
+elif [ $2 == "evosuite" ]; then
+    java -cp $subject_jar:$DAIKONDIR:libs/evosuite-standalone-runtime-1.0.6.jar daikon.DynComp TestDriverEvosuite
+    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --comparability-file=TestDriverEvosuite.decls-DynComp TestDriverEvosuite
 else
-    echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $4 ${NORMAL}\n"
+    echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $2 ${NORMAL}\n"
 fi
