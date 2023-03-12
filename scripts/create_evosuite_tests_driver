@@ -1,0 +1,19 @@
+#!/bin/bash
+#$1 tests path, $2 package, $3 tested class name
+
+package=${2//./\/}   #replace dots with / in package name
+
+main_driver_class=$1evosuite-tests/$package/TestDriverEvosuite.java
+
+echo "package $2;
+
+import org.junit.runner.JUnitCore;
+
+public class TestDriverEvosuite {
+
+    public static void main(String... args) throws ClassNotFoundException {
+        JUnitCore junit = new JUnitCore();
+        Class<?> testsClass = Class.forName(\"$2.$3_ESTest\");
+        junit.run(testsClass);
+    }
+}" > $main_driver_class
