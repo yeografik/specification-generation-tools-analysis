@@ -1,10 +1,12 @@
 #!/bin/bash
-#$1 package name, $2 project compilation path, $3 project name, $4 package 
+#$1 class name, $2 project compilation path, $3 project name, $4 package 
+
+full_class_package=$4.$1
 
 output_dir=subjects/$3/src/test/java/
 mkdir -p $output_dir        #create directory to save generated tests
 rm $output_dir/evosuite-tests/**/*.java       #delete old tests if any
 
-java -jar $EVOSUITE_JAR -class $1 -projectCP $2 -Dsearch_budget=10 -Dstopping_condition=MaxTime -base_dir $output_dir
+java -jar $EVOSUITE_JAR -class $full_class_package -projectCP $2 -Dsearch_budget=10 -Dstopping_condition=MaxTime -base_dir $output_dir
 
-./scripts/create_evosuite_tests_driver $output_dir $4 $3
+./scripts/create_evosuite_tests_driver $output_dir $4 $1

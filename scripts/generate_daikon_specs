@@ -8,12 +8,24 @@ cd ../../
 # javac -g -cp libs/junit-4.12.jar:hamcrest-core-1.3.jar -d subjects/$1/build/classes/java/main/org/apache/commons/math3/util subjects/$1/src/main/java/org/apache/commons/math3/util/*.java subjects/$1/src/test/evosuite-tests/org/apache/commons/math3/util/*.java subjects/$1/src/test/randoop/org/apache/commons/math3/util/*.java
 subject_jar=subjects/$1/build/libs/simple-examples-1.0-SNAPSHOT.jar
 
+output_dir=generated_specs/$1
+
 if [ $2 == "randoop" ]; then
-    java -cp $subject_jar:$DAIKONDIR daikon.DynComp RegressionTestDriver
-    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --comparability-file=RegressionTestDriver.decls-DynComp RegressionTestDriver
+    output_dir=$output_dir/randoop
+    mkdir -p $output_dir        #create directory to save generated specs
+    rm $output_dir/*.dtrace.gz       #delete old specs if any
+
+    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.DynComp org.apache.commons.math3.util.RegressionTestDriver
+    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --output-dir=$output_dir --comparability-file=RegressionTestDriver.decls-DynComp org.apache.commons.math3.util.RegressionTestDriver
+
 elif [ $2 == "evosuite" ]; then
-    java -cp $subject_jar:$DAIKONDIR:libs/evosuite-standalone-runtime-1.0.6.jar daikon.DynComp TestDriverEvosuite
-    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --comparability-file=TestDriverEvosuite.decls-DynComp TestDriverEvosuite
+    output_dir=$output_dir/evosuite
+    mkdir -p $output_dir        #create directory to save generated specs
+    rm $output_dir/*.dtrace.gz       #delete old specs if any
+
+    java -cp $subject_jar:$DAIKONDIR/daikon.jar:libs/evosuite-standalone-runtime-1.0.6.jar daikon.DynComp org.apache.commons.math3.util.TestDriverEvosuite
+    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --output-dir=$output_dir --comparability-file=TestDriverEvosuite.decls-DynComp org.apache.commons.math3.util.TestDriverEvosuite
+
 else
     echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $2 ${NORMAL}\n"
 fi
