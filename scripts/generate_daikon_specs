@@ -16,7 +16,10 @@ if [ $3 == "randoop" ]; then
     rm $output_dir/*.dtrace.gz       #delete old specs if any
 
     java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.DynComp $2.RegressionTestDriver
-    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --output-dir=$output_dir --comparability-file=RegressionTestDriver.decls-DynComp $2.RegressionTestDriver
+    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --output-dir=$output_dir --comparability-file=RegressionTestDriver.decls-DynComp $2.RegressionTestDriver > /dev/null
+
+    rm RegressionTestDriver.decls-DynComp
+    mv RegressionTestDriver.inv.gz $output_dir/RegressionTestDriver.inv.gz
 
 elif [ $3 == "evosuite" ]; then
     output_dir=$output_dir/evosuite
@@ -24,7 +27,10 @@ elif [ $3 == "evosuite" ]; then
     rm $output_dir/*.dtrace.gz       #delete old specs if any
 
     java -cp $subject_jar:$DAIKONDIR/daikon.jar:libs/evosuite-standalone-runtime-1.0.6.jar daikon.DynComp $2.TestDriverEvosuite
-    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --output-dir=$output_dir --comparability-file=TestDriverEvosuite.decls-DynComp $2.TestDriverEvosuite
+    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --output-dir=$output_dir --comparability-file=TestDriverEvosuite.decls-DynComp $2.TestDriverEvosuite > /dev/null
+
+    rm TestDriverEvosuite.decls-DynComp
+    mv TestDriverEvosuite.inv.gz $output_dir/TestDriverEvosuite.inv.gz
 
 else
     echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $3 ${NORMAL}\n"
