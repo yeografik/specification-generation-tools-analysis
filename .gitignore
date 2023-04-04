@@ -3,7 +3,7 @@ pruebas/**/.gradle
 subjects/**/build
 subjects/**/.gradle
 subjects/**/test
-generated_tests
+generated_specs
 evosuite-report
 notes
 classlist.txt
