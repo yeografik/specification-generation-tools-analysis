@@ -1,19 +1,54 @@
 #!/bin/bash
 #$1 tests path, $2 package, $3 tested class name
 
+calculate_test_number() {
+    zeros=0
+    i=10
+
+    while [ $i -le $2 ]
+    do
+        if [ $1 -lt $i ]; then
+            zeros=$(($zeros+1))
+        fi
+        i=$(($i*10))
+    done
+
+    test_num=""
+    while [ $zeros -gt 0 ]
+    do
+        test_num="$test_num"0
+        zeros=$(($zeros-1))
+    done
+
+    test_num="$test_num""$1"
+}
+
 package=${2//./\/}   #replace dots with / in package name
 
 main_driver_class=$1evosuite-tests/$package/TestDriverEvosuite.java
 
-echo "package $2;
+method_amount=$(grep "@Test" $1evosuite-tests/$package/$3_ESTest.java | wc -l)
 
-import org.junit.runner.JUnitCore;
+echo "package $2;
 
 public class TestDriverEvosuite {
 
     public static void main(String... args) throws ClassNotFoundException {
-        JUnitCore junit = new JUnitCore();
-        Class<?> testsClass = Class.forName(\"$2.$3_ESTest\");
-        junit.run(testsClass);
-    }
-}" > $main_driver_class
+        boolean hadFailure = false;
+        $2.$3_ESTest t0 = new $2.$3_ESTest();
+" > $main_driver_class
+
+for i in $(seq 0 $(($method_amount-1)))
+do
+    calculate_test_number $i $method_amount
+    echo "
+        try {
+            t0.test$test_num();
+        } catch (Throwable e) {
+            hadFailure = true;
+            e.printStackTrace();
+        }" >> $main_driver_class
+done
+
+echo "    }
+}" >> $main_driver_class
