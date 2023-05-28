@@ -1,5 +1,5 @@
 #!/bin/bash
-#$1 project name, $2 package, $3 the testing tool used
+#$1 project name, $2 package, $3 the testing tool used, $4 tested method, $5 class name
 
 cd subjects/$1/
 ./gradlew jar                #rebuild subject putting tests in jar
@@ -20,6 +20,8 @@ if [ $3 == "randoop" ]; then
     rm RegressionTestDriver.decls-DynComp
     mv RegressionTestDriver.inv.gz $output_dir/RegressionTestDriver.inv.gz
 
+    ./scripts/print_invariants.sh $output_dir/RegressionTestDriver.inv.gz $2.$5 $4 $output_dir/randoop_inv.txt
+
 elif [ $3 == "evosuite" ]; then
     output_dir=$output_dir/evosuite
     mkdir -p $output_dir        #create directory to save generated specs
@@ -30,6 +32,8 @@ elif [ $3 == "evosuite" ]; then
   
     rm TestDriverEvosuite.decls-DynComp
     mv TestDriverEvosuite.inv.gz $output_dir/TestDriverEvosuite.inv.gz
+
+    ./scripts/print_invariants.sh $output_dir/TestDriverEvosuite.inv.gz $2.$5 $4 $output_dir/evosuite_inv.txt
 
 else
     echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $3 ${NORMAL}\n"
