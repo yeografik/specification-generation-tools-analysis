@@ -1,8 +1,8 @@
 #!/bin/bash
-#$1 package name, $2 project name, $3 class name, $4 the testing tool to use
+#$1 project name, $2 package name, $3 class name, $4 the testing tool to use
 
 project_root=$(pwd)
-dir="$project_root/subjects/$2"
+dir="$project_root/subjects/$1"
 
 if [ ! -d "$dir/build" ]; then  #compile if not done yet
     cd $dir
@@ -10,15 +10,15 @@ if [ ! -d "$dir/build" ]; then  #compile if not done yet
     cd $project_root
 fi
 
-full_class_package=$1.$3
+full_class_package=$2.$3
 
 #generate tests
 if [ $4 == "randoop" ]; then
     project_classpath="$dir/build/libs/*:$dir/libs/*:"
-    ./scripts/randoop_tests $full_class_package $project_classpath $2 $1
+    ./scripts/randoop_tests $full_class_package $project_classpath $1 $2
 elif [ $4 == "evosuite" ]; then
     project_compilation_path="$dir/build/classes/java/main/:$dir/build/libs/simple-examples-1.0-SNAPSHOT.jar:"
-    ./scripts/evosuite_tests $3 $project_compilation_path $2 $1
+    ./scripts/evosuite_tests $3 $project_compilation_path $1 $2
 else
     echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $4 ${NORMAL}\n"
 fi

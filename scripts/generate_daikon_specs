@@ -1,6 +1,6 @@
 #!/bin/bash
 #$1 project name, $2 package, $3 the testing tool used, $4 tested method, $5 class name
-
+#$3 <--> $5, 
 cd subjects/$1/
 ./gradlew jar                #rebuild subject putting tests in jar
 cd ../../
@@ -9,7 +9,7 @@ subject_jar=subjects/$1/build/libs/simple-examples-1.0-SNAPSHOT.jar
 
 output_dir=generated_specs/$1
 
-if [ $3 == "randoop" ]; then
+if [ $5 == "randoop" ]; then
     output_dir=$output_dir/randoop
     mkdir -p $output_dir        #create directory to save generated specs
     rm $output_dir/*.dtrace.gz       #delete old specs if any
@@ -20,11 +20,11 @@ if [ $3 == "randoop" ]; then
     rm RegressionTestDriver.decls-DynComp
     mv RegressionTestDriver.inv.gz $output_dir/RegressionTestDriver.inv.gz
 
-    ./scripts/print_invariants.sh $output_dir/RegressionTestDriver.inv.gz $2.$5 $4 $output_dir/randoop_inv.txt
+    ./scripts/print_invariants.sh $output_dir/RegressionTestDriver.inv.gz $2.$3 $4 $output_dir/randoop_inv.txt
 
-elif [ $3 == "evosuite" ]; then
+elif [ $5 == "evosuite" ]; then
     output_dir=$output_dir/evosuite
-    mkdir -p $output_dir        #create directory to save generated specs
+    mkdir -p $output_dir             #create directory to save generated specs
     rm $output_dir/*.dtrace.gz       #delete old specs if any
   
     java -cp $subject_jar:$DAIKONDIR/daikon.jar:libs/evosuite-standalone-runtime-1.0.6.jar daikon.DynComp $2.TestDriverEvosuite
@@ -33,8 +33,8 @@ elif [ $3 == "evosuite" ]; then
     rm TestDriverEvosuite.decls-DynComp
     mv TestDriverEvosuite.inv.gz $output_dir/TestDriverEvosuite.inv.gz
 
-    ./scripts/print_invariants.sh $output_dir/TestDriverEvosuite.inv.gz $2.$5 $4 $output_dir/evosuite_inv.txt
+    ./scripts/print_invariants.sh $output_dir/TestDriverEvosuite.inv.gz $2.$3 $4 $output_dir/evosuite_inv.txt
 
 else
-    echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $3 ${NORMAL}\n"
+    echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $5 ${NORMAL}\n"
 fi
