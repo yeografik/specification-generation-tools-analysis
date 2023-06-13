@@ -10,3 +10,9 @@ export NORMAL=$(tput sgr0)
 export EVOSUITE_JAR="libs/evosuite-1.0.6.jar"
 export RANDOOP_JAR="libs/randoop-all-4.3.1.jar"
 export LITERALS="resources/literals.txt"
+
+origdir=$PWD
+cd ..
+backdir=$PWD
+cd $origdir
+export OASIS_DIR="$backdir/OASIs"
