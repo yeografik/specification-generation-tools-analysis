@@ -19,6 +19,7 @@ if [ $5 == "randoop" ]; then
 
     rm RegressionTestDriver.decls-DynComp
     mv RegressionTestDriver.inv.gz $output_dir/RegressionTestDriver.inv.gz
+    rm $output_dir/RegressionTestDriver.dtrace.gz
 
     ./scripts/print_invariants.sh $output_dir/RegressionTestDriver.inv.gz $2.$3 $4 $output_dir/randoop_inv.txt
 
@@ -32,6 +33,7 @@ elif [ $5 == "evosuite" ]; then
   
     rm TestDriverEvosuite.decls-DynComp
     mv TestDriverEvosuite.inv.gz $output_dir/TestDriverEvosuite.inv.gz
+    rm $output_dir/TestDriverEvosuite.dtrace.gz
 
     ./scripts/print_invariants.sh $output_dir/TestDriverEvosuite.inv.gz $2.$3 $4 $output_dir/evosuite_inv.txt
 
