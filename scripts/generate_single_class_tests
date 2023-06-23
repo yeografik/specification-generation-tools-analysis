@@ -15,10 +15,14 @@ full_class_package=$2.$3
 #generate tests
 if [ $4 == "randoop" ]; then
     project_classpath="$dir/build/libs/*:$dir/libs/*:"
-    ./scripts/randoop_tests $full_class_package $project_classpath $1 $2
+    log=$dir/randoop_log.txt
+    touch $log
+    ./scripts/randoop_tests $full_class_package $project_classpath $1 $2 > $log 2>&1
 elif [ $4 == "evosuite" ]; then
     project_compilation_path="$dir/build/classes/java/main/:$dir/build/libs/simple-examples-1.0-SNAPSHOT.jar:"
-    ./scripts/evosuite_tests $3 $project_compilation_path $1 $2
+    log=$dir/evosuite_log.txt
+    touch $log
+    ./scripts/evosuite_tests $3 $project_compilation_path $1 $2 > $log 2>&1
 else
     echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $4 ${NORMAL}\n"
 fi

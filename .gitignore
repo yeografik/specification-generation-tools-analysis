@@ -3,6 +3,8 @@ pruebas/**/.gradle
 subjects/**/build
 subjects/**/.gradle
 subjects/**/test
+subjects/**/evosuite_log.txt
+subjects/**/randoop_log.txt
 generated_specs
 evosuite-report
 notes
