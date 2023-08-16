@@ -3,4 +3,11 @@
 
 javac -cp libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar -d /tmp/ scripts/AssertionInserter.java
 
-java -cp /tmp:libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar AssertionInserter $1 $2 $3 "1 == 1" 
+if [ $? != 0 ]; then
+    echo -e "\n${RED}couldn't compile scripts/AssertionInserter.java${NORMAL}\n"
+else 
+
+    
+
+    java -cp /tmp:libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar AssertionInserter $1 $2 $3 "1 == 1" 
+fi
