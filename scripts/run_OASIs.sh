@@ -4,7 +4,7 @@
 output_dir=generated_specs/$4
 mkdir -p $output_dir        #create directory to save generated specs
 log=$output_dir/OASIslog.txt
-rm $log              #delete old log if any
+rm -f $log              #delete old log if any
 touch $log
 
 bash scripts/OASIs_mod.sh $1 $2 $3 $5 > $log
