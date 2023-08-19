@@ -3,4 +3,4 @@
 
 java -cp $DAIKONDIR/daikon.jar daikon.PrintInvariants $1 --format Java --ppt-select-pattern="$2:::OBJECT|$2.$3" > $4
 
-#example usage ./scripts/print_invariants.sh RegressionTestDriver.inv.gz DataStructures.StackAr push invariantes.txt
+#example usage ./scripts/utils/print_invariants.sh RegressionTestDriver.inv.gz DataStructures.StackAr push invariantes.txt

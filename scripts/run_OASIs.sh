@@ -7,4 +7,4 @@ log=$output_dir/OASIslog.txt
 rm -f $log              #delete old log if any
 touch $log
 
-bash scripts/OASIs_mod.sh $1 $2 $3 $5 > $log
+bash scripts/utils/OASIs_mod.sh $1 $2 $3 $5 > $log

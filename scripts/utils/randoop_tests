@@ -5,7 +5,7 @@ echo "${1}" > classlist.txt   #write main class in classlist file
 #get class dependencies
 jdeps -apionly -v -cp $2 $1 | grep -v '^[A-Za-z]' | sed -E 's/^.* -> ([^ ]+) .*$/\1/' | sort | uniq >> classlist.txt
 
-./scripts/remove_trivial_classes.sh classlist.txt
+./scripts/utils/remove_trivial_classes.sh classlist.txt
 
 package=${4//./\/}   #replace dots with / in package name
 

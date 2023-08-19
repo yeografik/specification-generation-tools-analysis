@@ -16,17 +16,17 @@ if [ $5 == "randoop" ]; then
     log=$output_dir/log.txt
     touch $log
 
-    ./scripts/print_sign.sh "first daikon command" > $log
+    ./scripts/utils/print_sign.sh "first daikon command" > $log
     java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.DynComp $2.RegressionTestDriver >> $log 2>&1
-    ./scripts/print_sign.sh "second daikon command" >> $log
+    ./scripts/utils/print_sign.sh "second daikon command" >> $log
     java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --output-dir=$output_dir --comparability-file=RegressionTestDriver.decls-DynComp $2.RegressionTestDriver >> $log 2>&1
 
     rm -f RegressionTestDriver.decls-DynComp
     mv RegressionTestDriver.inv.gz $output_dir/RegressionTestDriver.inv.gz
     rm -f $output_dir/RegressionTestDriver.dtrace.gz
 
-    ./scripts/print_sign.sh "printing invariants" >> $log
-    ./scripts/print_invariants.sh $output_dir/RegressionTestDriver.inv.gz $2.$3 $4 $output_dir/randoop_inv.txt  >> $log 2>&1
+    ./scripts/utils/print_sign.sh "printing invariants" >> $log
+    ./scripts/utils/print_invariants.sh $output_dir/RegressionTestDriver.inv.gz $2.$3 $4 $output_dir/randoop_inv.txt  >> $log 2>&1
 
 elif [ $5 == "evosuite" ]; then
     output_dir=$output_dir/evosuite
@@ -35,17 +35,17 @@ elif [ $5 == "evosuite" ]; then
     log=$output_dir/log.txt
     touch $log
 
-    ./scripts/print_sign.sh "first daikon command" > $log
+    ./scripts/utils/print_sign.sh "first daikon command" > $log
     java -cp $subject_jar:$DAIKONDIR/daikon.jar:libs/evosuite-standalone-runtime-1.0.6.jar daikon.DynComp $2.TestDriverEvosuite >> $log 2>&1
-    ./scripts/print_sign.sh "second daikon command" >> $log
+    ./scripts/utils/print_sign.sh "second daikon command" >> $log
     java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --output-dir=$output_dir --comparability-file=TestDriverEvosuite.decls-DynComp $2.TestDriverEvosuite >> $log 2>&1
     
     rm -f TestDriverEvosuite.decls-DynComp
     mv TestDriverEvosuite.inv.gz $output_dir/TestDriverEvosuite.inv.gz
     rm -f $output_dir/TestDriverEvosuite.dtrace.gz
 
-    ./scripts/print_sign.sh "printing invariants" >> $log
-    ./scripts/print_invariants.sh $output_dir/TestDriverEvosuite.inv.gz $2.$3 $4 $output_dir/evosuite_inv.txt >> $log 2>&1
+    ./scripts/utils/print_sign.sh "printing invariants" >> $log
+    ./scripts/utils/print_invariants.sh $output_dir/TestDriverEvosuite.inv.gz $2.$3 $4 $output_dir/evosuite_inv.txt >> $log 2>&1
     
 else
     echo -e "\n\n\n${RED}invalid testing tool provided, expected randoop or evosuite, but received $5 ${NORMAL}\n"
