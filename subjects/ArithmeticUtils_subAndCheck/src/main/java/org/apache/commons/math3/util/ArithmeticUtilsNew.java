@@ -22,7 +22,7 @@ import org.apache.commons.math3.exception.MathArithmeticException;
 import org.apache.commons.math3.exception.NotPositiveException;
 import org.apache.commons.math3.exception.NumberIsTooLargeException;
 import org.apache.commons.math3.exception.util.Localizable;
-import org.apache.commons.math3.exception.util.LocalizedFormats;
+// import org.apache.commons.math3.exception.util.LocalizedFormats;
 
 /**
  * Some useful, arithmetics related, additions to the built-in functions in
@@ -44,17 +44,18 @@ public final class ArithmeticUtilsNew {
      * {@code long}.
      * @since 1.2
      */
-    public long subAndCheck(long a, long b) throws MathArithmeticException {
+    public long subAndCheck(long a, long b) throws IllegalArgumentException {
         long result;
         if (b == Long.MIN_VALUE) {
             if (a < 0) {
             	result = a - b;
             } else {
-                throw new MathArithmeticException(LocalizedFormats.OVERFLOW_IN_ADDITION, a, -b);
+                // throw new MathArithmeticException(LocalizedFormats.OVERFLOW_IN_ADDITION, a, -b);
+                throw new IllegalArgumentException("didn't work");
             }
         } else {
             // use additive inverse
-        	result = addAndCheck(a, -b, LocalizedFormats.OVERFLOW_IN_ADDITION);
+        	result = addAndCheck(a, -b);
         }
         assert (true);
         return result;
@@ -71,10 +72,10 @@ public final class ArithmeticUtilsNew {
      * as a {@code long}.
      * @since 1.2
      */
-     private long addAndCheck(long a, long b, Localizable pattern) throws MathArithmeticException {
+     private long addAndCheck(long a, long b) throws IllegalArgumentException {
          final long result = a + b;
          if (!((a ^ b) < 0 | (a ^ result) >= 0)) {
-             throw new MathArithmeticException(pattern, a, b);
+            throw new IllegalArgumentException("didn't work addAndCheck");
          }
          return result;
     }

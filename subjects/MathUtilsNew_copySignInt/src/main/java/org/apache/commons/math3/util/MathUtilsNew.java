@@ -20,7 +20,7 @@ package org.apache.commons.math3.util;
 import java.util.Arrays;
 
 import org.apache.commons.math3.exception.MathArithmeticException;
-import org.apache.commons.math3.exception.util.LocalizedFormats;
+// import org.apache.commons.math3.exception.util.LocalizedFormats;
 
 /**
  * Miscellaneous utility functions.
@@ -40,7 +40,8 @@ public final class MathUtilsNew {
             result = magnitude;
         } else if (sign >= 0 &&
                    magnitude == Integer.MIN_VALUE) {
-            throw new MathArithmeticException(LocalizedFormats.OVERFLOW);
+            // throw new MathArithmeticException(LocalizedFormats.OVERFLOW);
+            throw new IllegalArgumentException("didn't work");
         } else {
             result = -magnitude; // Flip sign.
         }
