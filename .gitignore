@@ -10,3 +10,4 @@ evosuite-report
 notes
 classlist.txt
 .gradle/
+.vscode/
