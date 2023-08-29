@@ -28,9 +28,11 @@ import java.util.List;
  */
 public class AssertionInserter {
 
+    private static final int argno = 5;
+
     public static void main(String args[]) {
-        if (args.length != 5)
-            throw new IllegalArgumentException("Insufficient arguments provided\n");
+        if (args.length != argno)
+            throw new IllegalArgumentException("Insufficient arguments provided, expected " + argno + ", but received " + args.length + "\n");
 
         CompilationUnit cu;
         try {
