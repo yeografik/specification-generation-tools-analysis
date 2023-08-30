@@ -16,3 +16,4 @@ cd ..
 backdir=$PWD
 cd $origdir
 export OASIS_DIR="$backdir/OASIs"
+export DAIKONDIR="$backdir/daikon-5.8.16"
