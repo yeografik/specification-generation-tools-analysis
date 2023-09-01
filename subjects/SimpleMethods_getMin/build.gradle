@@ -35,7 +35,7 @@ sourceSets {
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    implementation files ('../../libs/daikon.jar')
+    implementation files ('DAIKONDIR/daikon.jar')
     compile fileTree(dir: '../../libs', include: ['evosuite-standalone-runtime-1.0.6.jar'])
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
