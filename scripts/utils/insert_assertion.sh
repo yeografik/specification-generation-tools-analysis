@@ -1,11 +1,24 @@
 #!/bin/bash
 
-function build_condition() {
+function build_array_condition() {
     local -n ref=$1
-    if [ "$ref" == "" ]; then
-        ref="($2)"
+    if [ "${ref[$3]}" == "" ]; then
+        ref[$3]="($2)"
     else
-        ref="$ref && ($2)"
+        ref[$3]="${ref[$3]} && ($2)"
+    fi
+}
+
+function build_condition() {
+    if [ $3 -ne -1 ]; then  #index is not -1
+        build_array_condition $1 "$2" $3
+    else
+        local -n ref=$1
+        if [ "$ref" == "" ]; then
+            ref="($2)"
+        else
+            ref="$ref && ($2)"
+        fi
     fi
 }
 
@@ -14,7 +27,41 @@ function join_condition() {
     if [ "$final_cond" == "" ]; then
         final_cond="$1"
     elif [ "$1" != "" ]; then
-        final_cond="$final_cond && ($1)"
+        final_cond="$final_cond && $1"
+    fi
+}
+
+function join_post_conditions() {
+    local -n final_conds=$2
+    
+    for i in "${!final_conds[@]}";
+    do
+        if [ "${final_conds[$i]}" == "" ]; then
+            final_conds[$i]="$1"
+        elif [ "$1" != "" ]; then
+            final_conds[$i]="${final_conds[$i]} && ($1)"
+        fi
+    done
+}
+
+function get_array_pos() {
+    local -n line_nums=$2
+    exit_num=$(echo "$1" | sed 's/.*[^0-9]//g')
+    ind=0
+    for num in "${line_nums[@]}"
+    do
+        if [ "$num" -eq "$exit_num" ]; then
+            echo $ind
+            return 0
+        fi
+        ((ind++))
+    done
+    echo -1
+}
+
+function check_index_error() {
+    if [ $1 -eq -1 ]; then
+        echo -e "\n\n${RED}Exit number could not be found in return lines${NORMAL}\n"
     fi
 }
 
@@ -38,26 +85,39 @@ if ! [ -e "/tmp/AssertionInserter.class" ]; then
     fi
 fi
 
+#get return line numbers
+return_lines=()
+return_lines+=($(grep -n return $1 | grep -v @return | sed 's/^\([0-9]\+\):.*$/\1/'))
+post_conds=("${return_lines[@]/*/}")
+
 #read specs into variables to pass as arguments
 class_cond=""
 pre_cond=""
 post_cond=""
 cond=""
+index=-1
 while read -r line; do
     if [[ $line == *"OBJECT"* ]]; then
         cond='class_cond'
     elif [[ $line == *"ENTER"* ]]; then
         cond='pre_cond'
+    elif [[ "$line" =~ EXIT[0-9]+ ]]; then
+        cond='post_conds'
+        index=$(get_array_pos "$line" return_lines)
+        check_index_error $index
     elif [[ $line == *"EXIT"* ]]; then
         cond='post_cond'
     elif [[ $line != *"===="* ]]; then
-        build_condition $cond "$line"
+        build_condition $cond "$line" $index
+    else #case of ===== line
+        index=-1
     fi
 done <$specs
 
 #add class condition to pre and post conditions
 join_condition "$class_cond" pre_cond
 join_condition "$class_cond" post_cond
+join_post_conditions "$post_cond" post_conds
 
 #run AssertionInserter
-java -cp /tmp:libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar AssertionInserter $1 $2 $3 "$pre_cond" "$post_cond"
+java -cp /tmp:libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar AssertionInserter $1 $2 $3 "$pre_cond" "${post_conds[@]}"
