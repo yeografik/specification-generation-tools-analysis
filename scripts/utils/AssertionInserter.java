@@ -88,7 +88,8 @@ public class AssertionInserter {
         //insert post conditions in all the returns found in body
         int insertions = 0;
         for (Integer i : returnPos) {
-            formatNonJavaTerms(postConds[postCondIndex]);
+            Statement returnStmt = body.get(i + insertions);
+            postConds[postCondIndex] = formatNonJavaTerms(postConds[postCondIndex], returnStmt);
             insert(body, i + insertions, postConds[postCondIndex]);
             insertions++; postCondIndex++;
         }
@@ -116,7 +117,15 @@ public class AssertionInserter {
             checkComplexStatement(elseStmt.get(), postConds);
     }
     
-    private static void formatNonJavaTerms(String a) {
-        throw new UnsupportedOperationException("TODO");
+    private static String formatNonJavaTerms(String spec, Statement returnStmt) {
+        if (!(returnStmt instanceof ReturnStmt))
+            throw new IllegalArgumentException("Not a return statement, received " + returnStmt);
+        
+        ReturnStmt retStmt = (ReturnStmt) returnStmt;
+        String returnBody = retStmt.getExpression().get().asNameExpr().toString();
+        spec = spec.replace("\\result", returnBody);
+        spec = spec.replace("\\old(x)", "1");
+        
+        return spec;
     }
 }
