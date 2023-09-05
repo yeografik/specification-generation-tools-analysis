@@ -59,7 +59,7 @@ public class AssertionInserter {
 
     private static void insert(NodeList<Statement> body, int pos, String condition) {
         if (condition.isEmpty()) 
-            return;
+            condition = "true";
 
         Statement cond = StaticJavaParser.parseStatement("assert (" + condition + ");");
         body.add(pos, cond);
