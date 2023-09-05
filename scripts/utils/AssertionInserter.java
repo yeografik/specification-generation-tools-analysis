@@ -28,11 +28,12 @@ import java.util.List;
  */
 public class AssertionInserter {
 
-    private static final int argno = 5;
+    private static final int minArgs = 5;
+    private static int postCondIndex = 0;
 
     public static void main(String args[]) {
-        if (args.length != argno)
-            throw new IllegalArgumentException("Insufficient arguments provided, expected " + argno + ", but received " + args.length + "\n");
+        if (args.length < minArgs)
+            throw new IllegalArgumentException("Insufficient arguments provided, expected at least " + minArgs + ", but received " + args.length + "\n");
 
         CompilationUnit cu;
         try {
@@ -48,52 +49,74 @@ public class AssertionInserter {
             throw new IllegalArgumentException("Method " + args[2] + " doesn't exists\n");
 
         BlockStmt body = methodList.get(0).getBody().get();
-        Statement preCond = StaticJavaParser.parseStatement("assert (" + args[3] + ");");
-        body.getStatements().add(0, preCond); //add precondition at beginning
+        insert(body.getStatements(), 0, args[3]); //add precondition at beginning
         
-        Statement postCond = StaticJavaParser.parseStatement("assert (" + args[4] + ");");
-        insertPostCondition(body.getStatements(), postCond); //insert postcondition before each return
+        String[] postConds = arrangePostConditions(args);
+        insertPostConditions(body.getStatements(), postConds); //insert postconditions before each return
 
         cu.getStorage().get().save();   //save file
     }
 
-    private static void insertPostCondition(NodeList<Statement> body, Statement postCond) {
+    private static void insert(NodeList<Statement> body, int pos, String condition) {
+        if (condition.isEmpty()) 
+            return;
+
+        Statement cond = StaticJavaParser.parseStatement("assert (" + condition + ");");
+        body.add(pos, cond);
+    }
+
+    private static String[] arrangePostConditions(String[] args) {
+        int len = args.length - 4;
+        String[] conds = new String[len];
+        for (int i = 0; i < len; i++)
+            conds[i] = args[i + 4];
+            
+        return conds;
+    }
+    
+    private static void insertPostConditions(NodeList<Statement> body, String[] postConds) {
         int pos = 0;
         List<Integer> returnPos = new LinkedList<>();
         for (Statement s : body) {
             if (s instanceof ReturnStmt) //add postconditions before return
                 returnPos.add(pos);
             else
-                checkComplexStatement(s, postCond);
+                checkComplexStatement(s, postConds);
             pos++;
         }
-
+        
+        //insert post conditions in all the returns found in body
         int insertions = 0;
         for (Integer i : returnPos) {
-            body.add(i + insertions, postCond);
-            insertions++;
+            formatNonJavaTerms(postConds[postCondIndex]);
+            insert(body, i + insertions, postConds[postCondIndex]);
+            insertions++; postCondIndex++;
         }
     }
-
-    private static void checkComplexStatement(Statement s, Statement postCond) {
+    
+    private static void checkComplexStatement(Statement s, String[] postConds) {
         if (s instanceof NodeWithStatements<?>)
-            insertPostCondition(((NodeWithStatements<?>)s).getStatements(), postCond);
+            insertPostConditions(((NodeWithStatements<?>)s).getStatements(), postConds);
         else if (s instanceof NodeWithBody<?>)
-            checkComplexStatement(((NodeWithBody<?>)s).getBody(), postCond);
+            checkComplexStatement(((NodeWithBody<?>)s).getBody(), postConds);
         else if (s instanceof IfStmt)
-            searchIfStmt((IfStmt)s, postCond);
+            searchIfStmt((IfStmt)s, postConds);
         else if (s instanceof NodeWithBlockStmt<?>)
-            insertPostCondition(((NodeWithBlockStmt<?>)s).getBody().getStatements(), postCond);
+            insertPostConditions(((NodeWithBlockStmt<?>)s).getBody().getStatements(), postConds);
         else if (s instanceof TryStmt)
-            insertPostCondition(((TryStmt)s).getTryBlock().getStatements(), postCond);
-    }
+            insertPostConditions(((TryStmt)s).getTryBlock().getStatements(), postConds);
+        }
 
-    private static void searchIfStmt(IfStmt s, Statement postCond) {
+        private static void searchIfStmt(IfStmt s, String[] postConds) {
         if(s.hasThenBlock())
-            checkComplexStatement(s.getThenStmt(), postCond);
-
+            checkComplexStatement(s.getThenStmt(), postConds);
+        
         Optional<Statement> elseStmt = s.getElseStmt();
         if(elseStmt.isPresent())
-            checkComplexStatement(elseStmt.get(), postCond);
+            checkComplexStatement(elseStmt.get(), postConds);
+    }
+    
+    private static void formatNonJavaTerms(String a) {
+        throw new UnsupportedOperationException("TODO");
     }
 }
