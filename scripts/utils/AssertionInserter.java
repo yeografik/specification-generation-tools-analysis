@@ -122,7 +122,7 @@ public class AssertionInserter {
             throw new IllegalArgumentException("Not a return statement, received " + returnStmt);
         
         ReturnStmt retStmt = (ReturnStmt) returnStmt;
-        String returnBody = retStmt.getExpression().get().asNameExpr().toString();
+        String returnBody = retStmt.getExpression().get().toString();
         spec = spec.replace("\\result", returnBody);
         spec = spec.replace("\\old(x)", "1");
         
