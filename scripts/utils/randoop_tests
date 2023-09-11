@@ -13,4 +13,4 @@ output_dir=subjects/$3/src/test/java/randoop
 mkdir -p $output_dir        #create directory to save generated tests
 rm -f $output_dir**/*.java       #delete old tests if any
 
-java -classpath $RANDOOP_JAR:$2 randoop.main.Main gentests --classlist=classlist.txt --time-limit=10 --junit-output-dir=$output_dir --literals-level=ALL --literals-file=$LITERALS --junit-reflection-allowed=false --junit-package-name=$4
+java -classpath $RANDOOP_JAR:$2 randoop.main.Main gentests --classlist=classlist.txt --time-limit=$RANDOOP_TIME --junit-output-dir=$output_dir --literals-level=ALL --literals-file=$LITERALS --junit-reflection-allowed=false --junit-package-name=$4
