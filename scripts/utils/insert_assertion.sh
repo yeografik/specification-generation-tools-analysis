@@ -75,20 +75,24 @@ if ! [ -f "$specs" ] || [ $(wc -c < "$specs") -le "1" ]; then
     exit
 fi
 
-#check AssertionInserter is compiled, if not compile it
-if ! [ -e "/tmp/AssertionInserter.class" ]; then
-    #.class file is sent to /tmp/
-    javac -cp libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar -d /tmp/ scripts/utils/AssertionInserter.java
+#check java classes are compiled, if not compile them
+if [[ ! -f "/tmp/java_classes/specs/AssertionInserter.class" ]] && [[ ! -f "/tmp/java_classes/specs/MethodAnalyzer.class" ]] && [[ ! -f "/tmp/java_classes/specs/SpecManipulator.class" ]] && [[ ! -f "/tmp/java_classes/specs/StatementChecker.class" ]] && [[ ! -f "/tmp/java_classes/specs/StatementInserter.class" ]]; then
+    echo "compiling assertion inserter classes"
+    #.class file is sent to /tmp/java_classes/specs/
+    javac -cp libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar -d /tmp/ scripts/utils/java_classes/specs/*.java
 
     if [ $? != 0 ]; then
-        echo -e "\n${RED}couldn't compile scripts/utils/AssertionInserter.java${NORMAL}\n"
+        echo -e "\n${RED}couldn't compile some classes on scripts/utils/java/${NORMAL}\n"
+        exit
     fi
 fi
 
 #get return line numbers
 return_lines=()
 return_lines+=($(grep -n return $1 | grep -v @return | sed 's/^\([0-9]\+\):.*$/\1/'))
+# echo "array?: ${return_lines[@]}, array[0]: ${return_lines[0]}, array[1]: ${return_lines[1]}, array[2]: ${return_lines[2]}, length: ${#return_lines[@]}"
 post_conds=("${return_lines[@]/*/}")
+# echo "post_conds: ${post_conds[@]}fin"
 
 #read specs into variables to pass as arguments
 class_cond=""
@@ -120,4 +124,4 @@ join_condition "$class_cond" post_cond
 join_post_conditions "$post_cond" post_conds
 
 #run AssertionInserter
-java -cp /tmp:libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar AssertionInserter $1 $2 $3 "$pre_cond" "${post_conds[@]}"
+java -cp /tmp/:libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar java_classes/specs/AssertionInserter $1 $2 $3 "$pre_cond" "${post_conds[@]}"
