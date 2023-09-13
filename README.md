@@ -35,13 +35,24 @@ Running a single subject:
 
         for example `./scripts/generate_daikon_specs ringbuffer_item examples RingBuffer item randoop`
 
-    to execute OASIs over a subject run:
+    to execute OASIs over a subject run:    DEPRECATED FOR NOW
         ```
-        ./scripts/run_OASIs.sh <class with package> <src location> <method name> <subject name> <additional jar path> (optional)
+        ./scripts/run_OASIs.sh <class with package> <src location> <method name> <subject name> <additional jar paths> (optional, separated by ':' if more than 2)
         ```
 
         for example `./scripts/run_OASIs.sh examples.RingBuffer subjects/ringbuffer_item/src/main/java/ item ringbuffer_item`
 
         example with additional lib `./scripts/run_OASIs.sh org.apache.commons.math3.util.MathUtilsNew subjects/MathUtilsNew_copySignInt/src/main/java/ copySignInt MathUtilsNew_copySignInt subjects/MathUtilsNew_copySignInt/libs/commons-math3-3.6.1.jar`
 
+Running all subjects:
 
+    to generate tests and specifications run:
+        ./scripts/generate_specs <testing tool>
+
+        for example ./scripts/generate_specs randoop
+
+
+    to check false positives over classes specifications run:
+        ./scripts/check_false_positives.sh <used tool for tests>
+
+        for example ./scripts/check_false_positives.sh evosuite
