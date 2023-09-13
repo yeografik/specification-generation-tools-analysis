@@ -5,6 +5,8 @@
 #
 #  Created by Gunel Jahangirova on 30/03/17.
 #
+
+#$1 class with package, $2 src location, $3 method name, $4 additional libs (optional)
 orig_dir=$PWD;
 root_dir=$OASIS_DIR;
 
@@ -39,7 +41,7 @@ mkdir -p $root_dir/$d/bin/;
 
 additional_libs=""
 if [ ! -z $4 ]; then
-    additional_libs=":$orig_dir/$4"
+    additional_libs=":$4"
 fi
 
 cp -R $src_location/* $root_dir/$d/src/;
