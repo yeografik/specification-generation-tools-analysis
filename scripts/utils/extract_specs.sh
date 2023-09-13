@@ -16,7 +16,9 @@ function build_condition() {
         build_array_condition $1 "$2" $3
     else
         local -n ref=$1
-        if [ "$ref" == "" ]; then
+        if [[ "$1" == "class_cond" && "$2" == "this != null" ]]; then
+            : #skip
+        elif [ "$ref" == "" ]; then
             ref="($2)"
         else
             ref="$ref && ($2)"

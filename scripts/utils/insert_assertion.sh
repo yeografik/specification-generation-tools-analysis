@@ -1,7 +1,7 @@
 #!/bin/bash
-#$1 java file, $2 class name $3 method name, $4 used tool
+#$1 java file, $2 class name $3 method name, $4 subject, $5 used tool
 
-specs="generated_specs/$2_$3/$4/$4_inv.txt"
+specs="generated_specs/$4/$5/$5_inv.txt"
 
 #check specs file exists and it's not empty
 if ! [ -f "$specs" ] || [ $(wc -c < "$specs") -le "1" ]; then
