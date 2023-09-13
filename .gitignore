@@ -6,6 +6,7 @@ subjects/**/test
 subjects/**/evosuite_log.txt
 subjects/**/randoop_log.txt
 generated_specs
+false_positive_checking
 evosuite-report
 notes
 classlist.txt
