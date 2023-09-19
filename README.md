@@ -16,7 +16,7 @@ Before anything
     
         source scripts/config.sh
 
-    all scripts are meant to be called from root
+    all scripts are meant to be called from root, the same goes for make commands
 
 
 Running a single subject:

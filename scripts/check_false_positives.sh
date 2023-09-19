@@ -29,7 +29,7 @@ while read -ra line; do
     package_as_path="$( echo "${line[1]}" | tr  '.' '/'  )"
     ./scripts/utils/insert_assertion.sh subjects/"${line[0]}"/src/main/java/$package_as_path/"${line[2]}".java "${line[2]}" "${line[3]}" "${line[0]}" $1
     
-    output_dir=false_positive_checking/"${line[0]}"/$1
+    output_dir=OASIs_results/"${line[0]}"/$1
     log=""
     create_results_folder
     libraries="$DAIKONDIR/daikon.jar"
