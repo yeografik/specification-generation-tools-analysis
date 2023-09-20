@@ -57,16 +57,25 @@ public class AssertionInserter {
             throw new IllegalArgumentException("Method " + args[2] + " doesn't exists\n");
         
         spcMpl = new SpecManipulator(Arrays.copyOfRange(args, 3, args.length));
-        methodAnalyzer = new MethodAnalyzer(cu, methodList.get(0));
-        StatementInserter.setOldVariablesReferences(oldVarsReplacement, spcMpl.getOldVariables());
+        for (String s : spcMpl.getOldVariables())
+            System.out.println(s);
+            
+        // methodAnalyzer = new MethodAnalyzer(cu, methodList.get(0));
+        // StatementInserter.setOldVariablesReferences(oldVarsReplacement, spcMpl.getOldVariables());
 
-        BlockStmt body = methodAnalyzer.getBody();
-        //add precondition at beginning
-        StatementInserter.addAssertAtBeginning(body.getStatements(), 0, spcMpl.getPreCondition());
+        // BlockStmt body = methodAnalyzer.getBody();
+        // //add precondition at beginning
+        // StatementInserter.addAssertAtBeginning(body.getStatements(), 0, spcMpl.getPreCondition());
         
-        insertPostConditions(body.getStatements(), methodAnalyzer.getParameters()); //insert postconditions before each return
+        // insertPostConditions(body.getStatements(), methodAnalyzer.getParameters()); //insert postconditions before each return
 
-        cu.getStorage().get().save();   //save file
+        // System.out.println("final method");
+        // for (Statement s : body.getStatements()) {
+        //     System.out.println(s);
+
+        // }
+
+        // cu.getStorage().get().save();   //save file
     }
 
     private static void insertPostConditions(NodeList<Statement> body, NodeList<Parameter> parameters) {

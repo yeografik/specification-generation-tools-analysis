@@ -32,6 +32,11 @@ public class StatementInserter {
         
         return 1;
     }
+
+    public static int addThisDuplication() {
+        throw new UnsupportedOperationException("TODO: implement");
+    }
+
 //i + offset
     public static int addVarDeclDuplication(NodeList<Statement> body, ExpressionStmt exprStmt, int i, MethodAnalyzer mtAnalyzer) {
         int insertions = 0;
