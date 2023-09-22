@@ -57,7 +57,6 @@ public final class ArithmeticUtilsNew {
             // use additive inverse
         	result = addAndCheck(a, -b);
         }
-        assert (true);
         return result;
     }
 

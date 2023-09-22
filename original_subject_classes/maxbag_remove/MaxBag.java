@@ -359,6 +359,5 @@ _stop_bubble_down328383: do {
         for (Integer _var3237 : _var328370) {
             _var721.remove(_var3237);
         }
-        assert(true);
     }
 }

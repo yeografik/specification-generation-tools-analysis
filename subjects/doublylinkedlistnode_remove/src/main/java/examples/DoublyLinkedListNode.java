@@ -69,7 +69,6 @@ public class DoublyLinkedListNode {
         // old_left_wrapped: (old left).is_wrapped
         // old_right_wrapped: (old right).is_wrapped
         // neighbors_connected: (old left).right = old right
-        assert (true);
     }
 
     /**

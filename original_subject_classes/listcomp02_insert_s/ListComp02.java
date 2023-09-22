@@ -40,7 +40,6 @@ public class ListComp02 {
   public void insert_s(S s) {
     {
       _var50.add(s);
-      assert(true);
     }
   }
 }

@@ -16,7 +16,6 @@ public class SimpleMethods {
         } else {
             result = b;
         }
-        assert (true);
         return result;
     }
 }

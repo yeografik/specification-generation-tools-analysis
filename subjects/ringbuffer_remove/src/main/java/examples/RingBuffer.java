@@ -158,7 +158,6 @@ public class RingBuffer<G> {
             start = 1;
         else
             start++;
-        assert(true);
         // ensure
         // definition: sequence = old sequence.but_first
     }

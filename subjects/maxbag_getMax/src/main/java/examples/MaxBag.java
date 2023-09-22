@@ -154,7 +154,6 @@ _label328420: do {
 
     public Integer getMax() {
         Integer result = _var587;
-        assert(true);
         return result;
     }
 
