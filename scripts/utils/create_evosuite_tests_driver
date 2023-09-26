@@ -50,5 +50,9 @@ do
         }" >> $main_driver_class
 done
 
-echo "    }
+echo "
+        if (hadFailure) {
+            Runtime.getRuntime().exit(1);
+        }
+    }
 }" >> $main_driver_class

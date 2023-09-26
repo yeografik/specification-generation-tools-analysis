@@ -21,3 +21,4 @@ backdir=$PWD
 cd $origdir
 export OASIS_DIR="$backdir/OASIs"
 export DAIKONDIR="$backdir/daikon-5.8.16"
+export SPEC_ANALYSIS_PROJECT_ROOT="$origdir"
