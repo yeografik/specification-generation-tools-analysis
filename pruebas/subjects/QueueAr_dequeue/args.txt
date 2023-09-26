@@ -1,1 +1,0 @@
-Object[] theArray, int currentSize, int front, int back

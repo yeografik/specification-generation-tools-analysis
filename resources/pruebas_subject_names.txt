@@ -1,5 +1,0 @@
-org.apache.commons.math3.util;ArithmeticUtils_subAndCheck;ArithmeticUtilsNew
-examples;listcomp02_insert_s;ListComp02
-examples;maxbag_remove;MaxBag
-DataStructures;QueueAr_dequeue;QueueAr
-examples;SimpleMethods_getMin;SimpleMethods
