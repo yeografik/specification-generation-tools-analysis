@@ -1,6 +1,8 @@
 package java_classes.specs;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -12,18 +14,26 @@ import com.github.javaparser.ast.body.Parameter;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 import com.github.javaparser.ast.stmt.BlockStmt;
+import com.github.javaparser.ast.type.Type;
 
 public class MethodAnalyzer {
 
     private CompilationUnit cu;
     private MethodDeclaration method;
     private Set<String> usedVarNames;
+    private Map<String,Type> attributeTypes;
 
     public MethodAnalyzer(CompilationUnit cu, MethodDeclaration method) {
         this.cu = cu;
         this.method = method;
         usedVarNames = new HashSet<>();
-        searchUsedVariableNames();
+        attributeTypes = new HashMap<>();
+        setUsedVariableNames();
+        setAttributeTypes();
+    }
+
+    public Type getAttributeType(String attribute) {
+        return attributeTypes.get(attribute);
     }
 
     public NodeList<Parameter> getParameters() {
@@ -49,7 +59,7 @@ public class MethodAnalyzer {
         return finalName;
     }
 
-    private void searchUsedVariableNames() {
+    private void setUsedVariableNames() {
         //class attributes
         for (FieldDeclaration field : cu.findAll(FieldDeclaration.class))
             for (VariableDeclarator variable : field.getVariables())
@@ -65,5 +75,11 @@ public class MethodAnalyzer {
                 usedVarNames.add(var.getNameAsString());
             }
         }
+    }
+
+    private void setAttributeTypes() {
+        for (FieldDeclaration field : cu.findAll(FieldDeclaration.class))
+            for (VariableDeclarator variable : field.getVariables())
+                attributeTypes.put(variable.getNameAsString(), variable.getType());
     }
 }

@@ -37,7 +37,7 @@ public class AssertionInserter {
     private static int postCondIndex = 0;
     private static SpecManipulator spcMpl;
     private static MethodAnalyzer methodAnalyzer;
-    private static Map<String, String> oldVarsReplacement = new HashMap<>();
+    private static StatementInserter stmtInserter;
 
     public static void main(String args[]) {
         if (args.length < minArgs)
@@ -58,11 +58,10 @@ public class AssertionInserter {
         
         spcMpl = new SpecManipulator(Arrays.copyOfRange(args, 3, args.length));
         methodAnalyzer = new MethodAnalyzer(cu, methodList.get(0));
-        StatementInserter.setOldVariablesReferences(oldVarsReplacement, spcMpl.getOldVariables());
+        stmtInserter = new StatementInserter(spcMpl.getOldVariables(), methodAnalyzer);
 
         BlockStmt body = methodAnalyzer.getBody();
-        //add precondition at beginning
-        StatementInserter.addAssertAtBeginning(body.getStatements(), 0, spcMpl.getPreCondition());
+        stmtInserter.addAssertAtBeggining(body.getStatements(), spcMpl.getPreCondition());
         
         insertPostConditions(body.getStatements(), methodAnalyzer.getParameters()); //insert postconditions before each return
 
@@ -70,11 +69,21 @@ public class AssertionInserter {
     }
 
     private static void insertPostConditions(NodeList<Statement> body, NodeList<Parameter> parameters) {
+        //duplicate parameters
         Set<String> oldVars = spcMpl.getOldVariables();
         for (Parameter p : parameters)
             if (oldVars.contains(p.getNameAsString()))
-                StatementInserter.addParameterDuplication(body, p, methodAnalyzer);
+                stmtInserter.addParameterDuplication(body, p);
 
+        //duplicate attributes
+        Set<String> oldRefs = spcMpl.getOldReferences();
+        for (String ref : oldRefs)
+            if (StatementChecker.isAttributeCall(ref)) {
+                stmtInserter.addAttributeDuplication(body, ref);
+            } else {
+                stmtInserter.addObjectRefDuplication(body, ref);
+            }
+        
         traverseStatements(body);
     }
 
@@ -98,14 +107,17 @@ public class AssertionInserter {
         for (Integer i : insertionPositions) {
             Statement stmt = body.get(i + insertions);
             if (stmt.isReturnStmt())
-                insertions += StatementInserter.addAssertBeforeReturn(body, stmt.asReturnStmt(), i + insertions, postCondIndex++);
+                stmtInserter.addAssertBeforeReturn(body, stmt.asReturnStmt(), i + insertions++, postCondIndex++);
             else if (StatementChecker.isOldVarAssignment(stmt, oldVars))
-                insertions += StatementInserter.addVarAssignDuplication(body, stmt.asExpressionStmt(), i + insertions, methodAnalyzer);
+                stmtInserter.addVarAssignDuplication(body, stmt.asExpressionStmt(), i + insertions++);
             else if (StatementChecker.isOldVarDeclaration(stmt, oldVars))
-                insertions += StatementInserter.addVarDeclDuplication(body, stmt.asExpressionStmt(), i + insertions, methodAnalyzer);
+                insertions += stmtInserter.addVarDeclDuplication(body, stmt.asExpressionStmt(), i + insertions);
             else 
                 throw new IllegalStateException("Invalid statement in insertion list: " + stmt);
         }
+
+        if (insertions == 0)
+            stmtInserter.addAssertAtEnd(body, 0);
     }
 
     private static void checkComplexStatement(Statement s) {

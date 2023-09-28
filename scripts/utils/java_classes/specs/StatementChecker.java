@@ -1,6 +1,8 @@
 package java_classes.specs;
 
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.expr.Expression;
@@ -28,6 +30,11 @@ public class StatementChecker {
 
         Expression expr = s.asExpressionStmt().getExpression();
         return expr.isAssignExpr() && oldVars.contains(expr.asAssignExpr().getTarget().toString());
+    }
+    
+    public static boolean isAttributeCall(String expression) {
+        Matcher m = Pattern.compile("[a-zA-Z_$0-9]+$").matcher(expression);
+        return m.find();
     }
     
     private static boolean isVarDeclarationExpr(Statement s) {

@@ -14,11 +14,13 @@ public class SpecManipulator {
     private static String preCondition;
     private static String[] postConditions;
     private static Set<String> oldVariables;
+    private static Set<String> oldReferences;
 
     public SpecManipulator(String[] specs) {
         preCondition = specs[0];
         postConditions = Arrays.copyOfRange(specs, 1, specs.length);
         oldVariables = new HashSet<>();
+        oldReferences = new HashSet<>();
         calculateOldVariables();
     }
 
@@ -34,23 +36,40 @@ public class SpecManipulator {
         return oldVariables;
     }
 
+    public Set<String> getOldReferences() {
+        return oldReferences;
+    }
+
     public static String toJavaFormat(ReturnStmt returnStmt, int index, Map<String, String> oldVarsReplacement) {
         String returnBody = returnStmt.getExpression().get().toString();
-        String condition = postConditions[index];
-        condition = condition.replace("\\result", returnBody);
-        
+        String postCond = postConditions[index];
+        postCond = postCond.replace("\\result", returnBody);
         for (Map.Entry<String, String> set : oldVarsReplacement.entrySet())
-            condition = condition.replace(set.getKey(), set.getValue());
+            postCond = postCond.replace(set.getKey(), set.getValue());
         
-        postConditions[index] = condition;
-        return condition;
+        postConditions[index] = postCond;
+        return postCond;
+    }
+
+    public static String toJavaFormat(int index, Map<String, String> oldVarsReplacement) {
+        String postCond = postConditions[index];
+        for (Map.Entry<String, String> set : oldVarsReplacement.entrySet())
+            postCond = postCond.replace(set.getKey(), set.getValue());
+        
+        postConditions[index] = postCond;
+        return postCond;
     }
 
     private void calculateOldVariables() {
         String specs=preCondition;
         for (String cond : postConditions)
             specs+= cond;
+        
+        addOldVariables(specs);
+        addOldReferences(specs);
+    }
 
+    private void addOldVariables(String specs) {
         Matcher m = Pattern.compile("\\\\old\\([a-z_$][a-zA-Z_$0-9]*\\)").matcher(specs);
         while(m.find()) {
             String found = m.group();
@@ -58,5 +77,15 @@ public class SpecManipulator {
             oldVariables.add(found);
         }
     }
-
+    
+    private void addOldReferences(String specs) {
+        Matcher m = Pattern.compile("\\\\old\\([a-z_$][a-zA-Z_$0-9]*(\\.[a-zA-Z_$0-9]+(\\(.[^\\)]*\\))?)+\\)").matcher(specs);
+        while(m.find()) {
+            String found = m.group();
+            if (found.contains("daikon")) 
+                continue;
+            found = found.replace("\\old(", "").replaceAll("\\)$", ""); //extract expression
+            oldReferences.add(found);
+        }
+    }
 }
