@@ -67,6 +67,10 @@ public class SpecManipulator {
         
         addOldVariables(specs);
         addOldReferences(specs);
+        if (oldVariables.contains("this")) {
+            oldVariables.remove("this");
+            oldReferences.add("this");
+        }
     }
 
     private void addOldVariables(String specs) {

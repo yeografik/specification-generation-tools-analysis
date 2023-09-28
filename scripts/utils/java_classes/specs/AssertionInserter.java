@@ -78,12 +78,11 @@ public class AssertionInserter {
         //duplicate attributes
         Set<String> oldRefs = spcMpl.getOldReferences();
         for (String ref : oldRefs)
-            if (StatementChecker.isAttributeCall(ref)) {
+            if (StatementChecker.isAttributeCall(ref))
                 stmtInserter.addAttributeDuplication(body, ref);
-            } else {
+            else 
                 stmtInserter.addObjectRefDuplication(body, ref);
-            }
-        
+
         traverseStatements(body);
     }
 

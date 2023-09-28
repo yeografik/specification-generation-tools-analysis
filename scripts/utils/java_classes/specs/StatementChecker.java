@@ -33,6 +33,9 @@ public class StatementChecker {
     }
     
     public static boolean isAttributeCall(String expression) {
+        if (expression.equals("this"))
+            return false;
+
         Matcher m = Pattern.compile("[a-zA-Z_$0-9]+$").matcher(expression);
         return m.find();
     }
