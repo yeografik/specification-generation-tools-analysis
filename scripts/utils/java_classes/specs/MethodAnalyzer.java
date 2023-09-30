@@ -52,10 +52,10 @@ public class MethodAnalyzer {
         String baseName = "old_" + var;
         String finalName = baseName;
         int num = 1;
-        while (usedVarNames.contains(finalName)) {
+        while (usedVarNames.contains(finalName))
             finalName = baseName + "_" + num++;
-        }
 
+        usedVarNames.add(finalName);
         return finalName;
     }
 
