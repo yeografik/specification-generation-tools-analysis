@@ -55,7 +55,7 @@ public class RegressionTestDriver {
 #adding method calls in main
 for i in $(seq 0 $(($test_files_count-1)))
 do
-    echo "      runTests$i();" >> $main_driver_class
+    echo "        runTests$i();" >> $main_driver_class
 done
 echo "    }" >> $main_driver_class
 
