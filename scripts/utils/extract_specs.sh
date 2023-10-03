@@ -4,8 +4,6 @@ function check_invalid_condition() {
     invalid_condition=false
     if [[ "$1" == "class_cond" && "$2" == "this != null" ]]; then
         invalid_condition=true
-    elif [[ "$2" == "(\"oneOf.java.jpp: SEQUENCE unimplemented\" != null)" ]]; then
-        invalid_condition=true
     fi
 }
 
