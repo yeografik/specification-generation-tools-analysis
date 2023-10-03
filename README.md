@@ -3,6 +3,10 @@ Dependencies:
     openjdk-8-jre
     
     java 1.8.0 (1.8.0_382)
+
+    randoop 4.3.1
+
+    evosuite 1.0.6
     
     daikon 5.8.16
 
