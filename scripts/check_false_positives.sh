@@ -9,8 +9,16 @@ function create_results_folder() {
 }
 
 function add_libraries() {
+    libraries="$DAIKONDIR"
+
+    local file_count=$(ls subjects/$1/libs/ | wc -l)
+    if [ $file_count -eq "0" ]; then
+        return
+    fi
+
     for lib in subjects/$1/libs/*.jar; do
-        libraries="$libraries:${PWD}/$lib"
+        # echo "adding $lib"
+        libraries="${PWD}/$lib:$libraries"
     done
 }
 
@@ -32,9 +40,8 @@ while read -ra line; do
     output_dir=OASIs_results/"${line[0]}"/$1
     log=""
     create_results_folder
-    libraries="$DAIKONDIR/daikon.jar"
     add_libraries "${line[0]}"
-    # bash scripts/utils/OASIs_mod.sh "${line[1]}.${line[2]}" "subjects/${line[0]}/src/main/java" "${line[3]}" "$libraries" > $log
+    bash scripts/utils/OASIs_mod.sh "${line[1]}.${line[2]}" "subjects/${line[0]}/src/main/java" "${line[3]}" "$libraries" > $log
     #save the modified class into results and restore the original
     cp "subjects/${line[0]}/src/main/java/$package_as_path/${line[2]}.java" "$output_dir/${line[2]}.java"
     cp "original_subject_classes/${line[0]}/${line[2]}.java" "subjects/${line[0]}/src/main/java/$package_as_path/${line[2]}.java"

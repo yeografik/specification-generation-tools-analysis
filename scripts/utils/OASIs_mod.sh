@@ -51,19 +51,20 @@ new_src_location=$root_dir/$d/src/;
 new_bin_location=$root_dir/$d/bin/;
 
 #rm -r $bin_location/$classname_path.class;
-javac -cp $new_bin_location$additional_libs -d $new_bin_location $new_src_location/$classname_path.java;
+echo "aditional_libs: $additional_libs"
+javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$classname_path.java;
 line_list="$(java -jar $root_dir/tools/fp.jar $new_src_location/$classname_path.java $target_method)";
 
 cp $new_src_location/$classname_path.java $root_dir/output/FP/$class_name/$d/instrumented/$class_name.java;
 
 #rm -r $bin_location/$classname_path.class;
-javac -cp $new_bin_location$additional_libs -d $new_bin_location $new_src_location/$classname_path.java;
+javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$classname_path.java;
 
 cd $root_dir/output/FP/$class_name/$d/;
 #$root_dir/FP/$class_name/$d/evo.txt
 
 echo "Checking for False Positives...";
-evo_output="$(java -jar $evosuite_location -generateTests -Dsearch_budget=60 -Dcriterion=branch -Dassertions=false -Dstrategy=onebranch -Dtest_comments=true -Djunit_suffix='_'$target_method'_Test' -Dline_list=$line_list -Dtarget_method_prefix=$target_method -projectCP $new_bin_location$additional_libs -class $class_full_name)";
+evo_output="$(java -jar $evosuite_location -generateTests -Dsearch_budget=60 -Dcriterion=branch -Dassertions=false -Dstrategy=onebranch -Dtest_comments=true -Djunit_suffix='_'$target_method'_Test' -Dline_list=$line_list -Dtarget_method_prefix=$target_method -projectCP $new_bin_location$additional_libs/ -class $class_full_name)";
 
 cp $root_dir/output/FP/$class_name/$d/$class_name.java $src_location/$classname_path.java;
 
@@ -71,7 +72,7 @@ test="_"$target_method"_Test.java";
 scaffolding="_"$target_method"_Test_scaffolding.java";
 
 #rm -f $bin_location/$classname_path.class;
-javac -cp $new_bin_location$additional_libs -d $new_bin_location $new_src_location/$classname_path.java;
+javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$classname_path.java;
 
 if [[ ($evo_output != *"Generated 0"*)  && ($evo_output == *"Resulting test suite"*) ]]; then
     cp $root_dir/output/FP/$class_name/$d/evosuite-tests/$classname_path$test $src_location/$classname_path$test;
@@ -107,13 +108,13 @@ else
         #echo ${line_array[1]}
         #rm -r $bin_location/$classname_path.class;
         cp $new_src_location/$classname_path.java $root_dir/output/FN/$class_name/$d/instrumented/$class_name.java;
-        javac -cp $new_bin_location$additional_libs -d $new_bin_location $new_src_location/$classname_path.java;
+        javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$classname_path.java;
 
         cd $root_dir/output/FN/$class_name/$d/;
 
 
         echo "Checking for False Negatives..."
-        evo_fn_output="$(java -jar $evosuite_location -generateTests -Dsearch_budget=225 -Dtest_archive=false -Dminimize=true -Dcriterion=strongmutation -Dtest_comments=true -Dmutated_line_list=${line_array[0]} -Djunit_suffix='_'$target_method'_Test' -Dmutation_replacement_list=${line_array[1]} -Dassertions=false -Dtarget_method_prefix=$target_method -projectCP $new_bin_location$additional_libs -class $class_full_name)";
+        evo_fn_output="$(java -jar $evosuite_location -generateTests -Dsearch_budget=225 -Dtest_archive=false -Dminimize=true -Dcriterion=strongmutation -Dtest_comments=true -Dmutated_line_list=${line_array[0]} -Djunit_suffix='_'$target_method'_Test' -Dmutation_replacement_list=${line_array[1]} -Dassertions=false -Dtarget_method_prefix=$target_method -projectCP $new_bin_location$additional_libs/ -class $class_full_name)";
 
         #cp $root_dir/FN/$class_name/$d/$class_name.java $src_location/$classname_path.java;
         test="_"$target_method"_Test.java";
@@ -123,7 +124,7 @@ else
         cp $root_dir/output/FN/$class_name/$d/evosuite-tests/$classname_path$scaffolding $src_location/$classname_path$scaffolding;
 
         #rm -f $bin_location/$classname_path.class;
-        javac -cp $new_bin_location$additional_libs -d $new_bin_location $new_src_location/$classname_path.java;
+        javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$classname_path.java;
 
         if [[ ($evo_fn_output != *"Generated 0"*) && ($evo_fn_output == *"Resulting test suite"*) ]]; then
             echo "False Negative Detected!"
