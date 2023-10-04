@@ -27,7 +27,7 @@ package=${2//./\/}   #replace dots with / in package name
 
 main_driver_class=$1evosuite-tests/$package/TestDriverEvosuite.java
 
-method_amount=$(grep "@Test" $1evosuite-tests/$package/$3_ESTest.java | wc -l)
+method_amount=$(($(grep "@Test" $1evosuite-tests/$package/$3_ESTest.java | wc -l) - 1))
 
 echo "package $2;
 
