@@ -15,12 +15,14 @@ public class SpecManipulator {
     private static String[] postConditions;
     private static Set<String> oldVariables;
     private static Set<String> oldReferences;
+    private static Set<String> cloneRequiredOldRefs;
 
     public SpecManipulator(String[] specs) {
         preCondition = specs[0];
         postConditions = Arrays.copyOfRange(specs, 1, specs.length);
         oldVariables = new HashSet<>();
         oldReferences = new HashSet<>();
+        cloneRequiredOldRefs = new HashSet<>();
         calculateOldVariables();
     }
 
@@ -38,6 +40,10 @@ public class SpecManipulator {
 
     public Set<String> getOldReferences() {
         return oldReferences;
+    }
+
+    public Set<String> getCloneRequiredOldRefs() {
+        return cloneRequiredOldRefs;
     }
 
     public static String toJavaFormat(ReturnStmt returnStmt, int index, Map<String, String> oldVarsReplacement) {
@@ -67,6 +73,7 @@ public class SpecManipulator {
         
         addOldVariables(specs);
         addOldReferences(specs);
+        addOldDaikonCalls(specs);
         if (oldVariables.contains("this")) {
             oldVariables.remove("this");
             oldReferences.add("this");
@@ -90,6 +97,15 @@ public class SpecManipulator {
                 continue;
             found = found.replace("\\old(", "").replaceAll("\\)$", ""); //extract expression
             oldReferences.add(found);
+        }
+    }
+    
+    private void addOldDaikonCalls(String specs) {
+        Matcher m = Pattern.compile("\\\\old\\(daikon\\.Quant\\.size\\([a-zA-Z_$0-9]+(\\.[a-zA-Z_$0-9]+)*\\)\\)").matcher(specs);
+        while(m.find()) {
+            String found = m.group();
+            found = found.replace("\\old(daikon.Quant.size(", "").replace("))", ""); //extract variable name
+            cloneRequiredOldRefs.add(found);
         }
     }
 }

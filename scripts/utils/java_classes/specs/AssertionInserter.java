@@ -36,7 +36,7 @@ public class AssertionInserter {
     private static final int minArgs = 5;
     private static int postCondIndex = 0;
     private static SpecManipulator spcMpl;
-    private static MethodAnalyzer methodAnalyzer;
+    private static ClassAnalyzer classAnalyzer;
     private static StatementInserter stmtInserter;
 
     public static void main(String args[]) {
@@ -57,13 +57,13 @@ public class AssertionInserter {
             throw new IllegalArgumentException("Method " + args[2] + " doesn't exists\n");
         
         spcMpl = new SpecManipulator(Arrays.copyOfRange(args, 3, args.length));
-        methodAnalyzer = new MethodAnalyzer(cu, methodList.get(0));
-        stmtInserter = new StatementInserter(spcMpl.getOldVariables(), methodAnalyzer);
+        classAnalyzer = new ClassAnalyzer(cu, methodList.get(0), subjectClass.get());
+        stmtInserter = new StatementInserter(spcMpl.getOldVariables(), classAnalyzer);
 
-        BlockStmt body = methodAnalyzer.getBody();
+        BlockStmt body = classAnalyzer.getBody();
         stmtInserter.addAssertAtBeggining(body.getStatements(), spcMpl.getPreCondition());
         
-        insertPostConditions(body.getStatements(), methodAnalyzer.getParameters()); //insert postconditions before each return
+        insertPostConditions(body.getStatements(), classAnalyzer.getParameters()); //insert postconditions before each return
 
         cu.getStorage().get().save();   //save file
     }
@@ -82,6 +82,14 @@ public class AssertionInserter {
                 stmtInserter.addAttributeDuplication(body, ref);
             else 
                 stmtInserter.addObjectRefDuplication(body, ref);
+
+        //clone required references
+        Set<String> varsToClone = spcMpl.getCloneRequiredOldRefs();
+        // if (!varsToClone.isEmpty() && !classAnalyzer.hasCloneMethod())
+        //     throw new IllegalStateException("Specs require clone method, but class doesn't have it");
+        
+        for (String ref : varsToClone)
+            stmtInserter.addObjectCloning(body, ref);
 
         traverseStatements(body);
     }

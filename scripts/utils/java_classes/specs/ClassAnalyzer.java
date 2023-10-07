@@ -2,11 +2,13 @@ package java_classes.specs;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
@@ -16,20 +18,27 @@ import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 import com.github.javaparser.ast.stmt.BlockStmt;
 import com.github.javaparser.ast.type.Type;
 
-public class MethodAnalyzer {
+public class ClassAnalyzer {
 
     private CompilationUnit cu;
+    private ClassOrInterfaceDeclaration classDecl;
     private MethodDeclaration method;
     private Set<String> usedVarNames;
     private Map<String,Type> attributeTypes;
 
-    public MethodAnalyzer(CompilationUnit cu, MethodDeclaration method) {
+    public ClassAnalyzer(CompilationUnit cu, MethodDeclaration method, ClassOrInterfaceDeclaration classDecl) {
         this.cu = cu;
+        this.classDecl = classDecl;
         this.method = method;
         usedVarNames = new HashSet<>();
         attributeTypes = new HashMap<>();
         setUsedVariableNames();
         setAttributeTypes();
+    }
+
+    public boolean hasCloneMethod() {
+        List<MethodDeclaration> cloneMethods = classDecl.getMethodsByName("clone");
+        return !cloneMethods.isEmpty();
     }
 
     public Type getAttributeType(String attribute) {

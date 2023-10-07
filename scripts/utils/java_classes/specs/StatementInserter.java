@@ -18,42 +18,55 @@ import com.github.javaparser.ast.type.Type;
 
 public class StatementInserter {
 
-    private MethodAnalyzer methodAnalyzer;
+    private ClassAnalyzer classAnalyzer;
     private Map<String, String> oldVarsReplacement;
     private Set<String> oldVars;
 
-    public StatementInserter(Set<String> oldVars, MethodAnalyzer methodAnalyzer) {
+    public StatementInserter(Set<String> oldVars, ClassAnalyzer classAnalyzer) {
         this.oldVars = oldVars;
-        this.methodAnalyzer = methodAnalyzer;
+        this.classAnalyzer = classAnalyzer;
         this.oldVarsReplacement = new HashMap<>();
     }
 
     public void addParameterDuplication(NodeList<Statement> body, Parameter param) {
         String paramName = param.getNameAsString();
         oldVars.remove(paramName);
-        String newName = methodAnalyzer.createNewVarName(paramName);
-        insert(body, 0, param.getTypeAsString() + " " + newName + " = " + param.getNameAsString() + ";");
+        String newName = classAnalyzer.createNewVarName(paramName);
+        insert(body, 1, param.getTypeAsString() + " " + newName + " = " + param.getNameAsString() + ";");
         oldVarsReplacement.put("\\old(" + paramName + ")", newName);
     }
 
     public void addAttributeDuplication(NodeList<Statement> body, String expr) {
         String[] exprParts = expr.split("\\.");
         String newName = exprParts[0] + "_" + exprParts[exprParts.length -1];
-        newName = methodAnalyzer.createNewVarName(newName);
+        newName = classAnalyzer.createNewVarName(newName);
         
-        Type type = methodAnalyzer.getAttributeType(exprParts[exprParts.length -1]);
+        Type type = classAnalyzer.getAttributeType(exprParts[exprParts.length -1]);
         if (type.isPrimitiveType())
-            insert(body, 0, type.asString() + " " + newName + " = " + expr + ";");
+            insert(body, 1, type.asString() + " " + newName + " = " + expr + ";");
         else
-            insert(body, 0, "Object " + newName + " = " + expr + ";");
+            insert(body, 1, "Object " + newName + " = " + expr + ";");
         oldVarsReplacement.put("\\old(" + expr + ")", newName);
     }
 
     public void addObjectRefDuplication(NodeList<Statement> body, String expr) {
         String[] exprParts = expr.split("\\.");
-        String newName = methodAnalyzer.createNewVarName(exprParts[0]);
-        insert(body, 0, "Object " + newName + " = " + expr + ";");
+        String newName = classAnalyzer.createNewVarName(exprParts[0]);
+        insert(body, 1, "Object " + newName + " = " + expr + ";");
         oldVarsReplacement.put("\\old(" + expr + ")", newName);
+    }
+
+    public void addObjectCloning(NodeList<Statement> body, String expr) {
+        String[] exprParts = expr.split("\\.");
+        String newName = exprParts[0] + "_" + exprParts[exprParts.length -1];
+        newName = classAnalyzer.createNewVarName(newName);
+
+        Type type = classAnalyzer.getAttributeType(exprParts[exprParts.length -1]);
+        if (type == null) 
+            throw new IllegalArgumentException("expression " + expr + " is a method call");
+            
+        insert(body, 1, type.asString() + " " + newName + " = " + expr + ".clone();");
+        oldVarsReplacement.put("\\old(daikon.Quant.size(" + expr + "))", "daikon.Quant.size(" + newName + ")");
     }
 
     public int addVarDeclDuplication(NodeList<Statement> body, ExpressionStmt exprStmt, int i) {
@@ -63,7 +76,7 @@ public class StatementInserter {
         for (VariableDeclarator var : varDeclExpr.getVariables()) {
             String varName = var.getNameAsString();
             if (oldVars.contains(varName) && var.getInitializer().isPresent()) {
-                String newName = methodAnalyzer.createNewVarName(varName);
+                String newName = classAnalyzer.createNewVarName(varName);
                 insert(body, i + 1, newName + " = " + var.getInitializer() + ";");
                 insertions++;
                 putOldVarReplacement(varName, newName);
@@ -76,7 +89,7 @@ public class StatementInserter {
     public void addVarAssignDuplication(NodeList<Statement> body, ExpressionStmt exprStmt, int i) {
         Expression expr = exprStmt.getExpression();
         String varName = expr.asAssignExpr().getTarget().toString();
-        String newName = methodAnalyzer.createNewVarName(varName);
+        String newName = classAnalyzer.createNewVarName(varName);
         insert(body, i + 1, newName + " = " + expr.asAssignExpr().getValue() + ";");
         putOldVarReplacement(varName, newName);
     }
