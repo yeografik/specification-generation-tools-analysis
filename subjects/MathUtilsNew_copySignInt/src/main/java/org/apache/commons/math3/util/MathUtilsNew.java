@@ -46,7 +46,6 @@ public final class MathUtilsNew {
             result = -magnitude; // Flip sign.
         }
     	
-    	assert (true);
     	return result;
     }
 

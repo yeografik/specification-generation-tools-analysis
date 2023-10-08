@@ -1,10 +1,14 @@
 package java_classes.specs;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
@@ -12,18 +16,33 @@ import com.github.javaparser.ast.body.Parameter;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.expr.VariableDeclarationExpr;
 import com.github.javaparser.ast.stmt.BlockStmt;
+import com.github.javaparser.ast.type.Type;
 
-public class MethodAnalyzer {
+public class ClassAnalyzer {
 
     private CompilationUnit cu;
+    private ClassOrInterfaceDeclaration classDecl;
     private MethodDeclaration method;
     private Set<String> usedVarNames;
+    private Map<String,Type> attributeTypes;
 
-    public MethodAnalyzer(CompilationUnit cu, MethodDeclaration method) {
+    public ClassAnalyzer(CompilationUnit cu, MethodDeclaration method, ClassOrInterfaceDeclaration classDecl) {
         this.cu = cu;
+        this.classDecl = classDecl;
         this.method = method;
         usedVarNames = new HashSet<>();
-        searchUsedVariableNames();
+        attributeTypes = new HashMap<>();
+        setUsedVariableNames();
+        setAttributeTypes();
+    }
+
+    public boolean hasCloneMethod() {
+        List<MethodDeclaration> cloneMethods = classDecl.getMethodsByName("clone");
+        return !cloneMethods.isEmpty();
+    }
+
+    public Type getAttributeType(String attribute) {
+        return attributeTypes.get(attribute);
     }
 
     public NodeList<Parameter> getParameters() {
@@ -42,14 +61,14 @@ public class MethodAnalyzer {
         String baseName = "old_" + var;
         String finalName = baseName;
         int num = 1;
-        while (usedVarNames.contains(finalName)) {
+        while (usedVarNames.contains(finalName))
             finalName = baseName + "_" + num++;
-        }
 
+        usedVarNames.add(finalName);
         return finalName;
     }
 
-    private void searchUsedVariableNames() {
+    private void setUsedVariableNames() {
         //class attributes
         for (FieldDeclaration field : cu.findAll(FieldDeclaration.class))
             for (VariableDeclarator variable : field.getVariables())
@@ -65,5 +84,11 @@ public class MethodAnalyzer {
                 usedVarNames.add(var.getNameAsString());
             }
         }
+    }
+
+    private void setAttributeTypes() {
+        for (FieldDeclaration field : cu.findAll(FieldDeclaration.class))
+            for (VariableDeclarator variable : field.getVariables())
+                attributeTypes.put(variable.getNameAsString(), variable.getType());
     }
 }

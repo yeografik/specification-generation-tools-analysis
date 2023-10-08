@@ -46,7 +46,6 @@ public class DoublyLinkedListNode {
         // ensure
         // n_left_set: right = n
         // n_right_set: n.right = old right
-        assert (true);
     }
 
     /**

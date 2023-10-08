@@ -55,9 +55,8 @@ public class MinFinder {
         _var811 = _min293246;
     }
 
-    public T findmin() {
+    public T findMin() {
         T result = _var811;
-        assert(true);
         return result;
     }
 

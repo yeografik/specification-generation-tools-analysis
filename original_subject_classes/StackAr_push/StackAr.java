@@ -99,7 +99,6 @@ public class StackAr
         if( isFull( ) )
             throw new Overflow( );
         theArray[ ++topOfStack ] = x;
-        assert(true);
     }
 
     /**

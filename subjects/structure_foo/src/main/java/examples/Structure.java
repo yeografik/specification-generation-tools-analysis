@@ -18,7 +18,6 @@ public class Structure {
 
   public int foo() {
     int result = var62;
-    assert(true);
     return result;
   }
 

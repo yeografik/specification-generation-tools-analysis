@@ -22,6 +22,5 @@ public class Structure {
 
   public void setX(int y) {
     var62 = ((y) + 1);
-    assert(true);
   }
 }

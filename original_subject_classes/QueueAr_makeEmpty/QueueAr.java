@@ -63,7 +63,6 @@ public class QueueAr
     back = theArray.length-1;
     java.util.Arrays.fill(theArray, 0, theArray.length, null);
     
-    assert (true);
   }
 
   /**

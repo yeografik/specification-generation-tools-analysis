@@ -85,7 +85,6 @@ public class RingBuffer<G> {
             result = free - start;
         else
             result = (data.size() - 1) - start + free;
-        assert(true);
         return result;
         // ensure
         // definition: Result = sequence.count

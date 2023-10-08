@@ -125,7 +125,6 @@ public class Envelope {
 				}
 			}
 			
-			assert (true);
 			return result;
 		}
 		

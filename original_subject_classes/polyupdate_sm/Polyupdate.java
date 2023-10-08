@@ -73,7 +73,6 @@ public class Polyupdate implements java.io.Serializable {
 
   public int sm() {
     int result = (_var23 + _var426);
-    assert(true);
     return result;
   }
 
@@ -88,6 +87,5 @@ public class Polyupdate implements java.io.Serializable {
     int _var345638 = (_var426 + y);
     _var23 = _var345637;
     _var426 = _var345638;
-    assert(true);
   }
 }

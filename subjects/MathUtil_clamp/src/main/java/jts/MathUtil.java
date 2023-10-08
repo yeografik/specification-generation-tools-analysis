@@ -48,7 +48,6 @@ public class MathUtil {
 	    	result = x;
 	    }
 	    
-	    assert (true);
 	    return result;
 	    
 	  }

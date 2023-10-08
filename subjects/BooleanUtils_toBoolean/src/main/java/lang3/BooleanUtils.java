@@ -63,7 +63,6 @@ public class BooleanUtils {
 	        // no match
 	        throw new IllegalArgumentException("The Integer did not match either specified value");
         }
-        assert (true);
     	return result;
     }
 

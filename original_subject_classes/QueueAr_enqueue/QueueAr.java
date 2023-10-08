@@ -123,7 +123,6 @@ public class QueueAr
     theArray[ back ] = x;
     currentSize++;
 
-    assert (true);
   }
 
   public void dequeueAll()

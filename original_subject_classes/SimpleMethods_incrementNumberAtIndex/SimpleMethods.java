@@ -9,8 +9,6 @@ public class SimpleMethods {
 	 * @param ind index at which the element will be incremented
 	 */
 	public void incrementNumberAtIndex(int[] intArray, int ind) {
-        	assert(intArray!=null);
-		assert(ind >= 0 && ind < intArray.length);
 
 		// instrumentation
 		int old_value = intArray[ind];
@@ -18,7 +16,6 @@ public class SimpleMethods {
 		// actual method
 		intArray[ind] = intArray[ind] + 1;
 		
-		assert (true);
 	}
 }
 

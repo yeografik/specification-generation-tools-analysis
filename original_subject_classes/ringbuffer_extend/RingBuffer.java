@@ -139,7 +139,6 @@ public class RingBuffer<G> {
             free = 1;
         else
             free = free + 1;
-        assert(true);
         // ensure
         // definition: sequence = old sequence.extended (a_value)
     }

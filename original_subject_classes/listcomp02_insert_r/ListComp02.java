@@ -34,7 +34,6 @@ public class ListComp02 {
   public void insert_r(R r) {
     {
       _var49.add(r);
-      assert(true);
     }
   }
 

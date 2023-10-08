@@ -103,7 +103,6 @@ public class QueueAr
       if ( ++front == theArray.length )
         front = 0;
     }
-    assert (true);
     return result;
   }
 

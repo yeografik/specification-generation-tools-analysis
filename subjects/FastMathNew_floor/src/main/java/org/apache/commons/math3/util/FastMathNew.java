@@ -119,7 +119,6 @@ public class FastMathNew {
         	result = y;
         }
 
-        assert (true);
         return result;
     }
 

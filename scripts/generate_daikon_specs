@@ -1,5 +1,5 @@
 #!/bin/bash
-#$1 project name, $2 package, $3 the testing tool used, $4 tested method, $5 class name
+#$1 project name, $2 package, $3 class name, $4 tested method, $5  testing tool used
 
 cd subjects/$1/
 ./gradlew jar                #rebuild subject putting tests in jar
@@ -19,7 +19,7 @@ if [ $5 == "randoop" ]; then
     ./scripts/utils/print_sign.sh "first daikon command" > $log
     java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.DynComp $2.RegressionTestDriver >> $log 2>&1
     ./scripts/utils/print_sign.sh "second daikon command" >> $log
-    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --output-dir=$output_dir --comparability-file=RegressionTestDriver.decls-DynComp $2.RegressionTestDriver >> $log 2>&1
+    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --ppt-omit-pattern="$2\.RegressionTest|org.junit.Assert" --output-dir=$output_dir --comparability-file=RegressionTestDriver.decls-DynComp $2.RegressionTestDriver >> $log 2>&1
 
     rm -f RegressionTestDriver.decls-DynComp
     mv RegressionTestDriver.inv.gz $output_dir/RegressionTestDriver.inv.gz
@@ -38,7 +38,7 @@ elif [ $5 == "evosuite" ]; then
     ./scripts/utils/print_sign.sh "first daikon command" > $log
     java -cp $subject_jar:$DAIKONDIR/daikon.jar:libs/evosuite-standalone-runtime-1.0.6.jar daikon.DynComp $2.TestDriverEvosuite >> $log 2>&1
     ./scripts/utils/print_sign.sh "second daikon command" >> $log
-    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --output-dir=$output_dir --comparability-file=TestDriverEvosuite.decls-DynComp $2.TestDriverEvosuite >> $log 2>&1
+    java -cp $subject_jar:$DAIKONDIR/daikon.jar daikon.Chicory --daikon --ppt-omit-pattern="$2\.$3_ESTest|org.slf4j|org.evosuite|org.junit.Assert" --output-dir=$output_dir --comparability-file=TestDriverEvosuite.decls-DynComp $2.TestDriverEvosuite >> $log 2>&1
     
     rm -f TestDriverEvosuite.decls-DynComp
     mv TestDriverEvosuite.inv.gz $output_dir/TestDriverEvosuite.inv.gz

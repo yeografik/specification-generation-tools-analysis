@@ -226,7 +226,6 @@ _label328420: do {
             _var721.put(x, _var1233);
 
         }
-        assert(true);
     }
 
     public void remove(Integer x) {

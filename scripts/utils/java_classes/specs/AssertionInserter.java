@@ -18,10 +18,8 @@ import com.github.javaparser.ast.NodeList;
 import java.util.Optional;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.Arrays;
-import java.util.HashMap;
 
 /*
  * Inserts given assertion before return statement in the given method
@@ -36,8 +34,8 @@ public class AssertionInserter {
     private static final int minArgs = 5;
     private static int postCondIndex = 0;
     private static SpecManipulator spcMpl;
-    private static MethodAnalyzer methodAnalyzer;
-    private static Map<String, String> oldVarsReplacement = new HashMap<>();
+    private static ClassAnalyzer classAnalyzer;
+    private static StatementInserter stmtInserter;
 
     public static void main(String args[]) {
         if (args.length < minArgs)
@@ -57,32 +55,39 @@ public class AssertionInserter {
             throw new IllegalArgumentException("Method " + args[2] + " doesn't exists\n");
         
         spcMpl = new SpecManipulator(Arrays.copyOfRange(args, 3, args.length));
-        for (String s : spcMpl.getOldVariables())
-            System.out.println(s);
-            
-        // methodAnalyzer = new MethodAnalyzer(cu, methodList.get(0));
-        // StatementInserter.setOldVariablesReferences(oldVarsReplacement, spcMpl.getOldVariables());
+        classAnalyzer = new ClassAnalyzer(cu, methodList.get(0), subjectClass.get());
+        stmtInserter = new StatementInserter(spcMpl.getOldVariables(), classAnalyzer);
 
-        // BlockStmt body = methodAnalyzer.getBody();
-        // //add precondition at beginning
-        // StatementInserter.addAssertAtBeginning(body.getStatements(), 0, spcMpl.getPreCondition());
+        BlockStmt body = classAnalyzer.getBody();
+        stmtInserter.addAssertAtBeggining(body.getStatements(), spcMpl.getPreCondition());
         
-        // insertPostConditions(body.getStatements(), methodAnalyzer.getParameters()); //insert postconditions before each return
+        insertPostConditions(body.getStatements(), classAnalyzer.getParameters()); //insert postconditions before each return
 
-        // System.out.println("final method");
-        // for (Statement s : body.getStatements()) {
-        //     System.out.println(s);
-
-        // }
-
-        // cu.getStorage().get().save();   //save file
+        cu.getStorage().get().save();   //save file
     }
 
     private static void insertPostConditions(NodeList<Statement> body, NodeList<Parameter> parameters) {
+        //duplicate parameters
         Set<String> oldVars = spcMpl.getOldVariables();
         for (Parameter p : parameters)
             if (oldVars.contains(p.getNameAsString()))
-                StatementInserter.addParameterDuplication(body, p, methodAnalyzer);
+                stmtInserter.addParameterDuplication(body, p);
+
+        //duplicate attributes
+        Set<String> oldRefs = spcMpl.getOldReferences();
+        for (String ref : oldRefs)
+            if (StatementChecker.isAttributeCall(ref))
+                stmtInserter.addAttributeDuplication(body, ref);
+            else 
+                stmtInserter.addObjectRefDuplication(body, ref);
+
+        //clone required references
+        Set<String> varsToClone = spcMpl.getCloneRequiredOldRefs();
+        // if (!varsToClone.isEmpty() && !classAnalyzer.hasCloneMethod())
+        //     throw new IllegalStateException("Specs require clone method, but class doesn't have it");
+        
+        for (String ref : varsToClone)
+            stmtInserter.addObjectCloning(body, ref);
 
         traverseStatements(body);
     }
@@ -107,14 +112,17 @@ public class AssertionInserter {
         for (Integer i : insertionPositions) {
             Statement stmt = body.get(i + insertions);
             if (stmt.isReturnStmt())
-                insertions += StatementInserter.addAssertBeforeReturn(body, stmt.asReturnStmt(), i + insertions, postCondIndex++);
+                stmtInserter.addAssertBeforeReturn(body, stmt.asReturnStmt(), i + insertions++, postCondIndex++);
             else if (StatementChecker.isOldVarAssignment(stmt, oldVars))
-                insertions += StatementInserter.addVarAssignDuplication(body, stmt.asExpressionStmt(), i + insertions, methodAnalyzer);
+                stmtInserter.addVarAssignDuplication(body, stmt.asExpressionStmt(), i + insertions++);
             else if (StatementChecker.isOldVarDeclaration(stmt, oldVars))
-                insertions += StatementInserter.addVarDeclDuplication(body, stmt.asExpressionStmt(), i + insertions, methodAnalyzer);
+                insertions += stmtInserter.addVarDeclDuplication(body, stmt.asExpressionStmt(), i + insertions);
             else 
                 throw new IllegalStateException("Invalid statement in insertion list: " + stmt);
         }
+
+        if (insertions == 0)
+            stmtInserter.addAssertAtEnd(body, 0);
     }
 
     private static void checkComplexStatement(Statement s) {

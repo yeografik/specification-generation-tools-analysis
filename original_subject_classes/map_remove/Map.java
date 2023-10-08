@@ -139,7 +139,6 @@ public class Map<K, V> {
         // Result-1)
         // other_data_unchanged: data.sequence.interval (Result, data.sequence.count) = old
         // data.sequence.interval (Result+1, data.sequence.count+1)
-        assert (true);
         return result;
     }
 

@@ -73,7 +73,6 @@ public class Composite {
         c.setParent(this);
         children.add(c);
         update(c);
-        assert (true);
     }
 
     /**

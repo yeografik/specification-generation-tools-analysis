@@ -49,7 +49,6 @@ public final class IntMath {
        result = result1 + m;
     }
     
-    assert (true);
     return result;
   }
 

@@ -1,5 +1,12 @@
 #!/bin/bash
 
+function check_invalid_condition() {
+    invalid_condition=false
+    if [[ "$1" == "class_cond" && "$2" == "this != null" ]]; then
+        invalid_condition=true
+    fi
+}
+
 #add conditions together with && and puts them in an array index
 function build_array_condition() {
     local -n ref=$1
@@ -12,13 +19,14 @@ function build_array_condition() {
 
 #add conditions together with &&
 function build_condition() {
-    if [ $3 -ne -1 ]; then  #there is a valid array index (!=-1)
+    check_invalid_condition $1 "$2" $3
+    if $invalid_condition ; then
+        return
+    elif [ $3 -ne -1 ]; then  #there is a valid array index (!=-1)
         build_array_condition $1 "$2" $3
     else
         local -n ref=$1
-        if [[ "$1" == "class_cond" && "$2" == "this != null" ]]; then
-            : #skip
-        elif [ "$ref" == "" ]; then
+        if [ "$ref" == "" ]; then
             ref="($2)"
         else
             ref="$ref && ($2)"

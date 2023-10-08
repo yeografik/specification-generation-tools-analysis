@@ -73,7 +73,6 @@ public class RingBuffer<G> {
         // ensure
         // definition: Result = sequence.first
         // assert (result == data.get(start));
-        assert(true);
         return result;
     }
 

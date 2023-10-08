@@ -49,7 +49,6 @@ public class Angle {
 	      } else {
 	    	  result = 0;
 	      }
-	      assert (true);
 	      return result;
 	  } 
 }

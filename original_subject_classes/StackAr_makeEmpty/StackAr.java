@@ -63,7 +63,6 @@ public class StackAr
         java.util.Arrays.fill(theArray, 0, topOfStack + 1, null);
         topOfStack = -1;
         
-        assert (true);
     }
 
     /**

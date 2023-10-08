@@ -3,6 +3,10 @@ Dependencies:
     openjdk-8-jre
     
     java 1.8.0 (1.8.0_382)
+
+    randoop 4.3.1
+
+    evosuite 1.0.6
     
     daikon 5.8.16
 
@@ -12,12 +16,13 @@ Dependencies:
 
 
 Before anything
-    execute config script with source as: 
+    * execute config script with source as: 
     
         source scripts/config.sh
 
-    all scripts are meant to be called from root, the same goes for make commands
-
+    * all scripts are meant to be called from project root, the same goes for make commands
+    * daikon and OASIs needs to be installed in the directory outside project root, so they can be 
+      reached with ../ from project root
 
 Running a single subject:
 

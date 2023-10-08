@@ -112,7 +112,6 @@ public class StackAr
             return null;
         Object result = top( );
         theArray[ topOfStack-- ] = null;
-        assert(true);
         return result;
     }
 

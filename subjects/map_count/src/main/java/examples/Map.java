@@ -53,7 +53,6 @@ public class Map<K, V> {
      */
     public int count() {
         int result = keys.size();
-        assert (true);
         return result;
     }
 

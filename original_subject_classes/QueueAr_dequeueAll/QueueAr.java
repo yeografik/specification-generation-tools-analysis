@@ -114,7 +114,6 @@ public class QueueAr
       dequeue();
     }
     
-    assert (true);
   }
 
   private Object [ ] theArray;

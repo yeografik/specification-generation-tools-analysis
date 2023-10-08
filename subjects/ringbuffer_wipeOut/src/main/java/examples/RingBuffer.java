@@ -170,7 +170,6 @@ public class RingBuffer<G> {
         // modify_model ("sequence", Current)
 
         start = free;
-        assert(true);
         // ensure
         // empty: is_empty
         // boolean empty = is_empty();
