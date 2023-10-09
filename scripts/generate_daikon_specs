@@ -12,7 +12,7 @@ output_dir=generated_specs/$1
 if [ $5 == "randoop" ]; then
     output_dir=$output_dir/randoop
     mkdir -p $output_dir        #create directory to save generated specs
-    rm -f $output_dir/*.dtrace.gz       #delete old specs if any
+    rm -f $output_dir/*         #delete old specs if any
     log=$output_dir/log.txt
     touch $log
 
@@ -31,7 +31,7 @@ if [ $5 == "randoop" ]; then
 elif [ $5 == "evosuite" ]; then
     output_dir=$output_dir/evosuite
     mkdir -p $output_dir             #create directory to save generated specs
-    rm -f $output_dir/*.dtrace.gz       #delete old specs if any
+    rm -f $output_dir/*              #delete old specs if any
     log=$output_dir/log.txt
     touch $log
 
