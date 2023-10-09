@@ -116,7 +116,7 @@ public class StatementInserter {
     }
     
     private void insert(NodeList<Statement> body, int pos, String statement) {
-        if (statement.contains("\\old(") || statement.contains("\\new(") || statement.contains("\\result")) {
+        if (statement.contains("\\old(") || statement.contains("\\new(") || statement.contains("\\result") || statement.contains("oneOf.java.jpp: SEQUENCE unimplemented")) {
             Statement emptyStmt = new EmptyStmt();
             body.add(pos, emptyStmt);
             body.get(pos).setBlockComment(statement);
