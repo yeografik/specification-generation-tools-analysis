@@ -5,7 +5,7 @@ specs="generated_specs/$4/$5/$5_inv.txt"
 
 #check specs file exists and it's not empty
 if ! [ -f "$specs" ] || [ $(wc -c < "$specs") -le "1" ]; then
-    echo -e "\n${RED}file $specs doesn't exist or is empty${NORMAL}\n"
+    echo -e "\n${RED}there are no specifications for $4 ${NORMAL}\n"
     exit
 fi
 
@@ -27,6 +27,10 @@ return_lines+=($(grep -n return $1 | grep -v @return | sed 's/^\([0-9]\+\):.*$/\
 post_conds=("${return_lines[@]/*/}")
 pre_cond=""
 
+#in case of no returns post_conds array has length 1
+if [[ "$return_lines" -eq "0" ]]; then
+    post_conds=("")
+fi
 source scripts/utils/extract_specs.sh
 
 #run AssertionInserter

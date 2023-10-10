@@ -6,6 +6,7 @@ subjects/**/test
 subjects/**/evosuite_log.txt
 subjects/**/randoop_log.txt
 generated_specs
+assertions
 OASIs_results
 evosuite-report
 notes

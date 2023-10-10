@@ -74,7 +74,7 @@ public final class ArithmeticUtilsNew {
      private long addAndCheck(long a, long b) throws IllegalArgumentException {
          final long result = a + b;
          if (!((a ^ b) < 0 | (a ^ result) >= 0)) {
-             throw new IllegalArgumentException("didn't work addAndCheck");
+            throw new IllegalArgumentException("didn't work addAndCheck");
          }
          return result;
     }

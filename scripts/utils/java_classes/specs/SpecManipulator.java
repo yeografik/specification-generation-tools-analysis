@@ -84,7 +84,6 @@ public class SpecManipulator {
         Matcher m = Pattern.compile("\\\\old\\([a-z_$][a-zA-Z_$0-9]*\\)").matcher(specs);
         while(m.find()) {
             String found = m.group();
-            System.out.println("found: " + found);
             found = found.replace("\\old(", "").replace(")", ""); //extract variable name
             oldVariables.add(found);
         }
