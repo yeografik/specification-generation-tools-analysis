@@ -42,10 +42,14 @@ public class StatementInserter {
         newName = classAnalyzer.createNewVarName(newName);
         
         Type type = classAnalyzer.getAttributeType(exprParts[exprParts.length -1]);
-        if (type.isPrimitiveType())
+        if (type == null) {
+            System.out.println("attribute of expression " + expr + " is not part of the class, skipping");
+            return;
+        } else if (type.isPrimitiveType()) {
             insert(body, 1, type.asString() + " " + newName + " = " + expr + ";");
-        else
+        } else {
             insert(body, 1, "Object " + newName + " = " + expr + ";");
+        }
         oldVarsReplacement.put("\\old(" + expr + ")", newName);
     }
 
@@ -62,8 +66,10 @@ public class StatementInserter {
         newName = classAnalyzer.createNewVarName(newName);
 
         Type type = classAnalyzer.getAttributeType(exprParts[exprParts.length -1]);
-        if (type == null) 
-            throw new IllegalArgumentException("expression " + expr + " is a method call");
+        if (type == null) {
+            System.out.println("expression " + expr + " is not an attribute of the class or is a method call, skipping");
+            return;
+        }
             
         insert(body, 1, type.asString() + " " + newName + " = " + expr + ".clone();");
         oldVarsReplacement.put("\\old(daikon.Quant.size(" + expr + "))", "daikon.Quant.size(" + newName + ")");

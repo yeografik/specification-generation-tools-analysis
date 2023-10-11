@@ -90,7 +90,7 @@ public class SpecManipulator {
     }
     
     private void addOldReferences(String specs) {
-        Matcher m = Pattern.compile("\\\\old\\([a-z_$][a-zA-Z_$0-9]*(\\.[a-zA-Z_$0-9]+(\\(.[^\\)]*\\))?)+\\)").matcher(specs);
+        Matcher m = Pattern.compile("\\\\old\\([a-z_$][a-zA-Z_$0-9]*(\\.[a-zA-Z_$0-9]+(\\([^\\)]*\\))?)+\\)").matcher(specs);
         while(m.find()) {
             String found = m.group();
             if (found.contains("daikon")) 
