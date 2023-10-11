@@ -36,6 +36,10 @@ public class ClassAnalyzer {
         setAttributeTypes();
     }
 
+    public boolean isVoidMethod() {
+        return method.getType().isVoidType();
+    }
+
     public boolean hasCloneMethod() {
         List<MethodDeclaration> cloneMethods = classDecl.getMethodsByName("clone");
         return !cloneMethods.isEmpty();

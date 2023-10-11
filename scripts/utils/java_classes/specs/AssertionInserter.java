@@ -90,6 +90,9 @@ public class AssertionInserter {
             stmtInserter.addObjectCloning(body, ref);
 
         traverseStatements(body);
+
+        if (classAnalyzer.isVoidMethod())
+            stmtInserter.addAssertAtEnd(body, 0);
     }
 
     private static void traverseStatements(NodeList<Statement> body) {
@@ -120,9 +123,6 @@ public class AssertionInserter {
             else 
                 throw new IllegalStateException("Invalid statement in insertion list: " + stmt);
         }
-
-        if (insertions == 0)
-            stmtInserter.addAssertAtEnd(body, 0);
     }
 
     private static void checkComplexStatement(Statement s) {
