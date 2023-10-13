@@ -1,10 +1,9 @@
 #!/bin/bash
 
 function create_results_folder() {
-    mkdir -p $output_dir        #create directory to save false positives checking
-    rm -f $output_dir/*.java    #delete old class if any
+    rm -f -r $output_dir       #delete old results if any
+    mkdir -p $output_dir        #create directory to save results
     log=$output_dir/OASIslog.txt
-    rm -f $log                  #delete old log if any
     touch $log
 }
 
@@ -43,12 +42,12 @@ while read -ra line; do
     
     package_as_path="$( echo "${line[1]}" | tr  '.' '/'  )"
     
-    output_dir=OASIs_results/"${line[0]}"/$1
+    output_dir=$PWD/OASIs_results/"${line[0]}"/$1
     log=""
     create_results_folder
     add_libraries "${line[0]}"
     
     cp "$assertions_file" "subjects/${line[0]}/src/main/java/$package_as_path/${line[2]}.java"
-    bash scripts/utils/OASIs_mod.sh "${line[1]}.${line[2]}" "subjects/${line[0]}/src/main/java" "${line[3]}" "$libraries" > $log
+    bash scripts/utils/OASIs_mod.sh "${line[1]}.${line[2]}" "subjects/${line[0]}/src/main/java" "${line[3]}" "$output_dir" "$libraries" > $log
     cp "original_subject_classes/${line[0]}/${line[2]}.java" "subjects/${line[0]}/src/main/java/$package_as_path/${line[2]}.java"
 done <$file

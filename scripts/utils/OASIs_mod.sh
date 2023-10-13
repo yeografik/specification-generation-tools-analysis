@@ -6,7 +6,7 @@
 #  Created by Gunel Jahangirova on 30/03/17.
 #
 
-#$1 class with package, $2 src location, $3 method name, $4 additional libs (optional)
+#$1 class with package, $2 src location, $3 method name, $4 project output dir, $5 additional libs (optional)
 orig_dir=$PWD;
 root_dir=$OASIS_DIR;
 
@@ -40,8 +40,8 @@ mkdir -p $root_dir/$d/src/;
 mkdir -p $root_dir/$d/bin/;
 
 additional_libs=""
-if [ ! -z $4 ]; then
-    additional_libs=":$4"
+if [ ! -z $5 ]; then
+    additional_libs=":$5"
 fi
 
 cp -R $src_location/* $root_dir/$d/src/;
@@ -51,7 +51,6 @@ new_src_location=$root_dir/$d/src/;
 new_bin_location=$root_dir/$d/bin/;
 
 #rm -r $bin_location/$classname_path.class;
-echo "aditional_libs: $additional_libs"
 javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$classname_path.java;
 line_list="$(java -jar $root_dir/tools/fp.jar $new_src_location/$classname_path.java $target_method)";
 
@@ -137,5 +136,10 @@ fi
 rm $src_location/$classname_path\_$target_method\_Test.java
 rm $src_location/$classname_path\_$target_method\_Test_scaffolding.java
 rm -r $root_dir/$d/;
+
+mkdir $4/FP/
+cp -r $root_dir/output/FP/$class_name/$d/ $4/FP/
+mkdir $4/FN/
+cp -r $root_dir/output/FN/$class_name/$d/ $4/FN/
 
 cd $orig_dir
