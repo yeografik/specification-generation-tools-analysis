@@ -32,7 +32,7 @@ fi
 
 IFS=';' #setting ; as delimiter
 while read -ra line; do
-    echo -e "\n\n\n${YELLOW}Checking false positives for ${line[1]}${NORMAL}\n"
+    echo -e "\n\n\n${YELLOW}Checking false positives for ${line[0]}${NORMAL}\n"
     
     assertions_file="assertions/${line[0]}/$1/${line[0]}.java"
     if [[ ! -f "$assertions_file" ]]; then

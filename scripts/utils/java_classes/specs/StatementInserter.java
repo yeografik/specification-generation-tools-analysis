@@ -44,6 +44,7 @@ public class StatementInserter {
         Type type = classAnalyzer.getAttributeType(exprParts[exprParts.length -1]);
         if (type == null) {
             System.out.println("attribute of expression " + expr + " is not part of the class, skipping");
+            addComment(body, 1, "\\old(" + expr + "), something " + newName + " = " + expr + ";");
             return;
         } else if (type.isPrimitiveType()) {
             insert(body, 1, type.asString() + " " + newName + " = " + expr + ";");
@@ -68,10 +69,11 @@ public class StatementInserter {
         Type type = classAnalyzer.getAttributeType(exprParts[exprParts.length -1]);
         if (type == null) {
             System.out.println("expression " + expr + " is not an attribute of the class or is a method call, skipping");
+            addComment(body, 1, "\\old(daikon.Quant.size(" + expr + ")), daikon.Quant.size(" + newName + ")");
             return;
         }
             
-        insert(body, 1, type.asString() + " " + newName + " = " + expr + ".clone();");
+        insert(body, 1, type.asString() + " " + newName + " = " + expr + ".attributeCopy();");
         oldVarsReplacement.put("\\old(daikon.Quant.size(" + expr + "))", "daikon.Quant.size(" + newName + ")");
     }
 
@@ -100,13 +102,23 @@ public class StatementInserter {
         putOldVarReplacement(varName, newName);
     }
 
-    public void addAssertAtBeggining(NodeList<Statement> body, String condition) {
-        insertAssertion(body, 0, condition);
+    public void addAssertAtBeggining(NodeList<Statement> body, String condition, Type methodReturnType) {
+        if (condition == null || condition.isEmpty())
+            return;
+            
+        String ifBody = "if (!(" + condition + ")) {";
+        if (methodReturnType.isVoidType()) 
+            ifBody += "return;}";
+        else if (!methodReturnType.isPrimitiveType()) 
+            ifBody += "return null;}";
+        else
+            ifBody += "return " + getDefaultValue(methodReturnType) + ";}";
+        
+        insert(body, 0, ifBody);
     }
 
     public void addAssertBeforeReturn(NodeList<Statement> body, ReturnStmt returnStmt, int i, int postCondIndex) {
-        String postCond = returnStmt.getExpression().get().toString();
-        postCond = SpecManipulator.toJavaFormat(returnStmt, postCondIndex, oldVarsReplacement);
+        String postCond = SpecManipulator.toJavaFormat(returnStmt, postCondIndex, oldVarsReplacement);
         insertAssertion(body, i, postCond);
     }
 
@@ -123,13 +135,41 @@ public class StatementInserter {
     
     private void insert(NodeList<Statement> body, int pos, String statement) {
         if (statement.contains("\\old(") || statement.contains("\\new(") || statement.contains("\\result") || statement.contains("oneOf.java.jpp: SEQUENCE unimplemented")) {
-            Statement emptyStmt = new EmptyStmt();
-            body.add(pos, emptyStmt);
-            body.get(pos).setBlockComment(statement);
+            addComment(body, pos, statement);
         } else {
             Statement stmt = StaticJavaParser.parseStatement(statement);
             body.add(pos, stmt);
         }
+    }
+
+    private void addComment(NodeList<Statement> body, int pos, String comment) {
+        Statement emptyStmt = new EmptyStmt();
+        body.add(pos, emptyStmt);
+        body.get(pos).setBlockComment(comment);
+    }
+
+    private String getDefaultValue(Type type) {
+        String typeString = type.asString();
+        String value;
+        switch (typeString) {
+            case "int":
+                value = "0";
+                break;
+            case "long":
+                value = "0";
+                break;
+            case "double":
+                value = "0.0";
+                break;
+            case "boolean":
+                value = "false";
+                break;
+        
+            default:
+                throw new IllegalArgumentException("Type " + typeString + " is not contemplated");
+        }
+
+        return value;
     }
 
     private void putOldVarReplacement(String varName, String newName) {

@@ -59,9 +59,10 @@ public class AssertionInserter {
         stmtInserter = new StatementInserter(spcMpl.getOldVariables(), classAnalyzer);
 
         BlockStmt body = classAnalyzer.getBody();
-        // stmtInserter.addAssertAtBeggining(body.getStatements(), spcMpl.getPreCondition());
-        
         insertPostConditions(body.getStatements(), classAnalyzer.getParameters()); //insert postconditions before each return
+        
+        //add precondition as a if statement at beginning
+        stmtInserter.addAssertAtBeggining(body.getStatements(), spcMpl.getPreCondition(), methodList.get(0).getType());
 
         cu.getStorage().get().save();   //save file
     }
