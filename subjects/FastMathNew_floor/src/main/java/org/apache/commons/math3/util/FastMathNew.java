@@ -98,25 +98,25 @@ public class FastMathNew {
      */
     public double floor(double x) {
         long y;
-
+        double result = x;
+        boolean mustReturn = false;
+        
         if (x != x) { // NaN
-            return x;
-        }
-
-        if (x >= TWO_POWER_52 || x <= -TWO_POWER_52) {
-            return x;
-        }
-
-        y = (long) x;
-        if (x < 0 && y != x) {
-            y--;
-        }
-
-        double result;
-        if (y == 0) {
-            result = x * y;
+            result = x;
         } else {
-        	result = y;
+            if (x >= TWO_POWER_52 || x <= -TWO_POWER_52) {
+                result = x;
+            } else {
+                y = (long) x;
+                if (x < 0 && y != x) {
+                    y--;
+                }
+                if (y == 0) {
+                    result = x * y;
+                } else {
+                    result = y;
+                }
+            }
         }
 
         return result;
