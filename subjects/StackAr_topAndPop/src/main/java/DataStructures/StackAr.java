@@ -108,9 +108,11 @@ public class StackAr
     {   
         int old_topOfStack = topOfStack;
         Object old_top = top();
+        Object result;
         if( isEmpty( ) )
-            return null;
-        Object result = top( );
+            result = null;
+        else
+            result = top( );
         theArray[ topOfStack-- ] = null;
         return result;
     }
