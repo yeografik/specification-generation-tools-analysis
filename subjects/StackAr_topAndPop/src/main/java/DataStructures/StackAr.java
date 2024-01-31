@@ -113,7 +113,7 @@ public class StackAr
             result = null;
         else
             result = top( );
-        theArray[ topOfStack-- ] = null;
+            theArray[ topOfStack-- ] = null;
         return result;
     }
 
