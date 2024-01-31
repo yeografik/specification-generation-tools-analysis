@@ -9,7 +9,7 @@ import java.util.Set;
  * 
  * @author Facundo Molina (with modifications by N. Aguirre)
  */
-public class Map<K, V> {
+public class MyMap<K, V> {
 
     /**
      * Keys of this map.
@@ -25,7 +25,7 @@ public class Map<K, V> {
     /**
      * Initializes empty map.
      */
-    public Map() {
+    public MyMap() {
         keys = new LinkedList<K>();
         data = new LinkedList<V>();
     }

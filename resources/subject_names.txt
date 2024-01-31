@@ -10,9 +10,9 @@ FastMathNew_floor;org.apache.commons.math3.util;FastMathNew;floor
 IntMath_mod;math;IntMath;mod
 listcomp02_insert_r;examples;ListComp02;insert_r
 listcomp02_insert_s;examples;ListComp02;insert_s
-map_count;examples;Map;count
-map_extend;examples;Map;extend
-map_remove;examples;Map;remove
+map_count;examples;MyMap;count
+map_extend;examples;MyMap;extend
+map_remove;examples;MyMap;remove
 MathUtil_clamp;jts;MathUtil;clamp
 MathUtilsNew_copySignInt;org.apache.commons.math3.util;MathUtilsNew;copySignInt
 maxbag_add;examples;MaxBag;add
