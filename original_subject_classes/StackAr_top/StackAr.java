@@ -72,9 +72,11 @@ public class StackAr
      */
     public Object top( )
     {
+        Object result;
         if( isEmpty( ) )
-            return null;
-        Object result = theArray[ topOfStack ];
+            result = null;
+        else
+            result = theArray[ topOfStack ];
         return result;
     }
 
