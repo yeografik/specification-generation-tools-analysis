@@ -99,7 +99,6 @@ public class FastMathNew {
     public double floor(double x) {
         long y;
         double result = x;
-        boolean mustReturn = false;
         
         if (x != x) { // NaN
             result = x;
