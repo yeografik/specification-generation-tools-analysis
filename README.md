@@ -16,6 +16,7 @@ Dependencies:
 
 
 Before anything
+    * give execution permission to all scripts at scripts/ and their subfolders
     * execute config script with source as: 
     
         source scripts/config.sh
