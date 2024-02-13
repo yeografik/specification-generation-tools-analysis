@@ -6,7 +6,7 @@
 #  Created by Gunel Jahangirova on 30/03/17.
 #
 
-#$1 class with package, $2 src location, $3 method name, $4 project output dir, $5 additional libs (optional)
+#$1 class with package, $2 src location, $3 method name, $4 project output dir, $5 package as path, $6 additional libs (optional)
 orig_dir=$PWD;
 root_dir=$OASIS_DIR;
 
@@ -19,6 +19,7 @@ bin_location=$orig_dir/$2;
 
 #bin_location=$PWD/$3;
 target_method=$3;
+package=$5;
 #evosuite_location=/Users/guneljahangirova/Documents/evosuite_oai/master/target/evosuite-#master-1.0.5-SNAPSHOT.jar;
 evosuite_location=$root_dir/tools/evosuite.jar;
 
@@ -33,15 +34,16 @@ d=$(date +%Y%m%d%H%M%S)
 mkdir -p $root_dir/output/FP/$class_name/$d;
 mkdir -p $root_dir/output/FP/$class_name/$d/instrumented/;
 
-cp $src_location/$classname_path.java $root_dir/output/FP/$class_name/$d/$class_name.java;
+# cp $src_location/$classname_path.java $root_dir/output/FP/$class_name/$d/$class_name.java;
+cp $src_location/$package/*.java $root_dir/output/FP/$class_name/$d/;
 
 mkdir -p $root_dir/$d/;
 mkdir -p $root_dir/$d/src/;
 mkdir -p $root_dir/$d/bin/;
 
 additional_libs=""
-if [ ! -z $5 ]; then
-    additional_libs=":$5"
+if [ ! -z $6 ]; then
+    additional_libs=":$6"
 fi
 
 cp -R $src_location/* $root_dir/$d/src/;
@@ -51,13 +53,13 @@ new_src_location=$root_dir/$d/src/;
 new_bin_location=$root_dir/$d/bin/;
 
 #rm -r $bin_location/$classname_path.class;
-javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$classname_path.java;
-line_list="$(java -jar $root_dir/tools/fp.jar $new_src_location/$classname_path.java $target_method)";
+javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$package/*.java;
+line_list="$(java -cp .:$new_bin_location$additional_libs/daikon.jar -jar $root_dir/tools/fp.jar $new_src_location/$classname_path.java $target_method)";
 
 cp $new_src_location/$classname_path.java $root_dir/output/FP/$class_name/$d/instrumented/$class_name.java;
 
 #rm -r $bin_location/$classname_path.class;
-javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$classname_path.java;
+javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$package/*.java;
 
 cd $root_dir/output/FP/$class_name/$d/;
 #$root_dir/FP/$class_name/$d/evo.txt
@@ -71,7 +73,7 @@ test="_"$target_method"_Test.java";
 scaffolding="_"$target_method"_Test_scaffolding.java";
 
 #rm -f $bin_location/$classname_path.class;
-javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$classname_path.java;
+javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$package/*.java;
 
 if [[ ($evo_output != *"Generated 0"*)  && ($evo_output == *"Resulting test suite"*) ]]; then
     cp $root_dir/output/FP/$class_name/$d/evosuite-tests/$classname_path$test $src_location/$classname_path$test;
@@ -100,14 +102,14 @@ else
         
         cp $src_location/$classname_path.java $root_dir/output/FN/$class_name/$d/$class_name.java;
 
-        line_list="$(java -jar $root_dir/tools/fn.jar $new_src_location/$classname_path.java $target_method)";
+        line_list="$(java -cp .:$new_bin_location$additional_libs/daikon.jar -jar $root_dir/tools/fn.jar $new_src_location/$classname_path.java $target_method)";
         line_array=($line_list)
         read -a line_array <<< "$line_list"
         #echo ${line_array[0]}
         #echo ${line_array[1]}
         #rm -r $bin_location/$classname_path.class;
         cp $new_src_location/$classname_path.java $root_dir/output/FN/$class_name/$d/instrumented/$class_name.java;
-        javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$classname_path.java;
+        javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$package/*.java;
 
         cd $root_dir/output/FN/$class_name/$d/;
 
@@ -123,7 +125,7 @@ else
         cp $root_dir/output/FN/$class_name/$d/evosuite-tests/$classname_path$scaffolding $src_location/$classname_path$scaffolding;
 
         #rm -f $bin_location/$classname_path.class;
-        javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$classname_path.java;
+        javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$package/*.java;
 
         if [[ ($evo_fn_output != *"Generated 0"*) && ($evo_fn_output == *"Resulting test suite"*) ]]; then
             echo "False Negative Detected!"
