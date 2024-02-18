@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 public class MaxBag {
-    protected Integer _var587;
-    protected HashMap<Integer, Boolean> _var721;
-    protected Boolean _var1457;
-    protected _Type328393 _var4384;
-    protected Integer _var5992;
-    protected ArrayList<Integer> _var66253;
+    private Integer _var587;
+    private HashMap<Integer, Boolean> _var721;
+    private Boolean _var1457;
+    private _Type328393 _var4384;
+    private Integer _var5992;
+    private ArrayList<Integer> _var66253;
 
     public MaxBag() {
         clear();

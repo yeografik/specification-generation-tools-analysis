@@ -1,8 +1,8 @@
 package examples;
 
 public class Polyupdate implements java.io.Serializable {
-  protected int _var23;
-  protected int _var426;
+  private int _var23;
+  private int _var426;
 
   public Polyupdate() {
     clear();
