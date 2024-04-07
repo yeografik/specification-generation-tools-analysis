@@ -8,7 +8,7 @@ function create_results_folder() {
 }
 
 function add_libraries() {
-    libraries="$DAIKONDIR"
+    libraries=""
 
     local file_count=$(ls subjects/$1/libs/ | wc -l)
     if [ $file_count -eq "0" ]; then
@@ -17,7 +17,11 @@ function add_libraries() {
 
     for lib in subjects/$1/libs/*.jar; do
         # echo "adding $lib"
-        libraries="${PWD}/$lib:$libraries"
+        if [ -z "$libraries" ]; then
+            libraries="${PWD}/$lib"
+        else
+            libraries="${PWD}/$lib:$libraries"
+        fi
     done
 }
 

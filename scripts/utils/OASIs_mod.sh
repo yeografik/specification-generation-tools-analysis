@@ -53,13 +53,13 @@ new_src_location=$root_dir/$d/src/;
 new_bin_location=$root_dir/$d/bin/;
 
 #rm -r $bin_location/$classname_path.class;
-javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$package/*.java;
-line_list="$(java -cp .:$new_bin_location$additional_libs/daikon.jar -jar $root_dir/tools/fp.jar $new_src_location/$classname_path.java $target_method)";
+javac -cp $new_bin_location$additional_libs -d $new_bin_location $new_src_location/$package/*.java;
+line_list="$(java -cp .:$new_bin_location$additional_libs -jar $root_dir/tools/fp.jar $new_src_location/$classname_path.java $target_method)";
 
 cp $new_src_location/$classname_path.java $root_dir/output/FP/$class_name/$d/instrumented/$class_name.java;
 
 #rm -r $bin_location/$classname_path.class;
-javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$package/*.java;
+javac -cp $new_bin_location$additional_libs -d $new_bin_location $new_src_location/$package/*.java;
 
 cd $root_dir/output/FP/$class_name/$d/;
 #$root_dir/FP/$class_name/$d/evo.txt
@@ -73,7 +73,7 @@ test="_"$target_method"_Test.java";
 scaffolding="_"$target_method"_Test_scaffolding.java";
 
 #rm -f $bin_location/$classname_path.class;
-javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$package/*.java;
+javac -cp $new_bin_location$additional_libs -d $new_bin_location $new_src_location/$package/*.java;
 
 if [[ ($evo_output != *"Generated 0"*)  && ($evo_output == *"Resulting test suite"*) ]]; then
     cp $root_dir/output/FP/$class_name/$d/evosuite-tests/$classname_path$test $src_location/$classname_path$test;
@@ -102,14 +102,14 @@ else
         
         cp $src_location/$classname_path.java $root_dir/output/FN/$class_name/$d/$class_name.java;
 
-        line_list="$(java -cp .:$new_bin_location$additional_libs/daikon.jar -jar $root_dir/tools/fn.jar $new_src_location/$classname_path.java $target_method)";
+        line_list="$(java -cp .:$new_bin_location$additional_libs -jar $root_dir/tools/fn.jar $new_src_location/$classname_path.java $target_method)";
         line_array=($line_list)
         read -a line_array <<< "$line_list"
         #echo ${line_array[0]}
         #echo ${line_array[1]}
         #rm -r $bin_location/$classname_path.class;
         cp $new_src_location/$classname_path.java $root_dir/output/FN/$class_name/$d/instrumented/$class_name.java;
-        javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$package/*.java;
+        javac -cp $new_bin_location$additional_libs -d $new_bin_location $new_src_location/$package/*.java;
 
         cd $root_dir/output/FN/$class_name/$d/;
 
@@ -125,7 +125,7 @@ else
         cp $root_dir/output/FN/$class_name/$d/evosuite-tests/$classname_path$scaffolding $src_location/$classname_path$scaffolding;
 
         #rm -f $bin_location/$classname_path.class;
-        javac -cp $new_bin_location$additional_libs/daikon.jar -d $new_bin_location $new_src_location/$package/*.java;
+        javac -cp $new_bin_location$additional_libs -d $new_bin_location $new_src_location/$package/*.java;
 
         if [[ ($evo_fn_output != *"Generated 0"*) && ($evo_fn_output == *"Resulting test suite"*) ]]; then
             echo "False Negative Detected!"
