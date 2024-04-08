@@ -118,7 +118,7 @@ else
 
 
         echo "Checking for False Negatives..."
-        evo_fn_output="$(java -jar $evosuite_location -generateTests -Dsearch_budget=225 -Dtest_archive=false -Dminimize=true -Dcriterion=strongmutation -Dtest_comments=true -Dmutated_line_list=${line_array[0]} -Djunit_suffix='_'$target_method'_Test' -Dmutation_replacement_list=${line_array[1]} -Dassertions=false -Dtarget_method_prefix=$target_method -projectCP $new_bin_location$additional_libs/ -class $class_full_name)";
+        evo_fn_output="$(java -jar $evosuite_location -generateTests -Dsearch_budget=225 -Dtest_archive=false -Dminimize=true -Dcriterion=strongmutation -Dtest_comments=true -Dmutated_line_list=${line_array[0]} -Djunit_suffix='_'$target_method'_Test' -Dmutation_replacement_list=${line_array[1]} -Dassertions=false -Dtarget_method_prefix=$target_method -projectCP $new_bin_location$additional_libs -class $class_full_name)";
 
         #cp $root_dir/FN/$class_name/$d/$class_name.java $src_location/$classname_path.java;
         test="_"$target_method"_Test.java";
