@@ -22,15 +22,16 @@ if [[ ! -f "/tmp/java_classes/specs/AssertionInserter.class" ]] && [[ ! -f "/tmp
 fi
 
 #get line numbers where there is a return
-return_lines=()
-return_lines+=($(grep -n return $1 | grep -v @return | sed 's/^\([0-9]\+\):.*$/\1/'))
-post_conds=("${return_lines[@]/*/}")
+# non functional, plus not necesary for now
+# return_lines=()
+# return_lines+=($(grep -n return $1 | grep -v @return | sed 's/^\([0-9]\+\):.*$/\1/'))
+# post_conds=("${return_lines[@]/*/}")
 pre_cond=""
-
+post_conds=("")
 #in case of no returns post_conds array has length 1
-if [[ "$return_lines" -eq "0" ]]; then
-    post_conds=("")
-fi
+# if [[ "$return_lines" -eq "0" ]]; then
+#     post_conds=("")
+# fi
 source scripts/utils/extract_specs.sh
 
 #run AssertionInserter

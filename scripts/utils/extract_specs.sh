@@ -95,10 +95,10 @@ while read -r line; do
         cond='class_cond'
     elif [[ $line == *"ENTER"* ]]; then
         cond='pre_cond'
-    elif [[ "$line" =~ EXIT[0-9]+ ]]; then
-        cond='post_conds'
-        index=$(get_array_pos "$line" return_lines)
-        check_index_error $index
+    # elif [[ "$line" =~ EXIT[0-9]+ ]]; then    #case of multiple returns
+    #     cond='post_conds'
+    #     index=$(get_array_pos "$line" return_lines)
+    #     check_index_error $index
     elif [[ $line == *"EXIT"* ]]; then
         cond='post_cond'
     elif [[ $line != *"===="* ]]; then
