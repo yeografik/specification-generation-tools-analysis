@@ -38,7 +38,7 @@ public class TestDriverEvosuite {
         $2.$3_ESTest t0 = new $2.$3_ESTest();
 " > $main_driver_class
 
-for i in $(seq 0 $(($method_amount-1)))
+for i in $(seq 0 $(($method_amount)))
 do
     calculate_test_number $i $method_amount
     echo "
