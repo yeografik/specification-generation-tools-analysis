@@ -21,6 +21,7 @@ scripts/utils/java_classes/specs/statement_finders/ReturnStatementFinder.java
 scripts/utils/java_classes/specs/statement_finders/OldVariableStatementFinder.java
 scripts/utils/java_classes/specs/statement_finders/InsertionRequestsList.java
 scripts/utils/java_classes/specs/statement_finders/InsertionRequest.java
+scripts/utils/java_classes/specs/statement_finders/factory/StatementFinderFactory.java
 scripts/utils/java_classes/specs/VariablesToDuplicate.java
 scripts/utils/java_classes/specs/Inserter.java
 scripts/utils/java_classes/specs/NameGenerator.java

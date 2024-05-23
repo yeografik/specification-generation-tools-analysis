@@ -64,21 +64,21 @@ public class InitializedVariableDuplicator {
     private void copyParameter(Parameter param) {
         CopyGenerator copyGenerator = copyGeneratorFactory.create("ParameterCopyGenerator");
         List<String> copies = copyGenerator.copy(param);
-        InsertionRequestsList requests = createInsertionRequestsList(copies, 1);
+        InsertionRequestsList requests = createInsertionRequestsList(copies, 0);
         inserter.insertStatements(requests);
     }
 
     private void copyReference(String name, String generatorClass) {
         CopyGenerator copyGenerator = copyGeneratorFactory.create(generatorClass);
         List<String> copies = copyGenerator.copy(name);
-        InsertionRequestsList requests = createInsertionRequestsList(copies, 1);
+        InsertionRequestsList requests = createInsertionRequestsList(copies, 0);
         inserter.insertStatements(requests);
     }
 
     private void copyComplexReference(String reference) {
         CopyGenerator copyGenerator = copyGeneratorFactory.create("ComplexReferenceCopyGenerator");
         List<String> copies = copyGenerator.copy(reference);
-        InsertionRequestsList requests = createInsertionRequestsList(copies, 1);
+        InsertionRequestsList requests = createInsertionRequestsList(copies, 0);
         inserter.insertStatements(requests);
     }
 
