@@ -10,10 +10,11 @@ if ! [ -f "$specs" ] || [ $(wc -c < "$specs") -le "1" ]; then
 fi
 
 #check java classes are compiled, if not compile them
-if [[ ! -f "/tmp/java_classes/specs/AssertionInserter.class" ]] && [[ ! -f "/tmp/java_classes/specs/ClassAnalyzer.class" ]] && [[ ! -f "/tmp/java_classes/specs/SpecManipulator.class" ]] && [[ ! -f "/tmp/java_classes/specs/StatementChecker.class" ]] && [[ ! -f "/tmp/java_classes/specs/StatementInserter.class" ]]; then
+if [[ ! -d "/tmp/java_classes/" ]]; then
     echo "compiling assertion inserter classes"
     #.class file is sent to /tmp/java_classes/specs/
-    javac -cp libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar -d /tmp/ scripts/utils/java_classes/specs/*.java
+    find scripts/ -name "*.java" > resources/java_classes_to_compile.txt
+    javac -cp libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar -d /tmp/ @resources/java_classes_to_compile.txt
 
     if [ $? != 0 ]; then
         echo -e "\n${RED}couldn't compile some classes on scripts/utils/java/${NORMAL}\n"
@@ -35,4 +36,4 @@ post_conds=("")
 source scripts/utils/extract_specs.sh
 
 #run AssertionInserter
-java -cp /tmp/:libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar java_classes/specs/AssertionInserter $1 $2 $3 "$pre_cond" "${post_conds[@]}"
+java -cp /tmp/:libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar java_classes/specs/MainController $1 $2 $3 "$pre_cond" "${post_conds[@]}"

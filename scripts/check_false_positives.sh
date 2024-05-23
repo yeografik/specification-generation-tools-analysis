@@ -16,7 +16,6 @@ function add_libraries() {
     fi
 
     for lib in subjects/$1/libs/*.jar; do
-        # echo "adding $lib"
         if [ -z "$libraries" ]; then
             libraries="${PWD}/$lib"
         else
@@ -36,7 +35,7 @@ fi
 
 IFS=';' #setting ; as delimiter
 while read -ra line; do
-    echo -e "\n\n\n${YELLOW}Checking false positives for ${line[0]}${NORMAL}\n"
+    echo -e "\n\n\n${YELLOW}Checking FP and FN for ${line[0]}${NORMAL}\n"
     
     assertions_file="assertions/${line[0]}/$1/${line[0]}.java"
     if [[ ! -f "$assertions_file" ]]; then
