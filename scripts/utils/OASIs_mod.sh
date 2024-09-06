@@ -65,9 +65,6 @@ cd $root_dir/output/FP/$class_name/$d/;
 #$root_dir/FP/$class_name/$d/evo.txt
 
 echo "Checking for False Positives...";
-echo -e ".:$new_bin_location$additional_libs"
-echo -e "target_method: _ $target_method _Test"
-echo -e "class fullname: $class_full_name"
 evo_output="$(java -jar $evosuite_location -generateTests -Dsearch_budget=60 -Dcriterion=branch -Dassertions=false -Dstrategy=onebranch -Dtest_comments=true -Djunit_suffix='_'$target_method'_Test' -Dline_list=$line_list -Dtarget_method_prefix=$target_method -projectCP $new_bin_location$additional_libs -class $class_full_name)";
 
 cp $root_dir/output/FP/$class_name/$d/$class_name.java $src_location/$classname_path.java;
