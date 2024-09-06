@@ -52,7 +52,7 @@ function save_results() {
 }
 
 function clean_temporal_files() {
-    rm -r $tmp_output_dir
+    rm -r $PWD/tmp_results/
     rm $subjects_to_check
     rm $next_subjects_to_check
     rm tmp_subjects_swap_var.txt
@@ -90,7 +90,6 @@ for i in {1..3}; do
         tmp_output_dir=$PWD/tmp_results/"${line[0]}"/$1
         log=""
         create_results_folder
-        echo -e "log: $log"
         add_libraries "${line[0]}"
         
         cp "$assertions_file" "subjects/${line[0]}/src/main/java/$package_as_path/${line[2]}.java"
@@ -101,7 +100,6 @@ for i in {1..3}; do
         clean_old_results_on_first_iteration $i
         check_results "${line[0]}"
     done <$file
-    
-    clean_temporal_files
-
 done
+
+clean_temporal_files
