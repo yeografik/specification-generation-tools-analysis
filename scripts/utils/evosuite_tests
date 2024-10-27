@@ -1,6 +1,8 @@
 #!/bin/bash
 #$1 class name, $2 project compilation path, $3 project name, $4 package 
 
+#generates tests using Evosuite for the current subject
+
 full_class_package=$4.$1
 
 output_dir=subjects/$3/src/test/java/

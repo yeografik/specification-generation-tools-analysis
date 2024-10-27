@@ -1,6 +1,8 @@
 #!/bin/bash
 #$1 project name, $2 package name, $3 class name, $4 the testing tool to use
 
+#generate tests for a given subject using the given testing tool
+
 project_root=$SPEC_ANALYSIS_PROJECT_ROOT
 dir="$project_root/subjects/$1"
 

@@ -1,6 +1,8 @@
 #!/bin/bash
 #$1 indicates the testing tool to use
 
+#generates specifications using Daikon for all subjects in the resource file "subject_names.txt"
+
 file="resources/subject_names.txt"
 
 if [[ $1 != "randoop" && $1 != "evosuite" ]]; then
@@ -11,6 +13,6 @@ fi
 IFS=';' #setting ; as delimiter
 while read -ra line; do
     echo -e "\n\n\n${YELLOW}Generating tests for ${line[0]}\nparameters: ${line[1]}, ${line[0]}, ${line[2]}, ${line[3]} ${NORMAL}\n"
-    ./scripts/generate_single_class_tests "${line[0]}" "${line[1]}" "${line[2]}" $1 < /dev/null
-    ./scripts/generate_daikon_specs "${line[0]}" "${line[1]}" "${line[2]}" "${line[3]}" $1 < /dev/null
+    ./scripts/utils/generate_single_class_tests "${line[0]}" "${line[1]}" "${line[2]}" $1 < /dev/null
+    ./scripts/utils/generate_daikon_specs "${line[0]}" "${line[1]}" "${line[2]}" "${line[3]}" $1 < /dev/null
 done <$file
