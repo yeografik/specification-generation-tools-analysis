@@ -6,6 +6,23 @@
 #  Created by Gunel Jahangirova on 30/03/17.
 #
 
+# Edits to this script:
+#   added 3 parameters:
+#     $4 output directory where the final results will be copied to
+#     $5 the package of the current subject as a path, for example: org/apache/commons
+#     $6 additional libraries required by the subject, for example: commons-math3.jar:simple-examples.jar
+#
+#   now there is an orig_dir variable, pointing to the directory where this script was executed
+#
+#   now all the java files on orig_dir are compiled, so subjects with several files like StackAr are supported
+#
+#   now subjects that are inside simple or nested packages are supported
+#
+#   now subjects that depend on certain libraries are supported by passing the necesary libraries in the 6th
+#     parameter
+#
+#   finally results are copied to the path given in the 4th argument
+
 #$1 class with package, $2 src location, $3 method name, $4 project output dir, $5 package as path, $6 additional libs (optional)
 orig_dir=$PWD;
 root_dir=$OASIS_DIR;
@@ -34,7 +51,6 @@ d=$(date +%Y%m%d%H%M%S)
 mkdir -p $root_dir/output/FP/$class_name/$d;
 mkdir -p $root_dir/output/FP/$class_name/$d/instrumented/;
 
-# cp $src_location/$classname_path.java $root_dir/output/FP/$class_name/$d/$class_name.java;
 cp $src_location/$package/*.java $root_dir/output/FP/$class_name/$d/;
 
 mkdir -p $root_dir/$d/;

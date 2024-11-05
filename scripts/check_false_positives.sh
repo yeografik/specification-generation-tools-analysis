@@ -43,7 +43,7 @@ function clean_temporal_files() {
 
 #$1 indicates the testing tool used
 
-#Runs OASIs over all subjects n times and keeps the most significant result
+#Runs OASIs over all subjects NUMBER_OF_RUNS times and keeps the most significant result
 readonly NUMBER_OF_RUNS=3
 
 if [[ $1 != "randoop" && $1 != "evosuite" ]]; then
@@ -85,7 +85,6 @@ for i in {1..NUMBER_OF_RUNS}; do
         output_dir=$base_output_dir/"${line[0]}"/$1
         clean_old_results_on_first_iteration $i
         bash scripts/utils/check_OASIs_results.sh "$log" "$output_dir" "${line[0]}"
-        check_results "${line[0]}"
     done <$file
 done
 
