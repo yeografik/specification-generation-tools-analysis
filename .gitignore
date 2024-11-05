@@ -5,6 +5,8 @@ subjects/**/.gradle
 subjects/**/test
 subjects/**/evosuite_log.txt
 subjects/**/randoop_log.txt
+scripts/utils/java_classes/.idea/
+scripts/utils/java_classes/java_classes.iml
 generated_specs
 assertions
 OASIs_results
