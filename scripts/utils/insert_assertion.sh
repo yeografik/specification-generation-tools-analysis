@@ -15,9 +15,10 @@ fi
 if [[ ! -d "/tmp/java_classes/" ]]; then
     echo "compiling assertion inserter classes"
     #.class file is sent to /tmp/java_classes/specs/
-    find scripts/ -name "*.java" > resources/java_classes_to_compile.txt
+    find scripts/utils/java_classes/specs/ -name "*.java" > resources/java_classes_to_compile.txt
     javac -cp libs/javaparser-core-3.25.5-SNAPSHOT.jar:libs/javaparser-symbol-solver-core-3.25.5-SNAPSHOT.jar -d /tmp/ @resources/java_classes_to_compile.txt
 
+    rm resources/java_classes_to_compile.txt
     if [ $? != 0 ]; then
         echo -e "\n${RED}couldn't compile some classes on scripts/utils/java/${NORMAL}\n"
         exit

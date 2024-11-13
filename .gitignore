@@ -7,6 +7,7 @@ subjects/**/evosuite_log.txt
 subjects/**/randoop_log.txt
 scripts/utils/java_classes/.idea/
 scripts/utils/java_classes/java_classes.iml
+resources/java_classes_to_compile.txt
 generated_specs
 assertions
 OASIs_results

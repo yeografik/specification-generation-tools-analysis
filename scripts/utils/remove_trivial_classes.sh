@@ -1,7 +1,7 @@
 #!/bin/bash
 #$1 file containing class dependencies
 
-#removes dependencies that are trivial to be tested
+#removes dependencies that are trivial to be tested with Randoop
 
 sed -i '/java.lang.Object/d' $1
 sed -i '/java.lang.Integer/d' $1
