@@ -1,0 +1,19 @@
+===========================================================================
+DataStructures.StackAr:::OBJECT
+this.theArray != null
+this.theArray.getClass().getName() == java.lang.Object[].class.getName()
+this.topOfStack >= -1
+this.topOfStack <= daikon.Quant.size(this.theArray)-1
+===========================================================================
+DataStructures.StackAr.topAndPop():::ENTER
+this.topOfStack == -1 || this.topOfStack == 0 || this.topOfStack == 1
+===========================================================================
+DataStructures.StackAr.topAndPop():::EXIT
+this.theArray == \old(this.theArray)
+this.theArray.getClass().getName() == \old(this.theArray.getClass().getName())
+daikon.Quant.size(this.theArray) == \old(daikon.Quant.size(this.theArray))
+this.topOfStack == -1 || this.topOfStack == 0
+this.theArray.getClass().getName() != \result.getClass().getName()
+this.topOfStack <= \old(this.topOfStack)
+daikon.Quant.memberOf(\result.getClass().getName() , \old(daikon.Quant.typeArray(this.theArray)) )
+\old(this.topOfStack) <= daikon.Quant.size(this.theArray)-1

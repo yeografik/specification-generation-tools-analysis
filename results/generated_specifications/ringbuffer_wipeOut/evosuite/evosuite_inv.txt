@@ -1,0 +1,25 @@
+===========================================================================
+examples.RingBuffer:::OBJECT
+this.data != null
+this.start == 1 || this.start == 2 || this.start == 3
+this.free == 1 || this.free == 2 || this.free == 3
+this.capacity_ >= 1
+daikon.Quant.size(this.data) >= 1
+===========================================================================
+examples.RingBuffer.wipeOut():::ENTER
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, "java.lang.String" }) || daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, "java.lang.String", "java.lang.String" })
+this.start == 1 || this.start == 2
+this.free == 1 || this.free == 2
+this.capacity_ == 1
+daikon.Quant.size(this.data) == 2 || daikon.Quant.size(this.data) == 3
+===========================================================================
+examples.RingBuffer.wipeOut():::EXIT
+this.data == \old(this.data)
+daikon.Quant.pairwiseEqual(this.data, \old(this.data))
+this.start == this.free
+this.start == \old(this.free)
+this.capacity_ == \old(this.capacity_)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, "java.lang.String" }) || daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, "java.lang.String", "java.lang.String" })
+this.start == 1 || this.start == 2
+this.capacity_ == 1
+daikon.Quant.size(this.data) == 2 || daikon.Quant.size(this.data) == 3

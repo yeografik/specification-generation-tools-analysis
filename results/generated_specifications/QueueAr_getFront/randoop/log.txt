@@ -1,0 +1,306 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 156 times.  Unmatched entries are ignored!
+Unterminated calls:
+  DataStructures.QueueAr.enqueue(java.lang.Object) : 143 invocations
+  DataStructures.QueueAr.QueueAr(int) : 13 invocations
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+DataStructures.Overflow:::OBJECT
+===========================================================================
+DataStructures.Overflow.Overflow():::EXIT
+===========================================================================
+DataStructures.QueueAr:::OBJECT
+this.theArray != null
+this.theArray.getClass().getName() == java.lang.Object[].class
+this.currentSize >= 0
+this.front >= 0
+this.back >= -1
+this.currentSize <= size(this.theArray[])
+this.front <= size(this.theArray[])
+this.back <= size(this.theArray[])-1
+===========================================================================
+DataStructures.QueueAr.QueueAr(int):::ENTER
+capacity >= 0
+===========================================================================
+DataStructures.QueueAr.QueueAr(int):::EXIT
+this.currentSize == this.front
+this.back == size(this.theArray[])-1
+orig(capacity) == size(this.theArray[])
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.currentSize == 0
+this.currentSize <= orig(capacity)
+===========================================================================
+DataStructures.QueueAr.dequeue():::ENTER
+this.currentSize one of { 0, 1, 2 }
+this.front one of { 0, 1, 2 }
+===========================================================================
+DataStructures.QueueAr.dequeue():::EXIT90
+this.theArray[] == orig(this.theArray[])
+this.currentSize == orig(this.currentSize)
+this.front == orig(this.front)
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.currentSize == 0
+this.front one of { 0, 1 }
+return == null
+===========================================================================
+DataStructures.QueueAr.dequeue():::EXIT97
+this.theArray[this.currentSize] == this.theArray[orig(this.currentSize)-1]
+this.theArray[this.front] == this.theArray[this.back]
+this.theArray[this.front] == this.theArray[orig(this.back)]
+orig(this.theArray[post(this.currentSize)]) == orig(this.theArray[this.currentSize-1])
+this.back one of { 0, 1, 2 }
+orig(this.currentSize) one of { 1, 2 }
+size(this.theArray[]) >= 1
+this.theArray[orig(this.front)] == null
+this.currentSize <= this.back
+this.currentSize < orig(this.currentSize)
+this.currentSize <= size(this.theArray[])-1
+this.front >= this.back
+this.front <= size(this.theArray[])-1
+this.back >= orig(this.front)
+orig(this.front) <= size(this.theArray[])-1
+this.currentSize - this.back + orig(this.front) == 0
+this.back - orig(this.currentSize) - orig(this.front) + 1 == 0
+===========================================================================
+DataStructures.QueueAr.dequeue():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.back == orig(this.back)
+size(this.theArray[]) == orig(size(this.theArray[]))
+(orig(this.currentSize) == 0)  <==>  (this.currentSize == orig(this.currentSize))
+(orig(this.currentSize) == 0)  ==>  (orig(this.currentSize) <= orig(this.front))
+(orig(this.currentSize) == 0)  ==>  (orig(this.front) one of { 0, 1 })
+(orig(this.currentSize) == 0)  ==>  (orig(this.theArray[]) elements == null)
+(orig(this.currentSize) == 0)  ==>  (orig(this.theArray[].getClass().getName()) elements == null)
+(orig(this.currentSize) == 0)  ==>  (return == null)
+(orig(this.currentSize) == 0)  ==>  (this.currentSize <= orig(this.front))
+(orig(this.currentSize) == 0)  ==>  (this.currentSize == 0)
+(orig(this.currentSize) == 0)  ==>  (this.front == orig(this.front))
+(orig(this.currentSize) == 0)  ==>  (this.front >= orig(this.currentSize))
+(orig(this.currentSize) == 0)  ==>  (this.front one of { 0, 1 })
+(orig(this.currentSize) == 0)  ==>  (this.theArray[] == orig(this.theArray[]))
+(orig(this.currentSize) == 0)  ==>  (this.theArray[] elements == null)
+(orig(this.currentSize) == 0)  ==>  (this.theArray[].getClass().getName() elements == null)
+(orig(this.currentSize) one of { 1, 2 })  <==>  (this.currentSize < orig(this.currentSize))
+(orig(this.currentSize) one of { 1, 2 })  ==>  (orig(this.front) <= size(this.theArray[])-1)
+(orig(this.currentSize) one of { 1, 2 })  ==>  (orig(this.front) one of { 0, 1, 2 })
+(orig(this.currentSize) one of { 1, 2 })  ==>  (orig(this.theArray[post(this.currentSize)]) == orig(this.theArray[this.currentSize-1]))
+(orig(this.currentSize) one of { 1, 2 })  ==>  (return.getClass().getName() in orig(this.theArray[].getClass().getName()))
+(orig(this.currentSize) one of { 1, 2 })  ==>  (size(this.theArray[]) >= 1)
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.back - orig(this.currentSize) - orig(this.front) + 1 == 0)
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.back >= orig(this.front))
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.back one of { 0, 1, 2 })
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.currentSize - this.back + orig(this.front) == 0)
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.currentSize <= size(this.theArray[])-1)
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.currentSize <= this.back)
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.currentSize one of { 0, 1 })
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.front <= size(this.theArray[])-1)
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.front >= this.back)
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.theArray.getClass().getName() != return.getClass().getName())
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.theArray[orig(this.front)] == null)
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.theArray[this.currentSize] == this.theArray[orig(this.currentSize)-1])
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.theArray[this.front] == this.theArray[orig(this.back)])
+(orig(this.currentSize) one of { 1, 2 })  ==>  (this.theArray[this.front] == this.theArray[this.back])
+this.currentSize one of { 0, 1 }
+this.theArray.getClass().getName() != return.getClass().getName()
+this.currentSize <= this.front
+this.currentSize <= orig(this.currentSize)
+this.front >= orig(this.front)
+return.getClass().getName() in orig(this.theArray[].getClass().getName())
+orig(this.currentSize) <= size(this.theArray[])
+orig(this.front) <= size(this.theArray[])
+===========================================================================
+DataStructures.QueueAr.dequeueAll():::ENTER
+this.currentSize one of { 0, 1, 2 }
+this.front one of { 0, 1 }
+===========================================================================
+DataStructures.QueueAr.dequeueAll():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.back == orig(this.back)
+size(this.theArray[]) == orig(size(this.theArray[]))
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.currentSize == 0
+this.currentSize <= this.front
+this.currentSize <= orig(this.currentSize)
+this.currentSize <= orig(this.front)
+this.front >= orig(this.front)
+orig(this.currentSize) <= size(this.theArray[])
+orig(this.front) <= size(this.theArray[])
+===========================================================================
+DataStructures.QueueAr.enqueue(java.lang.Object):::ENTER
+this.theArray[this.front] == this.theArray[this.back]
+this.currentSize one of { 0, 1, 2 }
+this.front one of { 0, 1 }
+this.back >= 0
+size(this.theArray[]) >= 1
+this.theArray.getClass().getName() != x.getClass().getName()
+this.currentSize <= size(this.theArray[])-1
+this.front <= size(this.theArray[])-1
+===========================================================================
+DataStructures.QueueAr.enqueue(java.lang.Object):::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.front == orig(this.front)
+orig(x) == this.theArray[this.back]
+size(this.theArray[]) == orig(size(this.theArray[]))
+this.theArray[this.currentSize-1] == this.theArray[orig(this.currentSize)]
+orig(this.theArray[post(this.currentSize)-1]) == orig(this.theArray[this.currentSize])
+this.currentSize one of { 1, 2, 3 }
+this.front one of { 0, 1 }
+this.back one of { 0, 1, 2 }
+size(this.theArray[]) >= 1
+orig(this.theArray[post(this.back)]) == null
+this.theArray.getClass().getName() != orig(x.getClass().getName())
+orig(x.getClass().getName()) in this.theArray[].getClass().getName()
+this.currentSize >= this.front
+this.currentSize >= this.back
+this.currentSize > orig(this.currentSize)
+this.front <= this.back
+this.front <= size(this.theArray[])-1
+this.back >= orig(this.currentSize)
+orig(this.currentSize) <= size(this.theArray[])-1
+orig(this.back) <= size(this.theArray[])-1
+this.currentSize + this.front - this.back - 1 == 0
+this.front - this.back + orig(this.currentSize) == 0
+===========================================================================
+DataStructures.QueueAr.getFront():::ENTER
+this.currentSize one of { 0, 1, 2 }
+this.front one of { 0, 1 }
+===========================================================================
+DataStructures.QueueAr.getFront():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.theArray[] == orig(this.theArray[])
+this.currentSize == orig(this.currentSize)
+this.front == orig(this.front)
+this.back == orig(this.back)
+this.currentSize one of { 0, 1, 2 }
+this.front one of { 0, 1 }
+this.theArray.getClass().getName() != return.getClass().getName()
+return.getClass().getName() in this.theArray[].getClass().getName()
+===========================================================================
+DataStructures.QueueAr.isEmpty():::ENTER
+this.currentSize one of { 0, 1, 2 }
+===========================================================================
+DataStructures.QueueAr.isEmpty():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.theArray[] == orig(this.theArray[])
+this.currentSize == orig(this.currentSize)
+this.front == orig(this.front)
+this.back == orig(this.back)
+(this.currentSize == 0)  <==>  (return == true)
+(this.currentSize == 0)  ==>  (this.back >= -1)
+(this.currentSize == 0)  ==>  (this.currentSize <= this.front)
+(this.currentSize == 0)  ==>  (this.theArray[] elements == null)
+(this.currentSize == 0)  ==>  (this.theArray[].getClass().getName() elements == null)
+(this.currentSize one of { 1, 2 })  <==>  (return == false)
+(this.currentSize one of { 1, 2 })  ==>  (size(this.theArray[]) >= 1)
+(this.currentSize one of { 1, 2 })  ==>  (this.back one of { 0, 1, 2 })
+(this.currentSize one of { 1, 2 })  ==>  (this.currentSize + this.front - this.back - 1 == 0)
+(this.currentSize one of { 1, 2 })  ==>  (this.front <= size(this.theArray[])-1)
+(this.currentSize one of { 1, 2 })  ==>  (this.front <= this.back)
+(this.currentSize one of { 1, 2 })  ==>  (this.front one of { 0, 1, 2 })
+this.currentSize one of { 0, 1, 2 }
+===========================================================================
+DataStructures.QueueAr.isEmpty():::EXIT;condition="return == true"
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.currentSize == 0
+return == true
+this.currentSize <= this.front
+===========================================================================
+DataStructures.QueueAr.isEmpty():::EXIT;condition="not(return == true)"
+this.currentSize one of { 1, 2 }
+this.front one of { 0, 1, 2 }
+this.back one of { 0, 1, 2 }
+return == false
+size(this.theArray[]) >= 1
+this.front <= this.back
+this.front <= size(this.theArray[])-1
+this.currentSize + this.front - this.back - 1 == 0
+===========================================================================
+DataStructures.QueueAr.isFull():::ENTER
+this.front one of { 0, 1 }
+===========================================================================
+DataStructures.QueueAr.isFull():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.theArray[] == orig(this.theArray[])
+this.currentSize == orig(this.currentSize)
+this.front == orig(this.front)
+this.back == orig(this.back)
+(return == false)  <==>  (this.currentSize <= size(this.theArray[])-1)
+(return == false)  ==>  (size(this.theArray[]) >= 1)
+(return == false)  ==>  (this.back >= 0)
+(return == false)  ==>  (this.front <= size(this.theArray[])-1)
+(return == false)  ==>  (this.front one of { 0, 1 })
+(return == true)  <==>  (this.currentSize == size(this.theArray[]))
+(return == true)  ==>  (size(this.theArray[]) one of { 0, 1 })
+(return == true)  ==>  (this.back == size(this.theArray[])-1)
+(return == true)  ==>  (this.currentSize >= this.front)
+(return == true)  ==>  (this.currentSize one of { 0, 1 })
+(return == true)  ==>  (this.front == 0)
+(return == true)  ==>  (this.front >= size(this.theArray[])-1)
+(return == true)  ==>  (this.front >= this.back)
+this.front one of { 0, 1 }
+===========================================================================
+DataStructures.QueueAr.isFull():::EXIT;condition="return == true"
+this.currentSize == size(this.theArray[])
+this.currentSize == orig(size(this.theArray[]))
+this.back == size(this.theArray[])-1
+this.back == orig(size(this.theArray[]))-1
+this.currentSize one of { 0, 1 }
+this.front == 0
+return == true
+this.currentSize >= this.front
+this.front >= this.back
+===========================================================================
+DataStructures.QueueAr.isFull():::EXIT;condition="not(return == true)"
+this.back >= 0
+return == false
+size(this.theArray[]) >= 1
+this.currentSize <= size(this.theArray[])-1
+this.front <= size(this.theArray[])-1
+===========================================================================
+DataStructures.QueueAr.makeEmpty():::ENTER
+this.currentSize one of { 0, 1, 2 }
+this.front one of { 0, 1 }
+===========================================================================
+DataStructures.QueueAr.makeEmpty():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.currentSize == this.front
+this.back == size(this.theArray[])-1
+this.back == orig(size(this.theArray[]))-1
+size(this.theArray[]) == orig(size(this.theArray[]))
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.currentSize == 0
+this.currentSize <= orig(this.currentSize)
+this.currentSize <= orig(this.front)
+this.back >= orig(this.back)
+orig(this.currentSize) <= size(this.theArray[])
+orig(this.front) <= size(this.theArray[])
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

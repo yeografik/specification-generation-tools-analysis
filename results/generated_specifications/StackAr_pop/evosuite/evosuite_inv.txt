@@ -1,0 +1,30 @@
+===========================================================================
+DataStructures.StackAr:::OBJECT
+this.theArray != null
+this.theArray.getClass().getName() == java.lang.Object[].class.getName()
+this.topOfStack == -1 || this.topOfStack == 0 || this.topOfStack == 1
+this.topOfStack <= daikon.Quant.size(this.theArray)-1
+===========================================================================
+DataStructures.StackAr.pop():::ENTER
+this != null
+this.theArray != null
+("oneOf.java.jpp: SEQUENCE unimplemented" != null)
+daikon.Quant.eltsEqual(this.theArray, null)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.theArray), new String[] { null, null, null })
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.theArray), null)
+this.topOfStack == 0
+daikon.Quant.size(this.theArray) == 3
+daikon.Quant.eltsEqual(this.theArray, daikon.Quant.getElement_Object(this.theArray, this.topOfStack))
+===========================================================================
+DataStructures.StackAr.pop():::EXIT
+this.theArray == \old(this.theArray)
+this.theArray.getClass().getName() == \old(this.theArray.getClass().getName())
+daikon.Quant.pairwiseEqual(this.theArray, \old(this.theArray))
+this.theArray != null
+("oneOf.java.jpp: SEQUENCE unimplemented" != null)
+daikon.Quant.eltsEqual(this.theArray, null)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.theArray), new String[] { null, null, null })
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.theArray), null)
+this.topOfStack == -1
+daikon.Quant.size(this.theArray) == 3
+daikon.Quant.eltsEqual(this.theArray, daikon.Quant.getElement_Object(this.theArray, \old(this.topOfStack)))

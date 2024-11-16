@@ -1,0 +1,213 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 916 times.  Unmatched entries are ignored!
+Unterminated calls:
+  examples.RingBuffer.RingBuffer(int) : 100 invocations
+  examples.RingBuffer.item() : 409 invocations
+  examples.RingBuffer.remove() : 405 invocations
+  examples.RingBuffer.extend(java.lang.Object) : 2 invocations
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+examples.RingBuffer:::OBJECT
+this.data != null
+this.start >= 1
+this.free >= 1
+this.capacity_ >= 1
+size(this.data[]) >= 1
+this.start <= this.free
+===========================================================================
+examples.RingBuffer.RingBuffer(int):::ENTER
+===========================================================================
+examples.RingBuffer.RingBuffer(int):::EXIT
+this.start == this.free
+this.capacity_ == orig(n)
+this.data[] == [null]
+this.data[] elements == null
+this.data[].getClass().getName() == [null]
+this.data[].getClass().getName() elements == null
+this.start == 1
+size(this.data[]) == 1
+this.start <= this.capacity_
+===========================================================================
+examples.RingBuffer.capacity():::ENTER
+===========================================================================
+examples.RingBuffer.capacity():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == orig(this.start)
+this.free == orig(this.free)
+this.capacity_ == return
+return == orig(this.capacity_)
+===========================================================================
+examples.RingBuffer.count():::ENTER
+===========================================================================
+examples.RingBuffer.count():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == orig(this.start)
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+return >= 0
+this.free > return
+this.capacity_ >= return
+===========================================================================
+examples.RingBuffer.dataCount():::ENTER
+===========================================================================
+examples.RingBuffer.dataCount():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == orig(this.start)
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+this.start <= return
+this.free <= return
+this.capacity_ - return + 1 == 0
+===========================================================================
+examples.RingBuffer.extend(java.lang.Object):::ENTER
+a_value.getClass().getName() == java.lang.String.class
+this.start <= this.capacity_
+this.free <= this.capacity_
+===========================================================================
+examples.RingBuffer.extend(java.lang.Object):::EXIT
+this.data == orig(this.data)
+this.start == orig(this.start)
+this.capacity_ == orig(this.capacity_)
+size(this.data[])-1 == orig(size(this.data[]))
+this.free >= 2
+size(this.data[]) >= 2
+orig(a_value.getClass().getName()) in this.data[].getClass().getName()
+this.start < this.free
+this.start <= this.capacity_
+this.start <= orig(this.free)
+this.free != this.capacity_
+this.free - orig(this.free) - 1 == 0
+this.capacity_ >= orig(this.free)
+===========================================================================
+examples.RingBuffer.isEmpty():::ENTER
+===========================================================================
+examples.RingBuffer.isEmpty():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == orig(this.start)
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+(return == false)  <==>  (this.start < this.free)
+(return == false)  ==>  (size(this.data[]) >= 2)
+(return == false)  ==>  (this.free != this.capacity_)
+(return == false)  ==>  (this.free >= 2)
+(return == false)  ==>  (this.start <= this.capacity_)
+(return == true)  <==>  (this.start == this.free)
+(return == true)  ==>  (size(this.data[]) >= 1)
+(return == true)  ==>  (this.free >= 1)
+===========================================================================
+examples.RingBuffer.isEmpty():::EXIT;condition="return == true"
+this.start == this.free
+this.start == orig(this.free)
+return == true
+===========================================================================
+examples.RingBuffer.isEmpty():::EXIT;condition="not(return == true)"
+this.free >= 2
+return == false
+size(this.data[]) >= 2
+this.start < this.free
+this.start <= this.capacity_
+this.free != this.capacity_
+===========================================================================
+examples.RingBuffer.isFull():::ENTER
+===========================================================================
+examples.RingBuffer.isFull():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == orig(this.start)
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+(return == false)  ==>  (size(this.data[]) >= 1)
+(return == false)  ==>  (this.free >= 1)
+(return == true)  ==>  (size(this.data[]) == 2)
+(return == true)  ==>  (this.capacity_ == 1)
+(return == true)  ==>  (this.data[].getClass().getName() one of { [null, null], [null, java.lang.String] })
+(return == true)  ==>  (this.free == 2)
+(return == true)  ==>  (this.start == 1)
+(return == true)  ==>  (this.start == this.capacity_)
+===========================================================================
+examples.RingBuffer.isFull():::EXIT;condition="return == true"
+this.start == this.capacity_
+this.start == orig(this.capacity_)
+this.data[].getClass().getName() one of { [null, null], [null, java.lang.String] }
+this.start == 1
+this.free == 2
+return == true
+size(this.data[]) == 2
+===========================================================================
+examples.RingBuffer.isFull():::EXIT;condition="not(return == true)"
+return == false
+===========================================================================
+examples.RingBuffer.item():::ENTER
+this.start one of { 1, 2, 3 }
+this.free >= 2
+size(this.data[]) >= 2
+this.start < this.free
+this.start <= this.capacity_
+this.free != this.capacity_
+===========================================================================
+examples.RingBuffer.item():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == orig(this.start)
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+this.start one of { 1, 2, 3 }
+this.free >= 2
+return.getClass().getName() == java.lang.String.class
+size(this.data[]) >= 2
+return.getClass().getName() in this.data[].getClass().getName()
+this.start < this.free
+this.start <= this.capacity_
+this.free != this.capacity_
+===========================================================================
+examples.RingBuffer.remove():::ENTER
+this.start one of { 1, 2, 3 }
+this.capacity_ one of { 8, 10, 100 }
+this.start < this.free
+this.start < this.capacity_
+this.free < this.capacity_
+===========================================================================
+examples.RingBuffer.remove():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+this.start one of { 2, 3, 4 }
+this.capacity_ one of { 8, 10, 100 }
+this.start < this.capacity_
+this.start > orig(this.start)
+this.free < this.capacity_
+this.free > orig(this.start)
+this.capacity_ > orig(this.start)
+===========================================================================
+examples.RingBuffer.wipeOut():::ENTER
+===========================================================================
+examples.RingBuffer.wipeOut():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == this.free
+this.start == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+this.start >= orig(this.start)
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

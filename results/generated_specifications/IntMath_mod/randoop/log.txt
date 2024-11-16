@@ -1,0 +1,34 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 986 times.  Unmatched entries are ignored!
+Unterminated calls:
+  math.IntMath.mod(int, int) : 986 invocations
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+math.IntMath:::OBJECT
+===========================================================================
+math.IntMath.IntMath():::EXIT
+===========================================================================
+math.IntMath.mod(int, int):::ENTER
+m >= 1
+===========================================================================
+math.IntMath.mod(int, int):::EXIT
+return >= 0
+return < orig(m)
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

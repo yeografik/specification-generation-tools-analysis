@@ -1,0 +1,247 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.rules.TestRule - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.runners.model.Statement - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.LoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.ILoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.event.LoggingEvent - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.SubstituteLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.Logger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.Util - classfile version (49) is out of date and may not be processed correctly.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLogger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.MarkerIgnoringBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NamedLoggerBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.internal.AssumptionViolatedException - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.SelfDescribing - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Matcher - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Description - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 3 times.  Unmatched entries are ignored!
+Unterminated calls:
+  examples.MyMap.remove(java.lang.Object) : 2 invocations
+  examples.MyMap.item(java.lang.Object) : 1 invocation
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+examples.MyMap:::OBJECT
+this.keys != null
+this.keys[] elements != null
+this.data != null
+size(this.keys[]) one of { 0, 1, 2 }
+size(this.data[]) one of { 0, 1, 2 }
+===========================================================================
+examples.MyMap.MyMap():::EXIT
+this.keys[] == []
+this.keys[].getClass().getName() == []
+this.data[] == []
+this.data[].getClass().getName() == []
+===========================================================================
+examples.MyMap.count():::ENTER
+===========================================================================
+examples.MyMap.count():::EXIT
+this.keys == orig(this.keys)
+this.keys[] == orig(this.keys[])
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+return one of { 0, 1, 2 }
+===========================================================================
+examples.MyMap.extend(java.lang.Object, java.lang.Object):::ENTER
+this.data[] elements != null
+k != null
+===========================================================================
+examples.MyMap.extend(java.lang.Object, java.lang.Object):::EXIT
+this.keys == orig(this.keys)
+this.data == orig(this.data)
+return one of { 0, 1 }
+size(this.keys[]) one of { 1, 2 }
+size(this.data[]) one of { 1, 2 }
+orig(k.getClass().getName()) in this.keys[].getClass().getName()
+orig(v.getClass().getName()) in this.data[].getClass().getName()
+size(this.keys[]) >= orig(size(this.keys[]))
+size(this.keys[])-1 <= orig(size(this.keys[]))
+size(this.keys[])-1 >= orig(size(this.keys[]))-1
+size(this.data[]) >= orig(size(this.data[]))
+size(this.data[])-1 <= orig(size(this.data[]))
+size(this.data[])-1 >= orig(size(this.data[]))-1
+===========================================================================
+examples.MyMap.hasKey(java.lang.Object):::ENTER
+===========================================================================
+examples.MyMap.hasKey(java.lang.Object):::EXIT
+this.keys == orig(this.keys)
+this.keys[] == orig(this.keys[])
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+(this.keys[].getClass().getName() one of { [], [examples.MyMap] })  <==>  (return == false)
+(this.keys[].getClass().getName() one of { [], [examples.MyMap] })  <==>  (this.keys[].getClass().getName() elements == examples.MyMap.class)
+(this.keys[].getClass().getName() one of { [], [examples.MyMap] })  ==>  (size(this.data[]) one of { 0, 1 })
+(this.keys[].getClass().getName() one of { [], [examples.MyMap] })  ==>  (size(this.keys[]) one of { 0, 1 })
+(this.keys[].getClass().getName() one of { [], [examples.MyMap] })  ==>  (this.data[] elements has only one value)
+(this.keys[].getClass().getName() one of { [], [examples.MyMap] })  ==>  (this.data[].getClass().getName() elements == java.lang.String.class)
+(this.keys[].getClass().getName() one of { [], [examples.MyMap] })  ==>  (this.data[].getClass().getName() one of { [], [java.lang.String] })
+(this.keys[].getClass().getName() one of { [], [examples.MyMap] })  ==>  (this.keys[] elements has only one value)
+(this.keys[].getClass().getName() one of { [java.lang.String], [java.lang.String, java.lang.String] })  <==>  (return == true)
+(this.keys[].getClass().getName() one of { [java.lang.String], [java.lang.String, java.lang.String] })  <==>  (this.keys[].getClass().getName() elements == java.lang.String.class)
+(this.keys[].getClass().getName() one of { [java.lang.String], [java.lang.String, java.lang.String] })  ==>  (orig(k) has only one value)
+(this.keys[].getClass().getName() one of { [java.lang.String], [java.lang.String, java.lang.String] })  ==>  (orig(k.getClass().getName()) == java.lang.String.class)
+(this.keys[].getClass().getName() one of { [java.lang.String], [java.lang.String, java.lang.String] })  ==>  (orig(k.getClass().getName()) in this.keys[].getClass().getName())
+(this.keys[].getClass().getName() one of { [java.lang.String], [java.lang.String, java.lang.String] })  ==>  (size(this.data[]) one of { 1, 2 })
+(this.keys[].getClass().getName() one of { [java.lang.String], [java.lang.String, java.lang.String] })  ==>  (size(this.keys[]) one of { 1, 2 })
+===========================================================================
+examples.MyMap.hasKey(java.lang.Object):::EXIT;condition="return == true"
+this.keys[].getClass().getName() elements == java.lang.String.class
+this.keys[].getClass().getName() one of { [java.lang.String], [java.lang.String, java.lang.String] }
+return == true
+orig(k) has only one value
+orig(k.getClass().getName()) == java.lang.String.class
+size(this.keys[]) one of { 1, 2 }
+size(this.data[]) one of { 1, 2 }
+orig(k.getClass().getName()) in this.keys[].getClass().getName()
+===========================================================================
+examples.MyMap.hasKey(java.lang.Object):::EXIT;condition="not(return == true)"
+this.keys[] elements has only one value
+this.keys[].getClass().getName() elements == examples.MyMap.class
+this.keys[].getClass().getName() one of { [], [examples.MyMap] }
+this.data[] elements has only one value
+this.data[].getClass().getName() elements == java.lang.String.class
+this.data[].getClass().getName() one of { [], [java.lang.String] }
+return == false
+size(this.keys[]) one of { 0, 1 }
+size(this.data[]) one of { 0, 1 }
+===========================================================================
+examples.MyMap.hasValue(java.lang.Object):::ENTER
+this.keys[].getClass().getName() == [java.lang.Object]
+this.keys[].getClass().getName() elements == java.lang.Object.class
+this.data[].getClass().getName() == [java.lang.String]
+this.data[].getClass().getName() elements == java.lang.String.class
+v has only one value
+v.getClass().getName() == java.lang.String.class
+size(this.keys[]) == 1
+size(this.data[]) == 1
+v.getClass().getName() in this.data[].getClass().getName()
+===========================================================================
+examples.MyMap.hasValue(java.lang.Object):::EXIT
+this.keys == orig(this.keys)
+this.keys[] == orig(this.keys[])
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+(this.keys[] contains no nulls and has only one value, of length 1)  <==>  (return == false)
+(this.keys[] contains no nulls and has only one value, of length 1)  <==>  (return == true)
+(this.keys[] contains no nulls and has only one value, of length 1)  <==>  (this.data[] contains no nulls and has only one value, of length 1)
+this.keys[].getClass().getName() == [java.lang.Object]
+this.keys[].getClass().getName() elements == java.lang.Object.class
+this.data[].getClass().getName() == [java.lang.String]
+this.data[].getClass().getName() elements == java.lang.String.class
+size(this.keys[]) == 1
+size(this.data[]) == 1
+orig(v.getClass().getName()) in this.data[].getClass().getName()
+===========================================================================
+examples.MyMap.hasValue(java.lang.Object):::EXIT;condition="return == true"
+this.keys has only one value
+this.keys[] contains no nulls and has only one value, of length 1
+this.keys[] elements has only one value
+this.data has only one value
+this.data[] contains no nulls and has only one value, of length 1
+this.data[] elements has only one value
+return == true
+orig(this) has only one value
+===========================================================================
+examples.MyMap.hasValue(java.lang.Object):::EXIT;condition="not(return == true)"
+this.keys has only one value
+this.keys[] contains no nulls and has only one value, of length 1
+this.keys[] elements has only one value
+this.data has only one value
+this.data[] contains no nulls and has only one value, of length 1
+this.data[] elements has only one value
+return == false
+orig(this) has only one value
+===========================================================================
+examples.MyMap.indexOfKey(java.lang.Object):::ENTER
+this.data[] elements != null
+k != null
+===========================================================================
+examples.MyMap.indexOfKey(java.lang.Object):::EXIT
+this.keys == orig(this.keys)
+this.keys[] == orig(this.keys[])
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.data[] elements != null
+return one of { -1, 0, 1 }
+===========================================================================
+examples.MyMap.item(java.lang.Object):::ENTER
+this.keys[].getClass().getName() == [java.lang.String]
+this.keys[].getClass().getName() elements == java.lang.String.class
+this.data[].getClass().getName() one of { [null], [java.lang.Object] }
+k.getClass().getName() == java.lang.String.class
+size(this.keys[]) == 1
+size(this.data[]) == 1
+k.getClass().getName() in this.keys[].getClass().getName()
+===========================================================================
+examples.MyMap.item(java.lang.Object):::EXIT
+this.keys == orig(this.keys)
+this.keys[] == orig(this.keys[])
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.keys[].getClass().getName() == [java.lang.String]
+this.keys[].getClass().getName() elements == java.lang.String.class
+this.data[].getClass().getName() one of { [null], [java.lang.Object] }
+return.getClass().getName() == java.lang.Object.class
+size(this.keys[]) == 1
+size(this.data[]) == 1
+orig(k.getClass().getName()) in this.keys[].getClass().getName()
+return.getClass().getName() in this.data[].getClass().getName()
+===========================================================================
+examples.MyMap.remove(java.lang.Object):::ENTER
+this.keys[].getClass().getName() elements == java.lang.String.class
+this.keys[].getClass().getName() one of { [java.lang.String], [java.lang.String, java.lang.String] }
+this.data[].getClass().getName() one of { [examples.MyMap, java.lang.Object], [java.lang.Object] }
+k has only one value
+k.getClass().getName() == java.lang.String.class
+size(this.keys[]) one of { 1, 2 }
+size(this.data[]) one of { 1, 2 }
+k.getClass().getName() in this.keys[].getClass().getName()
+===========================================================================
+examples.MyMap.remove(java.lang.Object):::EXIT
+this.keys == orig(this.keys)
+this.data == orig(this.data)
+size(this.keys[]) == orig(size(this.keys[]))-1
+size(this.data[]) == orig(size(this.data[]))-1
+this.keys[] elements has only one value
+this.keys[].getClass().getName() elements == java.lang.String.class
+this.keys[].getClass().getName() one of { [], [java.lang.String] }
+this.data[] elements has only one value
+this.data[].getClass().getName() elements == examples.MyMap.class
+this.data[].getClass().getName() one of { [], [examples.MyMap] }
+return one of { 0, 1 }
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::ENTER
+args has only one value
+args.getClass().getName() == java.lang.String[].class
+args[] == []
+args[].toString == []
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::EXIT
+args[] == orig(args[])
+args[] == []
+args[].toString == []
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

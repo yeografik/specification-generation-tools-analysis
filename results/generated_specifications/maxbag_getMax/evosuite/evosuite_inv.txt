@@ -1,0 +1,32 @@
+===========================================================================
+examples.MaxBag:::OBJECT
+this._var4384._0 == this._var5992
+this._var4384._0 != null
+this._var4384._1 != null
+this._var4384._1.getClass().getName() == java.lang.Integer[].class.getName()
+===========================================================================
+examples.MaxBag.getMax():::ENTER
+this._var721 != null
+this._var1457 != null
+this._var4384 != null
+this._var5992 != null
+this._var66253 != null
+===========================================================================
+examples.MaxBag.getMax():::EXIT
+this._var587 == \result
+this._var721 == \old(this._var721)
+this._var1457 == \old(this._var1457)
+this._var4384 == \old(this._var4384)
+this._var4384._1 == \old(this._var4384._1)
+this._var4384._1.getClass().getName() == \old(this._var4384._1.getClass().getName())
+daikon.Quant.pairwiseEqual(this._var4384._1, \old(this._var4384._1))
+this._var5992 == \old(this._var4384._0)
+this._var5992 == \old(this._var5992)
+this._var66253 == \old(this._var66253)
+daikon.Quant.pairwiseEqual(this._var66253, \old(this._var66253))
+\result == \old(this._var587)
+this._var721 != null
+this._var1457 != null
+this._var4384 != null
+this._var5992 != null
+this._var66253 != null

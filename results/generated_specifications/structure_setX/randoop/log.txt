@@ -1,0 +1,44 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+===========================================================================
+examples.Structure:::OBJECT
+===========================================================================
+examples.Structure.Structure():::EXIT
+this.var62 == 1
+===========================================================================
+examples.Structure.Structure(int):::ENTER
+===========================================================================
+examples.Structure.Structure(int):::EXIT
+this.var62 - orig(x) - 1 == 0
+===========================================================================
+examples.Structure.clear():::ENTER
+===========================================================================
+examples.Structure.clear():::EXIT
+this.var62 == 1
+===========================================================================
+examples.Structure.foo():::ENTER
+===========================================================================
+examples.Structure.foo():::EXIT
+this.var62 == return
+return == orig(this.var62)
+===========================================================================
+examples.Structure.setX(int):::ENTER
+===========================================================================
+examples.Structure.setX(int):::EXIT
+this.var62 - orig(y) - 1 == 0
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

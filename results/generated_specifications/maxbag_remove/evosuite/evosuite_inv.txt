@@ -1,0 +1,27 @@
+===========================================================================
+examples.MaxBag:::OBJECT
+this._var4384._0 == this._var5992
+this._var4384._0 != null
+this._var4384._1 != null
+this._var4384._1.getClass().getName() == java.lang.Integer[].class.getName()
+===========================================================================
+examples.MaxBag.remove(java.lang.Integer):::ENTER
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this._var66253), "java.lang.Integer")
+daikon.Quant.eltsLTE(this._var4384._1, x)
+===========================================================================
+examples.MaxBag.remove(java.lang.Integer):::EXIT
+this._var721 == \old(this._var721)
+this._var1457 == \old(this._var1457)
+this._var4384 == \old(this._var4384)
+this._var4384._1 == \old(this._var4384._1)
+this._var4384._1.getClass().getName() == \old(this._var4384._1.getClass().getName())
+this._var66253 == \old(this._var66253)
+daikon.Quant.size(this._var4384._1) == \old(daikon.Quant.size(this._var4384._1))
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this._var66253), "java.lang.Integer")
+daikon.Quant.eltsLT(this._var4384._1, this._var5992)
+daikon.Quant.lexLTE(this._var4384._1, \old(this._var4384._1))
+daikon.Quant.eltsLTE(this._var4384._1, \old(x))
+daikon.Quant.eltsLT(\old(this._var4384._1), this._var5992)
+daikon.Quant.size(this._var66253) <= \old(daikon.Quant.size(this._var66253))
+daikon.Quant.size(this._var66253) >= \old(daikon.Quant.size(this._var66253))-1
+daikon.Quant.size(this._var66253)-1 <= \old(daikon.Quant.size(this._var66253))-1

@@ -1,0 +1,28 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+===========================================================================
+examples.SimpleMethods:::OBJECT
+===========================================================================
+examples.SimpleMethods.SimpleMethods():::EXIT
+===========================================================================
+examples.SimpleMethods.getMin(int, int):::ENTER
+===========================================================================
+examples.SimpleMethods.getMin(int, int):::EXIT
+return <= orig(a)
+return <= orig(b)
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

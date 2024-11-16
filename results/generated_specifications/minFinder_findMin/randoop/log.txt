@@ -1,0 +1,157 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+java.lang.RuntimeException: unexpected error locating equal_dcomp_instrumented
+	at daikon.dcomp.DCRuntime.dcomp_equals(DCRuntime.java:270)
+	at examples.RegressionTest0.test0099(RegressionTest0.java:5614)
+	at examples.RegressionTestDriver.runTests0(RegressionTestDriver.java:605)
+	at examples.RegressionTestDriver.main(RegressionTestDriver.java:6)
+Caused by: java.lang.NullPointerException
+	at daikon.dcomp.DCRuntime.dcomp_equals(DCRuntime.java:265)
+	... 3 more
+Warning: Target exited with 1 status.
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 46 times.  Unmatched entries are ignored!
+Unterminated calls:
+  examples.MinFinder.MinFinder(java.util.ArrayList) : 1 invocation
+  examples.MinFinder.chval(examples.MinFinder$T, int) : 24 invocations
+  examples.MinFinder.add(examples.MinFinder$T) : 21 invocations
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+examples.MinFinder$T:::OBJECT
+===========================================================================
+examples.MinFinder$T.T(int):::ENTER
+===========================================================================
+examples.MinFinder$T.T(int):::EXIT
+this.val == orig(_v293255)
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::ENTER
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT110
+return == false
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT110;condition="not(return == true)"
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT112
+orig(other) != null
+orig(other.getClass().getName()) == examples.MinFinder$T.class
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT112;condition="return == true"
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT112;condition="not(return == true)"
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT
+this.val == orig(this.val)
+(return == true)  ==>  (orig(other) != null)
+(return == true)  ==>  (orig(other.getClass().getName()) == examples.MinFinder$T.class)
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT;condition="return == true"
+return == true
+orig(other) != null
+orig(other.getClass().getName()) == examples.MinFinder$T.class
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT;condition="not(return == true)"
+return == false
+===========================================================================
+examples.MinFinder$T.getVal():::ENTER
+===========================================================================
+examples.MinFinder$T.getVal():::EXIT
+this.val == return
+return == orig(this.val)
+===========================================================================
+examples.MinFinder:::OBJECT
+===========================================================================
+examples.MinFinder.MinFinder():::EXIT
+this._var88 != null
+this._var88[] == []
+this._var88[].getClass().getName() == []
+this._var811 == null
+===========================================================================
+examples.MinFinder.MinFinder(java.util.ArrayList):::ENTER
+xs != null
+xs[] elements != null
+xs[].getClass().getName() elements == examples.MinFinder.T.class
+xs[].getClass().getName() one of { [examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T], [examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T] }
+size(xs[]) one of { 5, 7 }
+===========================================================================
+examples.MinFinder.MinFinder(java.util.ArrayList):::EXIT
+this._var88 == orig(xs)
+xs[] == orig(xs[])
+this._var88 != null
+this._var88[] elements != null
+this._var88[].getClass().getName() elements == examples.MinFinder.T.class
+this._var88[].getClass().getName() one of { [examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T], [examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T] }
+this._var811 != null
+this._var811.val == -3
+xs[] elements != null
+xs[].getClass().getName() elements == examples.MinFinder.T.class
+xs[].getClass().getName() one of { [examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T], [examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T, examples.MinFinder.T] }
+size(this._var88[]) one of { 5, 7 }
+===========================================================================
+examples.MinFinder.add(examples.MinFinder$T):::ENTER
+this._var88 != null
+this._var88[] elements != null
+this._var88[].getClass().getName() elements == examples.MinFinder.T.class
+===========================================================================
+examples.MinFinder.add(examples.MinFinder$T):::EXIT
+this._var88 == orig(this._var88)
+x.val == orig(x.val)
+size(this._var88[])-1 == orig(size(this._var88[]))
+this._var88 != null
+size(this._var88[]) >= 1
+this._var811.val <= x.val
+this._var811.val <= orig(this._var811.val)
+===========================================================================
+examples.MinFinder.chval(examples.MinFinder$T, int):::ENTER
+this._var88 != null
+this._var88[] elements != null
+this._var88[].getClass().getName() elements == examples.MinFinder.T.class
+this._var811.val one of { -3, 3, 97 }
+===========================================================================
+examples.MinFinder.chval(examples.MinFinder$T, int):::EXIT
+this._var88 == orig(this._var88)
+this._var88[] == orig(this._var88[])
+this._var811 == orig(this._var811)
+this._var811.val == orig(this._var811.val)
+x.val == orig(x.val)
+this._var88 != null
+this._var88[] elements != null
+this._var88[].getClass().getName() elements == examples.MinFinder.T.class
+this._var811.val one of { -3, 3, 97 }
+===========================================================================
+examples.MinFinder.clear():::ENTER
+===========================================================================
+examples.MinFinder.clear():::EXIT
+this._var88 != null
+this._var88[] == []
+this._var88[].getClass().getName() == []
+this._var811 == null
+size(this._var88[]) <= orig(size(this._var88[]))
+size(this._var88[])-1 <= orig(size(this._var88[]))-1
+===========================================================================
+examples.MinFinder.findMin():::ENTER
+this._var88 != null
+===========================================================================
+examples.MinFinder.findMin():::EXIT
+this._var88 == orig(this._var88)
+this._var88[] == orig(this._var88[])
+this._var811 == return
+this._var811.val == return.val
+return == orig(this._var811)
+return.val == orig(this._var811.val)
+this._var88 != null
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

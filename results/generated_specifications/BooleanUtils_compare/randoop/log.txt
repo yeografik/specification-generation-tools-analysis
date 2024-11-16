@@ -1,0 +1,27 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+===========================================================================
+lang3.BooleanUtils:::OBJECT
+===========================================================================
+lang3.BooleanUtils.BooleanUtils():::EXIT
+===========================================================================
+lang3.BooleanUtils.compare(boolean, boolean):::ENTER
+===========================================================================
+lang3.BooleanUtils.compare(boolean, boolean):::EXIT
+return one of { -1, 0, 1 }
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

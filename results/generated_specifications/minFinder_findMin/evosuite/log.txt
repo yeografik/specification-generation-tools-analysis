@@ -1,0 +1,185 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.rules.TestRule - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.runners.model.Statement - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.LoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.ILoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.event.LoggingEvent - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.SubstituteLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.Logger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.Util - classfile version (49) is out of date and may not be processed correctly.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLogger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.MarkerIgnoringBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NamedLoggerBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.internal.AssumptionViolatedException - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.SelfDescribing - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Matcher - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Description - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 3 times.  Unmatched entries are ignored!
+Unterminated calls:
+  examples.MinFinder.add(examples.MinFinder$T) : 1 invocation
+  examples.MinFinder.MinFinder(java.util.ArrayList) : 1 invocation
+  examples.MinFinder.chval(examples.MinFinder$T, int) : 1 invocation
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+examples.MinFinder$T:::OBJECT
+===========================================================================
+examples.MinFinder$T.T(int):::ENTER
+===========================================================================
+examples.MinFinder$T.T(int):::EXIT
+this.val == orig(_v293255)
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::ENTER
+other.getClass().getName() == examples.MinFinder$T.class
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT110
+return == false
+orig(other) == null
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT110;condition="not(return == true)"
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT112
+(this.val == -484)  <==>  (return == true)
+(this.val == -484)  ==>  (orig(other) has only one value)
+(this.val == -484)  ==>  (orig(this) == orig(other))
+(this.val == -484)  ==>  (orig(this) has only one value)
+(this.val one of { -1, 0, 347 })  <==>  (return == false)
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT112;condition="return == true"
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT112;condition="not(return == true)"
+this.val one of { -1, 0, 347 }
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT
+this.val == orig(this.val)
+(orig(other) == null)  ==>  (return == false)
+(return == true)  ==>  (orig(other) has only one value)
+(return == true)  ==>  (orig(this) == orig(other))
+(return == true)  ==>  (orig(this) has only one value)
+(return == true)  ==>  (this.val == -484)
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT;condition="return == true"
+orig(this) == orig(other)
+this.val == -484
+return == true
+orig(this) has only one value
+orig(other) has only one value
+===========================================================================
+examples.MinFinder$T.equals(java.lang.Object):::EXIT;condition="not(return == true)"
+return == false
+===========================================================================
+examples.MinFinder$T.getVal():::ENTER
+===========================================================================
+examples.MinFinder$T.getVal():::EXIT
+this.val == return
+return == orig(this.val)
+===========================================================================
+examples.MinFinder:::OBJECT
+===========================================================================
+examples.MinFinder.MinFinder():::EXIT
+this._var88[] == []
+this._var88[].getClass().getName() == []
+this._var811 == null
+===========================================================================
+examples.MinFinder.MinFinder(java.util.ArrayList):::ENTER
+size(xs[]) one of { 0, 1, 2 }
+===========================================================================
+examples.MinFinder.MinFinder(java.util.ArrayList):::EXIT
+this._var88 == orig(xs)
+xs[] == orig(xs[])
+size(this._var88[]) one of { 0, 1, 2 }
+===========================================================================
+examples.MinFinder.add(examples.MinFinder$T):::ENTER
+this._var88[].getClass().getName() elements == examples.MinFinder.T.class
+this._var811.val one of { -1461, 347 }
+size(this._var88[]) one of { 0, 1, 2 }
+===========================================================================
+examples.MinFinder.add(examples.MinFinder$T):::EXIT
+this._var88 == orig(this._var88)
+x.val == orig(x.val)
+size(this._var88[])-1 == orig(size(this._var88[]))
+size(this._var88[]) one of { 1, 2, 3 }
+this._var811.val <= x.val
+===========================================================================
+examples.MinFinder.chval(examples.MinFinder$T, int):::ENTER
+this._var88[].getClass().getName() one of { [null, examples.MinFinder.T], [examples.MinFinder.T, examples.MinFinder.T] }
+this._var811.val one of { 0, 12 }
+x == null
+nv one of { -1854, 0, 12 }
+size(this._var88[]) == 2
+===========================================================================
+examples.MinFinder.chval(examples.MinFinder$T, int):::EXIT
+this._var88 == orig(this._var88)
+this._var88[] == orig(this._var88[])
+this._var811 == orig(this._var811)
+this._var811.val == orig(this._var811.val)
+this._var88[].getClass().getName() one of { [null, examples.MinFinder.T], [examples.MinFinder.T, examples.MinFinder.T] }
+this._var811.val one of { 0, 12 }
+size(this._var88[]) == 2
+===========================================================================
+examples.MinFinder.clear():::ENTER
+this._var88[] == []
+this._var88[].getClass().getName() == []
+this._var811 == null
+===========================================================================
+examples.MinFinder.clear():::EXIT
+this._var88[] == orig(this._var88[])
+this._var88[].getClass().getName() == orig(this._var88[].getClass().getName())
+this._var811 == orig(this._var811)
+this._var88[] == []
+this._var88[].getClass().getName() == []
+this._var811 == null
+this._var88[] is the reverse of orig(this._var88[])
+===========================================================================
+examples.MinFinder.findMin():::ENTER
+this._var88[].getClass().getName() elements == examples.MinFinder.T.class
+this._var88[].getClass().getName() one of { [], [examples.MinFinder.T] }
+this._var811.val one of { -1, 0, 3111 }
+size(this._var88[]) one of { 0, 1 }
+===========================================================================
+examples.MinFinder.findMin():::EXIT
+this._var88 == orig(this._var88)
+this._var88[] == orig(this._var88[])
+this._var811 == return
+this._var811.val == return.val
+return == orig(this._var811)
+return.val == orig(this._var811.val)
+this._var88[].getClass().getName() elements == examples.MinFinder.T.class
+this._var88[].getClass().getName() one of { [], [examples.MinFinder.T] }
+return.val one of { -1, 0, 3111 }
+size(this._var88[]) one of { 0, 1 }
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::ENTER
+args has only one value
+args.getClass().getName() == java.lang.String[].class
+args[] == []
+args[].toString == []
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::EXIT
+args[] == orig(args[])
+args[] == []
+args[].toString == []
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

@@ -1,0 +1,27 @@
+===========================================================================
+examples.RingBuffer:::OBJECT
+this.data != null
+this.start == 1 || this.start == 2 || this.start == 3
+this.free == 1 || this.free == 2 || this.free == 3
+this.capacity_ >= 1
+daikon.Quant.size(this.data) >= 1
+===========================================================================
+examples.RingBuffer.remove():::ENTER
+daikon.Quant.eltsEqual(this.data, null)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.data), null)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, null }) || daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, null, null })
+this.start == 1 || this.start == 2
+this.capacity_ == 1 || this.capacity_ == 2
+daikon.Quant.size(this.data) == 2 || daikon.Quant.size(this.data) == 3
+===========================================================================
+examples.RingBuffer.remove():::EXIT
+this.data == \old(this.data)
+daikon.Quant.pairwiseEqual(this.data, \old(this.data))
+this.start == this.free
+this.start == \old(this.free)
+this.capacity_ == \old(this.capacity_)
+daikon.Quant.eltsEqual(this.data, null)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.data), null)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, null }) || daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, null, null })
+this.capacity_ == 1 || this.capacity_ == 2
+daikon.Quant.size(this.data) == 2 || daikon.Quant.size(this.data) == 3

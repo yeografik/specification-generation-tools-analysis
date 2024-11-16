@@ -1,0 +1,78 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.rules.TestRule - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.runners.model.Statement - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.LoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.ILoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.event.LoggingEvent - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.SubstituteLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.Logger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.Util - classfile version (49) is out of date and may not be processed correctly.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLogger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.MarkerIgnoringBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NamedLoggerBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+===========================================================================
+examples.Structure:::OBJECT
+this.var62 <= 2
+===========================================================================
+examples.Structure.Structure():::EXIT
+this.var62 == 1
+===========================================================================
+examples.Structure.Structure(int):::ENTER
+x == -964
+===========================================================================
+examples.Structure.Structure(int):::EXIT
+this.var62 == -963
+===========================================================================
+examples.Structure.clear():::ENTER
+this.var62 one of { -963, 0 }
+===========================================================================
+examples.Structure.clear():::EXIT
+this.var62 == 1
+===========================================================================
+examples.Structure.foo():::ENTER
+===========================================================================
+examples.Structure.foo():::EXIT
+this.var62 == return
+return == orig(this.var62)
+===========================================================================
+examples.Structure.setX(int):::ENTER
+this.var62 one of { -963, 1 }
+y one of { -1, 1 }
+===========================================================================
+examples.Structure.setX(int):::EXIT
+this.var62 one of { 0, 2 }
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::ENTER
+args has only one value
+args.getClass().getName() == java.lang.String[].class
+args[] == []
+args[].toString == []
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::EXIT
+args[] == orig(args[])
+args[] == []
+args[].toString == []
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

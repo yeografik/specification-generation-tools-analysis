@@ -1,0 +1,680 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.rules.TestRule - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.runners.model.Statement - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.LoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.ILoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.event.LoggingEvent - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.SubstituteLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.Logger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.Util - classfile version (49) is out of date and may not be processed correctly.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLogger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.MarkerIgnoringBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NamedLoggerBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.internal.AssumptionViolatedException - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.SelfDescribing - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Matcher - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Description - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 4 times.  Unmatched entries are ignored!
+Unterminated calls:
+  examples.Composite.addChild(examples.Composite) : 4 invocations
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+examples.Composite:::OBJECT
+this.children.getClass().getName() == this.parent.children.getClass().getName()
+this.children.getClass().getName() == this.parent.parent.children.getClass().getName()
+this.children.getClass().getName() == this.parent.max_child.children.getClass().getName()
+this.children.getClass().getName() == this.max_child.children.getClass().getName()
+this.children.getClass().getName() == this.max_child.max_child.children.getClass().getName()
+this.parent == this.parent.parent.max_child
+this.parent.children.getClass().getName() == this.parent.parent.children.getClass().getName()
+this.parent.children.getClass().getName() == this.parent.max_child.children.getClass().getName()
+this.parent.children.getClass().getName() == this.max_child.children.getClass().getName()
+this.parent.parent == this.max_child.max_child
+this.parent.parent.value == this.parent.value
+this.parent.parent.value == this.parent.init_value
+this.parent.parent.ancestors.getClass().getName() == this.parent.ancestors.getClass().getName()
+this.parent.parent.ancestors.getClass().getName() == this.ancestors.getClass().getName()
+this.parent.value == this.parent.max_child.value
+this.parent.value == this.max_child.value
+this.parent.value == this.max_child.init_value
+this.parent.ancestors.getClass().getName() == this.parent.max_child.ancestors.getClass().getName()
+this.parent.ancestors.getClass().getName() == this.ancestors.getClass().getName()
+this.parent.ancestors.getClass().getName() == this.max_child.ancestors.getClass().getName()
+this.parent.max_child == this.max_child.parent.max_child
+this.parent.max_child.children == this.max_child.children
+this.parent.max_child.children.getClass().getName() == this.max_child.children.getClass().getName()
+this.parent.max_child.parent == this.max_child.parent
+this.parent.max_child.value == this.value
+this.parent.max_child.value == this.max_child.value
+this.parent.max_child.value == this.max_child.init_value
+this.parent.max_child.ancestors == this.max_child.ancestors
+this.parent.max_child.ancestors.getClass().getName() == this.ancestors.getClass().getName()
+this.parent.max_child.ancestors.getClass().getName() == this.max_child.ancestors.getClass().getName()
+this.value == this.max_child.init_value
+this.ancestors.getClass().getName() == this.max_child.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == this.max_child.max_child.ancestors.getClass().getName()
+this.max_child == this.max_child.parent.max_child
+this.max_child == this.max_child.max_child.parent
+this.max_child.children.getClass().getName() == this.max_child.parent.children.getClass().getName()
+this.max_child.children.getClass().getName() == this.max_child.max_child.children.getClass().getName()
+this.max_child.parent.value == this.max_child.init_value
+this.max_child.parent.ancestors.getClass().getName() == this.max_child.ancestors.getClass().getName()
+this.max_child.parent.max_child == this.max_child.max_child.parent
+this.max_child.value == this.max_child.max_child.value
+this.max_child.ancestors.getClass().getName() == this.max_child.max_child.ancestors.getClass().getName()
+this.children != null
+this.children[] elements != null
+this.children[].getClass().getName() elements == examples.Composite.class
+this.children[].getClass().getName() one of { [], [examples.Composite] }
+this.children.getClass().getName() == java.util.LinkedList.class
+this.parent.children[] elements has only one value
+this.parent.children[].getClass().getName() elements == examples.Composite.class
+this.parent.children[].getClass().getName() one of { [], [examples.Composite] }
+this.parent.children.getClass().getName() == java.util.LinkedList.class
+this.parent.parent.children has only one value
+this.parent.parent.children[] contains no nulls and has only one value, of length 1
+this.parent.parent.children[] elements has only one value
+this.parent.parent.children[].getClass().getName() == [examples.Composite]
+this.parent.parent.children[].getClass().getName() elements == examples.Composite.class
+this.parent.parent.children.getClass().getName() == java.util.LinkedList.class
+this.parent.parent.parent == null
+this.parent.parent.value == 0
+this.parent.parent.init_value == -2210
+this.parent.parent.ancestors has only one value
+this.parent.parent.ancestors.getClass().getName() == java.util.HashSet.class
+this.parent.parent.max_child has only one value
+this.parent.value <= 1
+this.parent.ancestors.getClass().getName() == java.util.HashSet.class
+this.parent.max_child.children[] elements has only one value
+this.parent.max_child.children[].getClass().getName() elements == examples.Composite.class
+this.parent.max_child.children[].getClass().getName() one of { [], [examples.Composite] }
+this.parent.max_child.children.getClass().getName() == java.util.LinkedList.class
+this.parent.max_child.value one of { 0, 1 }
+this.parent.max_child.ancestors.getClass().getName() == java.util.HashSet.class
+this.parent.max_child.max_child == null
+this.value <= 1
+this.init_value <= 1
+this.ancestors != null
+this.ancestors.getClass().getName() == java.util.HashSet.class
+this.max_child.children[] elements has only one value
+this.max_child.children[].getClass().getName() elements == examples.Composite.class
+this.max_child.children[].getClass().getName() one of { [], [examples.Composite] }
+this.max_child.children.getClass().getName() == java.util.LinkedList.class
+this.max_child.parent.children[].getClass().getName() == [examples.Composite]
+this.max_child.parent.children[].getClass().getName() elements == examples.Composite.class
+this.max_child.parent.init_value one of { -2210, 0 }
+this.max_child.value one of { 0, 1 }
+this.max_child.init_value one of { 0, 1 }
+this.max_child.ancestors.getClass().getName() == java.util.HashSet.class
+this.max_child.max_child.children has only one value
+this.max_child.max_child.children[] == []
+this.max_child.max_child.children[].getClass().getName() == []
+this.max_child.max_child.children.getClass().getName() == java.util.LinkedList.class
+this.max_child.max_child.parent has only one value
+this.max_child.max_child.value == 1
+this.max_child.max_child.ancestors has only one value
+this.max_child.max_child.ancestors.getClass().getName() == java.util.HashSet.class
+this.max_child.max_child.max_child == null
+size(this.children[]) one of { 0, 1 }
+size(this.parent.children[]) one of { 0, 1 }
+size(this.parent.parent.children[]) == 1
+size(this.parent.max_child.children[]) one of { 0, 1 }
+size(this.max_child.children[]) one of { 0, 1 }
+size(this.max_child.parent.children[]) == 1
+this.children.getClass().getName() != this.parent.ancestors.getClass().getName()
+this.children.getClass().getName() != this.ancestors.getClass().getName()
+this.max_child.max_child.children.getClass().getName() in this.parent.children[].getClass().getName()
+this.max_child.max_child.ancestors.getClass().getName() in this.parent.children[].getClass().getName()
+this.parent.children.getClass().getName() != this.parent.ancestors.getClass().getName()
+this.parent.children.getClass().getName() != this.ancestors.getClass().getName()
+this.parent.children.getClass().getName() in this.max_child.max_child.children[].getClass().getName()
+this.parent.value >= this.parent.init_value
+this.parent.ancestors.getClass().getName() in this.max_child.max_child.children[].getClass().getName()
+this.max_child.max_child.children.getClass().getName() in this.parent.max_child.children[].getClass().getName()
+this.max_child.max_child.ancestors.getClass().getName() in this.parent.max_child.children[].getClass().getName()
+this.parent.max_child.children.getClass().getName() in this.max_child.max_child.children[].getClass().getName()
+this.parent.max_child.ancestors.getClass().getName() in this.max_child.max_child.children[].getClass().getName()
+this.value >= this.init_value
+this.max_child.init_value == this.value**2
+this.value == this.max_child.init_value**2
+===========================================================================
+examples.Composite.Composite(int):::ENTER
+===========================================================================
+examples.Composite.Composite(int):::EXIT
+this.parent == this.max_child
+this.value == this.init_value
+this.value == orig(v)
+this.children[] == []
+this.children[].getClass().getName() == []
+this.parent == null
+===========================================================================
+examples.Composite.addChild(examples.Composite):::ENTER
+this == this.parent.max_child
+this.children == this.parent.max_child.children
+this.children.getClass().getName() == c.children.getClass().getName()
+this.parent == this.parent.max_child.parent
+this.parent.parent == this.max_child
+this.parent.value == this.value
+this.parent.max_child.ancestors == this.ancestors
+this.value == this.init_value
+this.ancestors.getClass().getName() == c.ancestors.getClass().getName()
+this.max_child == c.parent
+c.value == c.init_value
+this.children[] == []
+this.children[].getClass().getName() == []
+this.parent.children has only one value
+this.parent.children[] contains no nulls and has only one value, of length 1
+this.parent.children[].getClass().getName() == [examples.Composite]
+this.parent.parent == null
+this.parent.value == 0
+this.parent.init_value == -2210
+this.parent.ancestors has only one value
+this.parent.max_child has only one value
+this.parent.max_child.children has only one value
+this.parent.max_child.children[] == []
+this.parent.max_child.children[].getClass().getName() == []
+this.parent.max_child.parent has only one value
+this.parent.max_child.ancestors has only one value
+this.max_child == null
+c.children[] == []
+c.children[].getClass().getName() == []
+c.max_child == null
+size(this.parent.children[]) == 1
+===========================================================================
+examples.Composite.addChild(examples.Composite):::EXIT
+this.children == this.max_child.parent.children
+this.children == c.parent.children
+this.children == orig(this.children)
+this.children == orig(this.parent.max_child.children)
+this.children.getClass().getName() == c.children.getClass().getName()
+this.children.getClass().getName() == c.parent.children.getClass().getName()
+this.children.getClass().getName() == orig(this.children.getClass().getName())
+this.children.getClass().getName() == orig(c.children.getClass().getName())
+this.parent == this.max_child.parent.parent
+this.parent == c.parent.parent
+this.parent == orig(this.parent)
+this.parent == orig(this.parent.max_child.parent)
+this.parent.children == orig(this.parent.children)
+this.parent.children[] == orig(this.parent.children[])
+this.parent.children.getClass().getName() == orig(this.parent.children.getClass().getName())
+this.parent.children.getClass().getName() == orig(this.parent.max_child.children.getClass().getName())
+this.parent.parent == orig(this.parent.parent)
+this.parent.parent == orig(this.max_child)
+this.parent.value == this.value
+this.parent.value == c.value
+this.parent.ancestors == orig(this.parent.ancestors)
+this.parent.ancestors.getClass().getName() == orig(this.parent.ancestors.getClass().getName())
+this.parent.ancestors.getClass().getName() == orig(this.parent.max_child.ancestors.getClass().getName())
+this.parent.max_child == this.max_child
+this.parent.max_child == orig(c)
+this.parent.max_child.children == c.children
+this.parent.max_child.children[] == orig(this.parent.max_child.children[])
+this.parent.max_child.parent == c.parent
+this.parent.max_child.parent == orig(this)
+this.parent.max_child.parent == orig(this.parent.max_child)
+this.parent.max_child.ancestors == c.ancestors
+this.parent.max_child.max_child == orig(this.parent.max_child.max_child)
+this.value == this.max_child.value
+this.value == c.parent.value
+this.init_value == this.max_child.parent.init_value
+this.init_value == c.parent.init_value
+this.init_value == orig(this.parent.value)
+this.init_value == orig(this.value)
+this.init_value == orig(this.init_value)
+this.ancestors == this.max_child.parent.ancestors
+this.ancestors == c.parent.ancestors
+this.ancestors == orig(this.parent.max_child.ancestors)
+this.ancestors == orig(this.ancestors)
+this.ancestors.getClass().getName() == c.parent.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == c.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == orig(this.ancestors.getClass().getName())
+this.ancestors.getClass().getName() == orig(c.ancestors.getClass().getName())
+this.max_child == c.parent.max_child
+this.max_child.children == c.children
+this.max_child.parent == c.parent
+this.max_child.parent == orig(this)
+this.max_child.parent.children == orig(this.parent.max_child.children)
+this.max_child.parent.parent == orig(this.parent.max_child.parent)
+this.max_child.parent.value == this.max_child.value
+this.max_child.parent.init_value == orig(this.parent.value)
+this.max_child.parent.ancestors == orig(this.parent.max_child.ancestors)
+this.max_child.parent.max_child == orig(c)
+this.max_child.value == this.max_child.init_value
+this.max_child.value == c.value
+this.max_child.ancestors == c.ancestors
+this.max_child.max_child == orig(this.max_child)
+c.children == orig(c.children)
+c.children[] == orig(c.children[])
+c.parent == orig(this)
+c.value == c.init_value
+c.value == orig(c.value)
+c.value == orig(c.init_value)
+c.ancestors == orig(c.ancestors)
+c.max_child == orig(c.max_child)
+size(this.children[])-1 == orig(size(this.children[]))
+this.children[].getClass().getName() == [examples.Composite]
+this.parent.children has only one value
+this.parent.children[] contains no nulls and has only one value, of length 1
+this.parent.children[].getClass().getName() == [examples.Composite]
+this.parent.parent == null
+this.parent.value == 1
+this.parent.init_value == -2210
+this.parent.ancestors has only one value
+this.parent.max_child has only one value
+this.parent.max_child.children has only one value
+this.parent.max_child.children[] == []
+this.parent.max_child.children[].getClass().getName() == []
+this.parent.max_child.parent has only one value
+this.parent.max_child.ancestors has only one value
+this.max_child.children[] == []
+this.max_child.children[].getClass().getName() == []
+this.max_child.max_child == null
+c.children[] == []
+c.children[].getClass().getName() == []
+c.parent.children[].getClass().getName() == [examples.Composite]
+c.parent.children[].getClass().getName() elements == examples.Composite.class
+c.max_child == null
+size(this.children[]) == 1
+size(this.parent.children[]) == 1
+size(c.parent.children[]) == 1
+===========================================================================
+examples.Composite.children():::ENTER
+this.parent == this.max_child
+this.value == this.init_value
+this.children[] elements has only one value
+this.parent == null
+this.value == -2210
+===========================================================================
+examples.Composite.children():::EXIT
+this.children == orig(this.children)
+this.children[] == orig(this.children[])
+this.children.getClass().getName() == orig(this.children.getClass().getName())
+this.parent == this.max_child
+this.parent == orig(this.parent)
+this.parent == orig(this.max_child)
+this.value == this.init_value
+this.value == orig(this.value)
+this.value == orig(this.init_value)
+this.ancestors == orig(this.ancestors)
+this.ancestors.getClass().getName() == return.getClass().getName()
+return.getClass().getName() == orig(this.ancestors.getClass().getName())
+this.children[] elements has only one value
+this.parent == null
+this.value == -2210
+return.getClass().getName() == java.util.HashSet.class
+===========================================================================
+examples.Composite.setParent(examples.Composite):::ENTER
+this.children.getClass().getName() == p.children.getClass().getName()
+this.children.getClass().getName() == p.parent.children.getClass().getName()
+this.parent == this.max_child
+this.value == this.init_value
+this.ancestors.getClass().getName() == p.parent.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == p.ancestors.getClass().getName()
+p == p.parent.max_child
+p.parent.value == p.value
+p.value == p.init_value
+this.children[] == []
+this.children[].getClass().getName() == []
+this.parent == null
+p.children[] == []
+p.children[].getClass().getName() == []
+p.parent.children has only one value
+p.parent.children[] contains no nulls and has only one value, of length 1
+p.parent.children[] elements has only one value
+p.parent.children[].getClass().getName() == [examples.Composite]
+p.parent.children[].getClass().getName() elements == examples.Composite.class
+p.parent.children.getClass().getName() == java.util.LinkedList.class
+p.parent.parent == null
+p.parent.value == 0
+p.parent.init_value == -2210
+p.parent.ancestors has only one value
+p.parent.ancestors.getClass().getName() == java.util.HashSet.class
+p.parent.max_child has only one value
+p.max_child == null
+size(p.parent.children[]) == 1
+===========================================================================
+examples.Composite.setParent(examples.Composite):::EXIT
+this.children == orig(this.children)
+this.children[] == orig(this.children[])
+this.children.getClass().getName() == p.children.getClass().getName()
+this.children.getClass().getName() == p.parent.children.getClass().getName()
+this.children.getClass().getName() == orig(this.children.getClass().getName())
+this.children.getClass().getName() == orig(p.children.getClass().getName())
+this.parent == p.parent.max_child
+this.parent == orig(p)
+this.parent.children == p.children
+this.parent.parent == p.parent
+this.parent.parent.children == p.parent.children
+this.parent.parent.children.getClass().getName() == p.parent.children.getClass().getName()
+this.parent.parent.value == p.parent.value
+this.parent.parent.init_value == p.parent.init_value
+this.parent.parent.ancestors == p.parent.ancestors
+this.parent.parent.ancestors.getClass().getName() == p.parent.ancestors.getClass().getName()
+this.parent.parent.max_child == p.parent.max_child
+this.parent.value == p.value
+this.parent.init_value == p.value
+this.parent.ancestors == p.ancestors
+this.parent.max_child == this.max_child
+this.value == this.init_value
+this.value == orig(this.value)
+this.value == orig(this.init_value)
+this.ancestors == orig(this.ancestors)
+this.ancestors.getClass().getName() == p.parent.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == p.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == orig(this.ancestors.getClass().getName())
+this.ancestors.getClass().getName() == orig(p.ancestors.getClass().getName())
+this.max_child == orig(this.parent)
+this.max_child == orig(this.max_child)
+p.children == orig(p.children)
+p.children[] == orig(p.children[])
+p.parent == orig(p.parent)
+p.parent.children == orig(p.parent.children)
+p.parent.children[] == orig(p.parent.children[])
+p.parent.children.getClass().getName() == orig(p.parent.children.getClass().getName())
+p.parent.parent == orig(p.parent.parent)
+p.parent.value == p.value
+p.parent.value == orig(p.parent.value)
+p.parent.init_value == orig(p.parent.init_value)
+p.parent.ancestors == orig(p.parent.ancestors)
+p.parent.ancestors.getClass().getName() == orig(p.parent.ancestors.getClass().getName())
+p.parent.max_child == orig(p.parent.max_child)
+p.value == p.init_value
+p.value == orig(p.value)
+p.value == orig(p.init_value)
+p.ancestors == orig(p.ancestors)
+p.max_child == orig(p.max_child)
+this.children[] == []
+this.children[].getClass().getName() == []
+this.parent.children[] == []
+this.parent.children[].getClass().getName() == []
+this.max_child == null
+p.children[] == []
+p.children[].getClass().getName() == []
+p.parent.children has only one value
+p.parent.children[] contains no nulls and has only one value, of length 1
+p.parent.children[] elements has only one value
+p.parent.children[].getClass().getName() == [examples.Composite]
+p.parent.children[].getClass().getName() elements == examples.Composite.class
+p.parent.children.getClass().getName() == java.util.LinkedList.class
+p.parent.parent == null
+p.parent.value == 0
+p.parent.init_value == -2210
+p.parent.ancestors has only one value
+p.parent.ancestors.getClass().getName() == java.util.HashSet.class
+p.parent.max_child has only one value
+p.max_child == null
+size(p.parent.children[]) == 1
+===========================================================================
+examples.Composite.update(examples.Composite):::ENTER
+this == this.parent.max_child
+this == this.max_child.parent
+this.children == this.parent.max_child.children
+this.children == this.max_child.parent.children
+this.children.getClass().getName() == c.children.getClass().getName()
+this.children.getClass().getName() == c.parent.children.getClass().getName()
+this.parent == this.parent.max_child.parent
+this.parent == this.max_child.parent.parent
+this.parent.parent == this.max_child
+this.parent.parent == c.parent.max_child
+this.parent.value == this.value
+this.parent.value == this.init_value
+this.parent.value == c.parent.value
+this.parent.max_child == c.parent
+this.parent.max_child.children == c.parent.children
+this.parent.max_child.parent == c.parent.parent
+this.parent.max_child.ancestors == this.ancestors
+this.parent.max_child.ancestors == c.parent.ancestors
+this.value == c.parent.init_value
+this.init_value == this.max_child.parent.init_value
+this.ancestors == this.max_child.parent.ancestors
+this.ancestors.getClass().getName() == c.parent.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == c.ancestors.getClass().getName()
+this.max_child.children == c.parent.children
+this.max_child.parent == c.parent.parent
+this.max_child.parent.max_child == c.parent
+this.max_child.value == c.parent.value
+this.max_child.value == c.value
+this.max_child.ancestors == c.parent.ancestors
+this.max_child.max_child == c
+this.max_child.max_child == c.parent.max_child
+this.max_child.max_child.children == c.children
+this.max_child.max_child.ancestors == c.ancestors
+c.value == c.init_value
+this.children[].getClass().getName() == [examples.Composite]
+this.parent.children has only one value
+this.parent.children[] contains no nulls and has only one value, of length 1
+this.parent.children[].getClass().getName() == [examples.Composite]
+this.parent.parent == null
+this.parent.value == 0
+this.parent.init_value == -2210
+this.parent.ancestors has only one value
+this.parent.max_child has only one value
+this.parent.max_child.children has only one value
+this.parent.max_child.children[] contains no nulls and has only one value, of length 1
+this.parent.max_child.children[].getClass().getName() == [examples.Composite]
+this.parent.max_child.parent has only one value
+this.parent.max_child.ancestors has only one value
+this.max_child.children has only one value
+this.max_child.children[] contains no nulls and has only one value, of length 1
+this.max_child.children[].getClass().getName() == [examples.Composite]
+this.max_child.parent has only one value
+this.max_child.parent.children has only one value
+this.max_child.parent.children[] contains no nulls and has only one value, of length 1
+this.max_child.parent.children[] elements has only one value
+this.max_child.parent.parent == null
+this.max_child.parent.init_value == -2210
+this.max_child.parent.ancestors has only one value
+this.max_child.parent.max_child has only one value
+this.max_child.value == 1
+this.max_child.init_value == 0
+this.max_child.ancestors has only one value
+this.max_child.max_child has only one value
+c.children[] == []
+c.children[].getClass().getName() == []
+c.parent.children[].getClass().getName() == [examples.Composite]
+c.parent.children[].getClass().getName() elements == examples.Composite.class
+c.max_child == null
+size(this.children[]) == 1
+size(this.parent.children[]) == 1
+size(this.parent.max_child.children[]) == 1
+size(this.max_child.children[]) == 1
+size(c.parent.children[]) == 1
+this.max_child.children.getClass().getName() in this.parent.children[].getClass().getName()
+this.max_child.ancestors.getClass().getName() in this.parent.children[].getClass().getName()
+this.parent.children.getClass().getName() in this.max_child.children[].getClass().getName()
+this.parent.children.getClass().getName() in this.max_child.parent.children[].getClass().getName()
+this.parent.ancestors.getClass().getName() in this.max_child.children[].getClass().getName()
+this.parent.ancestors.getClass().getName() in this.max_child.parent.children[].getClass().getName()
+this.max_child.children.getClass().getName() in this.parent.max_child.children[].getClass().getName()
+this.max_child.ancestors.getClass().getName() in this.parent.max_child.children[].getClass().getName()
+this.value <= c.parent.value
+this.init_value <= c.parent.value
+2211 * this.value - this.init_value - 2210 * c.parent.value == 0
+===========================================================================
+examples.Composite.update(examples.Composite):::EXIT
+this.children == orig(this.children)
+this.children == orig(this.parent.max_child.children)
+this.children == orig(this.max_child.parent.children)
+this.children[] == orig(this.children[])
+this.children.getClass().getName() == c.children.getClass().getName()
+this.children.getClass().getName() == c.parent.children.getClass().getName()
+this.children.getClass().getName() == orig(this.children.getClass().getName())
+this.children.getClass().getName() == orig(this.max_child.children.getClass().getName())
+this.children.getClass().getName() == orig(c.children.getClass().getName())
+this.children.getClass().getName() == orig(c.parent.children.getClass().getName())
+this.parent == orig(this.parent)
+this.parent == orig(this.parent.max_child.parent)
+this.parent == orig(this.max_child.parent.parent)
+this.parent.children == orig(this.parent.children)
+this.parent.children[] == orig(this.parent.children[])
+this.parent.children.getClass().getName() == orig(this.parent.children.getClass().getName())
+this.parent.children.getClass().getName() == orig(this.parent.max_child.children.getClass().getName())
+this.parent.parent == orig(this.parent.parent)
+this.parent.parent == orig(this.max_child)
+this.parent.parent == orig(c.parent.max_child)
+this.parent.value == this.value
+this.parent.value == c.value
+this.parent.ancestors == orig(this.parent.ancestors)
+this.parent.ancestors.getClass().getName() == orig(this.parent.ancestors.getClass().getName())
+this.parent.ancestors.getClass().getName() == orig(this.parent.max_child.ancestors.getClass().getName())
+this.parent.max_child == this.max_child
+this.parent.max_child == orig(c)
+this.parent.max_child.children == c.children
+this.parent.max_child.parent == c.parent
+this.parent.max_child.parent == orig(this)
+this.parent.max_child.parent == orig(this.parent.max_child)
+this.parent.max_child.ancestors == c.ancestors
+this.parent.max_child.max_child == orig(this.parent.max_child.max_child)
+this.value == this.max_child.value
+this.value == c.parent.value
+this.value == orig(this.max_child.value)
+this.init_value == orig(this.parent.value)
+this.init_value == orig(this.init_value)
+this.init_value == orig(this.max_child.parent.init_value)
+this.ancestors == orig(this.parent.max_child.ancestors)
+this.ancestors == orig(this.ancestors)
+this.ancestors == orig(this.max_child.parent.ancestors)
+this.ancestors.getClass().getName() == c.parent.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == c.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == orig(this.ancestors.getClass().getName())
+this.ancestors.getClass().getName() == orig(this.max_child.ancestors.getClass().getName())
+this.ancestors.getClass().getName() == orig(c.parent.ancestors.getClass().getName())
+this.ancestors.getClass().getName() == orig(c.ancestors.getClass().getName())
+this.max_child == c.parent.max_child
+this.max_child == orig(this.max_child.max_child)
+this.max_child.children == c.children
+this.max_child.children == orig(this.max_child.max_child.children)
+this.max_child.children.getClass().getName() == orig(this.max_child.children.getClass().getName())
+this.max_child.parent == c.parent
+this.max_child.parent == orig(this.max_child.parent.max_child)
+this.max_child.parent.children == c.parent.children
+this.max_child.parent.children == orig(this.parent.max_child.children)
+this.max_child.parent.children == orig(this.max_child.children)
+this.max_child.parent.children[].getClass().getName() == orig(this.max_child.parent.children[].getClass().getName())
+this.max_child.parent.parent == c.parent.parent
+this.max_child.parent.parent == orig(this.parent.max_child.parent)
+this.max_child.parent.parent == orig(this.max_child.parent)
+this.max_child.parent.value == this.max_child.value
+this.max_child.parent.init_value == c.parent.init_value
+this.max_child.parent.init_value == orig(this.parent.value)
+this.max_child.parent.init_value == orig(this.max_child.init_value)
+this.max_child.parent.ancestors == c.parent.ancestors
+this.max_child.parent.ancestors == orig(this.parent.max_child.ancestors)
+this.max_child.parent.ancestors == orig(this.max_child.ancestors)
+this.max_child.parent.max_child == orig(this.max_child.max_child)
+this.max_child.parent.max_child == orig(c)
+this.max_child.value == this.max_child.init_value
+this.max_child.value == c.value
+this.max_child.value == orig(this.max_child.value)
+this.max_child.ancestors == c.ancestors
+this.max_child.ancestors == orig(this.max_child.max_child.ancestors)
+this.max_child.ancestors.getClass().getName() == orig(this.max_child.ancestors.getClass().getName())
+this.max_child.max_child == orig(this.max_child.parent.parent)
+c.children == orig(this.max_child.max_child.children)
+c.children == orig(c.children)
+c.children[] == orig(c.children[])
+c.parent == orig(this.max_child.parent.max_child)
+c.parent == orig(c.parent)
+c.parent.children == orig(this.parent.max_child.children)
+c.parent.children == orig(this.max_child.children)
+c.parent.children == orig(c.parent.children)
+c.parent.children[] == orig(c.parent.children[])
+c.parent.parent == orig(this.parent.max_child.parent)
+c.parent.parent == orig(this.max_child.parent)
+c.parent.parent == orig(c.parent.parent)
+c.parent.init_value == orig(this.parent.value)
+c.parent.init_value == orig(this.value)
+c.parent.init_value == orig(this.max_child.init_value)
+c.parent.init_value == orig(c.parent.init_value)
+c.parent.ancestors == orig(this.parent.max_child.ancestors)
+c.parent.ancestors == orig(this.max_child.ancestors)
+c.parent.ancestors == orig(c.parent.ancestors)
+c.value == c.init_value
+c.value == orig(this.max_child.value)
+c.value == orig(c.value)
+c.value == orig(c.init_value)
+c.ancestors == orig(this.max_child.max_child.ancestors)
+c.ancestors == orig(c.ancestors)
+c.max_child == orig(c.max_child)
+size(this.parent.max_child.children[]) == orig(size(this.parent.max_child.children[]))-1
+size(this.max_child.children[]) == orig(size(this.max_child.children[]))-1
+size(this.max_child.parent.children[]) == orig(size(this.max_child.parent.children[]))
+this.children[].getClass().getName() == [examples.Composite]
+this.parent.children has only one value
+this.parent.children[] contains no nulls and has only one value, of length 1
+this.parent.children[].getClass().getName() == [examples.Composite]
+this.parent.parent == null
+this.parent.value == 1
+this.parent.init_value == -2210
+this.parent.ancestors has only one value
+this.parent.max_child has only one value
+this.parent.max_child.children has only one value
+this.parent.max_child.children[] == []
+this.parent.max_child.children[].getClass().getName() == []
+this.parent.max_child.parent has only one value
+this.parent.max_child.ancestors has only one value
+this.max_child.children[] == []
+this.max_child.children[].getClass().getName() == []
+this.max_child.max_child == null
+c.children[] == []
+c.children[].getClass().getName() == []
+c.parent.children[].getClass().getName() == [examples.Composite]
+c.parent.children[].getClass().getName() elements == examples.Composite.class
+c.max_child == null
+size(this.children[]) == 1
+size(this.parent.children[]) == 1
+size(c.parent.children[]) == 1
+orig(this.max_child.children.getClass().getName()) in this.parent.children[].getClass().getName()
+orig(this.max_child.ancestors.getClass().getName()) in this.parent.children[].getClass().getName()
+this.parent.children.getClass().getName() in orig(this.max_child.children[].getClass().getName())
+this.parent.children.getClass().getName() in orig(this.max_child.parent.children[].getClass().getName())
+this.parent.children.getClass().getName() in orig(this.max_child.max_child.children[].getClass().getName())
+this.parent.ancestors.getClass().getName() in orig(this.max_child.children[].getClass().getName())
+this.parent.ancestors.getClass().getName() in orig(this.max_child.parent.children[].getClass().getName())
+this.parent.ancestors.getClass().getName() in orig(this.max_child.max_child.children[].getClass().getName())
+orig(this.max_child.children.getClass().getName()) in this.parent.max_child.children[].getClass().getName()
+orig(this.max_child.ancestors.getClass().getName()) in this.parent.max_child.children[].getClass().getName()
+this.value >= c.parent.init_value
+this.value >= c.value
+this.value >= orig(c.parent.value)
+this.init_value <= c.parent.init_value
+this.init_value <= orig(c.parent.value)
+this.max_child.parent.children[].getClass().getName() == orig(this.max_child.parent.children[].getClass().getName()) (elementwise)
+c.parent.init_value <= orig(c.parent.value)
+this.init_value - 2211 * c.parent.init_value + 2210 * orig(c.parent.value) == 0
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::ENTER
+args has only one value
+args.getClass().getName() == java.lang.String[].class
+args[] == []
+args[].toString == []
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::EXIT
+args[] == orig(args[])
+args[] == []
+args[].toString == []
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

@@ -1,0 +1,115 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.rules.TestRule - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.runners.model.Statement - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.LoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.ILoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.event.LoggingEvent - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.SubstituteLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.Logger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.Util - classfile version (49) is out of date and may not be processed correctly.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLogger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.MarkerIgnoringBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NamedLoggerBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.internal.AssumptionViolatedException - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.SelfDescribing - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Matcher - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Description - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 1 time.  Unmatched entries are ignored!
+Unterminated calls:
+  examples.Polyupdate.Polyupdate(java.util.ArrayList, int) : 1 invocation
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+examples.Polyupdate:::OBJECT
+===========================================================================
+examples.Polyupdate.Polyupdate():::EXIT
+this._var23 == this._var426
+this._var23 == 0
+===========================================================================
+examples.Polyupdate.Polyupdate(java.util.ArrayList, int):::ENTER
+x[] elements has only one value
+x[].getClass().getName() elements == java.lang.Integer.class
+x[].getClass().getName() one of { [], [java.lang.Integer] }
+s == -736
+size(x[]) one of { 0, 1 }
+===========================================================================
+examples.Polyupdate.Polyupdate(java.util.ArrayList, int):::EXIT
+this._var23 == orig(s)
+x[] == orig(x[])
+this._var23 == -736
+this._var426 one of { -736, 0 }
+x[] elements has only one value
+x[].getClass().getName() elements == java.lang.Integer.class
+x[].getClass().getName() one of { [], [java.lang.Integer] }
+===========================================================================
+examples.Polyupdate.a1(int):::ENTER
+this._var23 one of { -736, 0 }
+this._var426 one of { -736, 0 }
+===========================================================================
+examples.Polyupdate.a1(int):::EXIT
+this._var426 - orig(this._var426) - orig(y) == 0
+===========================================================================
+examples.Polyupdate.add3(int, int, int, int):::ENTER
+this._var23 == this._var426
+this._var23 == 0
+x1 one of { 1, 2 }
+x2 one of { -1, 1 }
+x3 one of { -2, 2 }
+s one of { -1055, 0 }
+===========================================================================
+examples.Polyupdate.add3(int, int, int, int):::EXIT
+this._var23 == orig(s)
+this._var23 one of { -1055, 0 }
+this._var426 one of { 0, 3 }
+===========================================================================
+examples.Polyupdate.clear():::ENTER
+this._var23 == this._var426
+this._var23 == 0
+===========================================================================
+examples.Polyupdate.clear():::EXIT
+this._var23 == this._var426
+this._var23 == orig(this._var23)
+this._var23 == orig(this._var426)
+this._var23 == 0
+===========================================================================
+examples.Polyupdate.sm():::ENTER
+===========================================================================
+examples.Polyupdate.sm():::EXIT
+this._var23 == orig(this._var23)
+this._var426 == orig(this._var426)
+this._var23 + this._var426 - return == 0
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::ENTER
+args has only one value
+args.getClass().getName() == java.lang.String[].class
+args[] == []
+args[].toString == []
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::EXIT
+args[] == orig(args[])
+args[] == []
+args[].toString == []
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

@@ -1,0 +1,28 @@
+===========================================================================
+examples.RingBuffer:::OBJECT
+this.data != null
+this.start == 1 || this.start == 2 || this.start == 3
+this.free == 1 || this.free == 2 || this.free == 3
+this.capacity_ >= 1
+daikon.Quant.size(this.data) >= 1
+===========================================================================
+examples.RingBuffer.item():::ENTER
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, null }) || daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, "java.lang.Integer" })
+this.start == 1
+this.free == 2
+this.capacity_ == 225 || this.capacity_ == 278
+daikon.Quant.size(this.data) == 2
+===========================================================================
+examples.RingBuffer.item():::EXIT
+this.data == \old(this.data)
+daikon.Quant.pairwiseEqual(this.data, \old(this.data))
+this.start == \old(this.start)
+this.free == \old(this.free)
+this.capacity_ == \old(this.capacity_)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, null }) || daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.data), new String[] { null, "java.lang.Integer" })
+this.start == 1
+this.free == 2
+this.capacity_ == 225 || this.capacity_ == 278
+\result.getClass().getName() == java.lang.Integer.class.getName()
+daikon.Quant.size(this.data) == 2
+daikon.Quant.memberOf(\result.getClass().getName() , daikon.Quant.typeArray(this.data) )

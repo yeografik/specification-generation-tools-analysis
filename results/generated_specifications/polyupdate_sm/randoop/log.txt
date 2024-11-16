@@ -1,0 +1,66 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 115 times.  Unmatched entries are ignored!
+Unterminated calls:
+  examples.Polyupdate.Polyupdate(java.util.ArrayList, int) : 115 invocations
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+examples.Polyupdate:::OBJECT
+===========================================================================
+examples.Polyupdate.Polyupdate():::EXIT
+this._var23 == this._var426
+this._var23 == 0
+===========================================================================
+examples.Polyupdate.Polyupdate(java.util.ArrayList, int):::ENTER
+x != null
+x[] elements != null
+x[].getClass().getName() elements == java.lang.Integer.class
+size(x[]) >= 2
+===========================================================================
+examples.Polyupdate.Polyupdate(java.util.ArrayList, int):::EXIT
+this._var23 == orig(s)
+x[] == orig(x[])
+this._var426 != 0
+x[] elements != null
+x[].getClass().getName() elements == java.lang.Integer.class
+===========================================================================
+examples.Polyupdate.a(int):::ENTER
+===========================================================================
+examples.Polyupdate.a(int):::EXIT
+this._var23 >= orig(this._var23)
+this._var426 - orig(this._var426) - orig(y) == 0
+===========================================================================
+examples.Polyupdate.add3(int, int, int, int):::ENTER
+===========================================================================
+examples.Polyupdate.add3(int, int, int, int):::EXIT
+this._var23 == orig(s)
+===========================================================================
+examples.Polyupdate.clear():::ENTER
+===========================================================================
+examples.Polyupdate.clear():::EXIT
+this._var23 == this._var426
+this._var23 == 0
+===========================================================================
+examples.Polyupdate.sm():::ENTER
+===========================================================================
+examples.Polyupdate.sm():::EXIT
+this._var23 == orig(this._var23)
+this._var426 == orig(this._var426)
+this._var23 + this._var426 - return == 0
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

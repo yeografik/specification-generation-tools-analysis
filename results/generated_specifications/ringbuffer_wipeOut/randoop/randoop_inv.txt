@@ -1,0 +1,18 @@
+===========================================================================
+examples.RingBuffer:::OBJECT
+this.data != null
+this.start >= 1
+this.free >= 1
+this.capacity_ >= 1
+daikon.Quant.size(this.data) >= 1
+this.start <= this.free
+===========================================================================
+examples.RingBuffer.wipeOut():::ENTER
+===========================================================================
+examples.RingBuffer.wipeOut():::EXIT
+this.data == \old(this.data)
+daikon.Quant.pairwiseEqual(this.data, \old(this.data))
+this.start == this.free
+this.start == \old(this.free)
+this.capacity_ == \old(this.capacity_)
+this.start >= \old(this.start)

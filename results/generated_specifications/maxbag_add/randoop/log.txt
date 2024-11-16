@@ -1,0 +1,166 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 1 time.  Unmatched entries are ignored!
+Unterminated calls:
+  examples.MaxBag.MaxBag(java.util.ArrayList) : 1 invocation
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+examples.MaxBag:::OBJECT
+this._var4384._0 == this._var5992
+this._var4384._0 != null
+this._var4384._1 != null
+this._var4384._1.getClass().getName() == java.lang.Integer[].class
+this._var66253[] elements != null
+this._var66253[].getClass().getName() elements == java.lang.Integer.class
+===========================================================================
+examples.MaxBag.MaxBag():::EXIT
+this._var587 == this._var4384._0
+this._var587 == this._var5992
+this._var587 has only one value
+this._var587 != null
+this._var721 != null
+this._var1457 has only one value
+this._var1457 != null
+this._var4384 != null
+this._var4384._1[] == []
+this._var4384._1[].getClass().getName() == []
+this._var66253 != null
+this._var66253[] == []
+this._var66253[].getClass().getName() == []
+===========================================================================
+examples.MaxBag.MaxBag(java.util.ArrayList):::ENTER
+l != null
+l[] elements != null
+l[].getClass().getName() elements == java.lang.Integer.class
+===========================================================================
+examples.MaxBag.MaxBag(java.util.ArrayList):::EXIT
+this._var66253 == orig(l)
+l[] == orig(l[])
+this._var587 != null
+this._var721 != null
+this._var1457 has only one value
+this._var1457 != null
+this._var4384 != null
+this._var5992 != null
+this._var66253 != null
+l[] elements != null
+l[].getClass().getName() elements == java.lang.Integer.class
+this._var587 in this._var4384._1[]
+===========================================================================
+examples.MaxBag.add(java.lang.Integer):::ENTER
+this._var587 != null
+this._var721 != null
+this._var1457 != null
+this._var4384 != null
+this._var5992 != null
+this._var66253 != null
+x != null
+===========================================================================
+examples.MaxBag.add(java.lang.Integer):::EXIT
+this._var721 == orig(this._var721)
+this._var4384 == orig(this._var4384)
+this._var4384._1.getClass().getName() == orig(this._var4384._1.getClass().getName())
+this._var66253 == orig(this._var66253)
+size(this._var66253[])-1 == orig(size(this._var66253[]))
+this._var587 != null
+this._var721 != null
+this._var1457 has only one value
+this._var1457 != null
+this._var4384 != null
+this._var5992 != null
+this._var66253 != null
+size(this._var4384._1[]) >= 1
+size(this._var66253[]) >= 1
+this._var587 in this._var4384._1[]
+orig(x) in this._var4384._1[]
+size(this._var4384._1[]) >= orig(size(this._var4384._1[]))
+size(this._var4384._1[])-1 >= orig(size(this._var4384._1[]))-1
+===========================================================================
+examples.MaxBag.clear():::ENTER
+===========================================================================
+examples.MaxBag.clear():::EXIT
+this._var587 == this._var4384._0
+this._var587 == this._var5992
+this._var4384._1.getClass().getName() == orig(this._var4384._1.getClass().getName())
+this._var587 has only one value
+this._var587 != null
+this._var721 != null
+this._var1457 has only one value
+this._var1457 != null
+this._var4384 != null
+this._var4384._1[] == []
+this._var4384._1[].getClass().getName() == []
+this._var66253 != null
+this._var66253[] == []
+this._var66253[].getClass().getName() == []
+this._var4384._1[] <= orig(this._var4384._1[]) (lexically)
+size(this._var4384._1[]) <= orig(size(this._var4384._1[]))
+size(this._var4384._1[])-1 <= orig(size(this._var4384._1[]))-1
+size(this._var66253[]) <= orig(size(this._var66253[]))
+size(this._var66253[])-1 <= orig(size(this._var66253[]))-1
+===========================================================================
+examples.MaxBag.remove(java.lang.Integer):::ENTER
+this._var587 != null
+this._var721 != null
+this._var1457 != null
+this._var4384 != null
+this._var5992 != null
+this._var66253 != null
+x != null
+===========================================================================
+examples.MaxBag.remove(java.lang.Integer):::EXIT
+this._var721 == orig(this._var721)
+this._var1457 == orig(this._var1457)
+this._var4384 == orig(this._var4384)
+this._var4384._1 == orig(this._var4384._1)
+this._var4384._1.getClass().getName() == orig(this._var4384._1.getClass().getName())
+this._var66253 == orig(this._var66253)
+size(this._var4384._1[]) == orig(size(this._var4384._1[]))
+this._var587 != null
+this._var721 != null
+this._var1457 != null
+this._var4384 != null
+this._var5992 != null
+this._var66253 != null
+size(this._var66253[]) <= orig(size(this._var66253[]))
+size(this._var66253[]) >= orig(size(this._var66253[]))-1
+size(this._var66253[])-1 <= orig(size(this._var66253[]))-1
+===========================================================================
+examples._Type328393:::OBJECT
+this._0 has only one value
+this._0 != null
+this._1 != null
+this._1.getClass().getName() == java.lang.Integer[].class
+this._1[] == []
+this._1[].getClass().getName() == []
+===========================================================================
+examples._Type328393._Type328393(java.lang.Integer, java.lang.Integer[]):::ENTER
+_0 has only one value
+_0 != null
+_1 != null
+_1.getClass().getName() == java.lang.Integer[].class
+_1[] == []
+===========================================================================
+examples._Type328393._Type328393(java.lang.Integer, java.lang.Integer[]):::EXIT
+this._0 == orig(_0)
+this._1 == orig(_1)
+this._1.getClass().getName() == orig(_1.getClass().getName())
+_1[] == orig(_1[])
+_1[] == []
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

@@ -1,0 +1,20 @@
+===========================================================================
+examples.MinFinder:::OBJECT
+===========================================================================
+examples.MinFinder.findMin():::ENTER
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this._var88), "examples.MinFinder.T")
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this._var88), new String[] {  }) || daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this._var88), new String[] { "examples.MinFinder.T" })
+this._var811.val == -1 || this._var811.val == 0 || this._var811.val == 3111
+daikon.Quant.size(this._var88) == 0 || daikon.Quant.size(this._var88) == 1
+===========================================================================
+examples.MinFinder.findMin():::EXIT
+this._var88 == \old(this._var88)
+daikon.Quant.pairwiseEqual(this._var88, \old(this._var88))
+this._var811 == \result
+this._var811.val == \result.val
+\result == \old(this._var811)
+\result.val == \old(this._var811.val)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this._var88), "examples.MinFinder.T")
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this._var88), new String[] {  }) || daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this._var88), new String[] { "examples.MinFinder.T" })
+\result.val == -1 || \result.val == 0 || \result.val == 3111
+daikon.Quant.size(this._var88) == 0 || daikon.Quant.size(this._var88) == 1

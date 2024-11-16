@@ -1,0 +1,10 @@
+===========================================================================
+jts.Angle:::OBJECT
+this != null
+===========================================================================
+jts.Angle.getTurn(double, double):::ENTER
+daikon.Quant.fuzzy.eq(ang1, -167.29857535600271) || daikon.Quant.fuzzy.eq(ang1, 0.0)
+daikon.Quant.fuzzy.eq(ang2, -167.29857535600271) || daikon.Quant.fuzzy.eq(ang2, 1.0)
+===========================================================================
+jts.Angle.getTurn(double, double):::EXIT
+\result == -1 || \result == 0 || \result == 1

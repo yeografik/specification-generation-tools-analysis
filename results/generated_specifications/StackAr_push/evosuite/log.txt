@@ -1,0 +1,309 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.rules.TestRule - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.runners.model.Statement - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.LoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.ILoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.event.LoggingEvent - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.SubstituteLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.Logger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.Util - classfile version (49) is out of date and may not be processed correctly.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLogger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.MarkerIgnoringBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NamedLoggerBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.internal.AssumptionViolatedException - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.SelfDescribing - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Matcher - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Description - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 3 times.  Unmatched entries are ignored!
+Unterminated calls:
+  DataStructures.StackAr.pop() : 1 invocation
+  DataStructures.StackAr.push(java.lang.Object) : 1 invocation
+  DataStructures.StackAr.StackAr(int) : 1 invocation
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+DataStructures.Overflow:::OBJECT
+this has only one value
+===========================================================================
+DataStructures.Overflow.Overflow():::EXIT
+===========================================================================
+DataStructures.StackAr:::OBJECT
+this.theArray != null
+this.theArray.getClass().getName() == java.lang.Object[].class
+this.topOfStack one of { -1, 0, 1 }
+this.topOfStack <= size(this.theArray[])-1
+===========================================================================
+DataStructures.StackAr.StackAr(int):::ENTER
+===========================================================================
+DataStructures.StackAr.StackAr(int):::EXIT
+orig(capacity) == size(this.theArray[])
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.topOfStack == -1
+===========================================================================
+DataStructures.StackAr.isEmpty():::ENTER
+this.topOfStack one of { -1, 0 }
+size(this.theArray[]) >= 1
+===========================================================================
+DataStructures.StackAr.isEmpty():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.theArray[] == orig(this.theArray[])
+this.topOfStack == orig(this.topOfStack)
+(this.topOfStack == -1)  <==>  (return == true)
+(this.topOfStack == -1)  ==>  (size(this.theArray[]) one of { 1, 62, 1639 })
+(this.topOfStack == -1)  ==>  (this.theArray[] elements == null)
+(this.topOfStack == -1)  ==>  (this.theArray[].getClass().getName() elements == null)
+(this.topOfStack == -1)  ==>  (this.topOfStack < size(this.theArray[])-1)
+(this.topOfStack == 0)  <==>  (return == false)
+(this.topOfStack == 0)  ==>  (size(this.theArray[]) one of { 1, 62, 295 })
+this.topOfStack one of { -1, 0 }
+size(this.theArray[]) >= 1
+===========================================================================
+DataStructures.StackAr.isEmpty():::EXIT;condition="return == true"
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.topOfStack == -1
+return == true
+size(this.theArray[]) one of { 1, 62, 1639 }
+this.topOfStack < size(this.theArray[])-1
+===========================================================================
+DataStructures.StackAr.isEmpty():::EXIT;condition="not(return == true)"
+this.topOfStack == 0
+return == false
+size(this.theArray[]) one of { 1, 62, 295 }
+===========================================================================
+DataStructures.StackAr.isFull():::ENTER
+===========================================================================
+DataStructures.StackAr.isFull():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.theArray[] == orig(this.theArray[])
+this.topOfStack == orig(this.topOfStack)
+(return == false)  <==>  (this.topOfStack < size(this.theArray[])-1)
+(return == false)  ==>  (size(this.theArray[]) >= 1)
+(return == false)  ==>  (this.topOfStack one of { -1, 0, 1 })
+(return == true)  <==>  (this.topOfStack == size(this.theArray[])-1)
+(return == true)  ==>  (size(this.theArray[]) one of { 0, 1 })
+(return == true)  ==>  (this.theArray[] elements == null)
+(return == true)  ==>  (this.theArray[].getClass().getName() elements == null)
+(return == true)  ==>  (this.theArray[].getClass().getName() one of { [], [null] })
+===========================================================================
+DataStructures.StackAr.isFull():::EXIT;condition="return == true"
+this.topOfStack == size(this.theArray[])-1
+this.topOfStack == orig(size(this.theArray[]))-1
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.theArray[].getClass().getName() one of { [], [null] }
+return == true
+size(this.theArray[]) one of { 0, 1 }
+===========================================================================
+DataStructures.StackAr.isFull():::EXIT;condition="not(return == true)"
+return == false
+size(this.theArray[]) >= 1
+this.topOfStack < size(this.theArray[])-1
+===========================================================================
+DataStructures.StackAr.makeEmpty():::ENTER
+this.topOfStack == size(this.theArray[])-1
+this has only one value
+this.theArray has only one value
+this.theArray[] contains no nulls and has only one value, of length 1
+this.theArray[] elements has only one value
+this.theArray[].getClass().getName() == [java.lang.String]
+this.theArray[].getClass().getName() elements == java.lang.String.class
+size(this.theArray[]) == 1
+this.theArray[] elements == this.theArray[this.topOfStack]
+===========================================================================
+DataStructures.StackAr.makeEmpty():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+orig(this.topOfStack) == size(this.theArray[])-1
+size(this.theArray[]) == orig(size(this.theArray[]))
+this.theArray has only one value
+this.theArray[] == [null]
+this.theArray[] elements == null
+this.theArray[].getClass().getName() == [null]
+this.theArray[].getClass().getName() elements == null
+this.topOfStack == -1
+size(this.theArray[]) == 1
+this.theArray[] elements == this.theArray[orig(this.topOfStack)]
+===========================================================================
+DataStructures.StackAr.pop():::ENTER
+this has only one value
+this.theArray has only one value
+this.theArray[] contains only nulls and has only one value, of length 62
+this.theArray[] elements == null
+this.theArray[].getClass().getName() == [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+this.theArray[].getClass().getName() elements == null
+this.topOfStack == 0
+size(this.theArray[]) == 62
+this.theArray[] elements == this.theArray[this.topOfStack]
+===========================================================================
+DataStructures.StackAr.pop():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.theArray[] == orig(this.theArray[])
+this.theArray has only one value
+this.theArray[] contains only nulls and has only one value, of length 62
+this.theArray[] elements == null
+this.theArray[].getClass().getName() == [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+this.theArray[].getClass().getName() elements == null
+this.topOfStack == -1
+size(this.theArray[]) == 62
+this.theArray[] elements == this.theArray[orig(this.topOfStack)]
+===========================================================================
+DataStructures.StackAr.push(java.lang.Object):::ENTER
+this.topOfStack one of { -1, 0 }
+size(this.theArray[]) one of { 1, 62, 295 }
+this.topOfStack < size(this.theArray[])-1
+===========================================================================
+DataStructures.StackAr.push(java.lang.Object):::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+orig(x) == this.theArray[this.topOfStack]
+size(this.theArray[]) == orig(size(this.theArray[]))
+this.topOfStack one of { 0, 1 }
+size(this.theArray[]) one of { 1, 62, 295 }
+orig(this.theArray[post(this.topOfStack)]) == null
+orig(x.getClass().getName()) in this.theArray[].getClass().getName()
+this.topOfStack > orig(this.topOfStack)
+orig(this.topOfStack) < size(this.theArray[])-1
+===========================================================================
+DataStructures.StackAr.top():::ENTER
+this.topOfStack one of { -1, 0 }
+size(this.theArray[]) one of { 1, 62, 295 }
+===========================================================================
+DataStructures.StackAr.top():::EXIT76
+this.theArray has only one value
+this.theArray[] contains only nulls and has only one value, of length 62
+this.theArray[] elements == null
+this.theArray[].getClass().getName() == [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+this.theArray[].getClass().getName() elements == null
+this.topOfStack == -1
+return == null
+orig(this) has only one value
+size(this.theArray[]) == 62
+this.theArray[] elements == return
+===========================================================================
+DataStructures.StackAr.top():::EXIT77
+return == this.theArray[this.topOfStack]
+return == this.theArray[orig(this.topOfStack)]
+return == orig(this.theArray[post(this.topOfStack)])
+return == orig(this.theArray[this.topOfStack])
+this.topOfStack == 0
+===========================================================================
+DataStructures.StackAr.top():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.theArray[] == orig(this.theArray[])
+this.topOfStack == orig(this.topOfStack)
+(this.topOfStack == -1)  ==>  (orig(this) has only one value)
+(this.topOfStack == -1)  ==>  (return == null)
+(this.topOfStack == -1)  ==>  (size(this.theArray[]) == 62)
+(this.topOfStack == -1)  ==>  (this.theArray has only one value)
+(this.topOfStack == -1)  ==>  (this.theArray[] contains only nulls and has only one value, of length 62)
+(this.topOfStack == -1)  ==>  (this.theArray[] elements == null)
+(this.topOfStack == -1)  ==>  (this.theArray[] elements == return)
+(this.topOfStack == -1)  ==>  (this.theArray[].getClass().getName() == [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+(this.topOfStack == -1)  ==>  (this.theArray[].getClass().getName() elements == null)
+(this.topOfStack == 0)  ==>  (return == orig(this.theArray[post(this.topOfStack)]))
+(this.topOfStack == 0)  ==>  (return == orig(this.theArray[this.topOfStack]))
+(this.topOfStack == 0)  ==>  (return == this.theArray[orig(this.topOfStack)])
+(this.topOfStack == 0)  ==>  (return == this.theArray[this.topOfStack])
+(this.topOfStack == 0)  ==>  (return.getClass().getName() in this.theArray[].getClass().getName())
+(this.topOfStack == 0)  ==>  (size(this.theArray[]) one of { 1, 62, 295 })
+this.topOfStack one of { -1, 0 }
+size(this.theArray[]) one of { 1, 62, 295 }
+return in this.theArray[]
+return.getClass().getName() in this.theArray[].getClass().getName()
+===========================================================================
+DataStructures.StackAr.topAndPop():::ENTER
+this.theArray[] elements are equal
+this.theArray[].getClass().getName() one of { [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], [java.lang.String] }
+this.topOfStack one of { -1, 0 }
+size(this.theArray[]) one of { 1, 62 }
+===========================================================================
+DataStructures.StackAr.topAndPop():::EXIT111
+this.theArray[] == orig(this.theArray[])
+this.topOfStack == orig(this.topOfStack)
+this.theArray has only one value
+this.theArray[] contains only nulls and has only one value, of length 62
+this.theArray[].getClass().getName() == [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+return == null
+orig(this) has only one value
+size(this.theArray[]) == 62
+===========================================================================
+DataStructures.StackAr.topAndPop():::EXIT114
+orig(this.topOfStack) == 0
+this.theArray[] elements == this.theArray[orig(this.topOfStack)]
+orig(this.theArray[]) elements == orig(this.theArray[this.topOfStack])
+===========================================================================
+DataStructures.StackAr.topAndPop():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+size(this.theArray[]) == orig(size(this.theArray[]))
+(orig(this.topOfStack) == -1)  <==>  (this.topOfStack == orig(this.topOfStack))
+(orig(this.topOfStack) == -1)  ==>  (orig(this) has only one value)
+(orig(this.topOfStack) == -1)  ==>  (orig(this.theArray[]) contains only nulls and has only one value, of length 62)
+(orig(this.topOfStack) == -1)  ==>  (orig(this.theArray[]) elements == null)
+(orig(this.topOfStack) == -1)  ==>  (orig(this.theArray[].getClass().getName()) == [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+(orig(this.topOfStack) == -1)  ==>  (orig(this.theArray[].getClass().getName()) elements == null)
+(orig(this.topOfStack) == -1)  ==>  (return == null)
+(orig(this.topOfStack) == -1)  ==>  (size(this.theArray[]) == 62)
+(orig(this.topOfStack) == -1)  ==>  (this.theArray has only one value)
+(orig(this.topOfStack) == -1)  ==>  (this.theArray[] contains only nulls and has only one value, of length 62)
+(orig(this.topOfStack) == -1)  ==>  (this.theArray[].getClass().getName() == [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+(orig(this.topOfStack) == 0)  ==>  (orig(this.theArray[]) elements == orig(this.theArray[this.topOfStack]))
+(orig(this.topOfStack) == 0)  ==>  (orig(this.theArray[].getClass().getName()) one of { [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], [java.lang.String] })
+(orig(this.topOfStack) == 0)  ==>  (return.getClass().getName() == java.lang.String.class)
+(orig(this.topOfStack) == 0)  ==>  (return.getClass().getName() in orig(this.theArray[].getClass().getName()))
+(orig(this.topOfStack) == 0)  ==>  (size(this.theArray[]) one of { 1, 62 })
+(orig(this.topOfStack) == 0)  ==>  (this.theArray[] elements == this.theArray[orig(this.topOfStack)])
+(orig(this.topOfStack) == 0)  ==>  (this.theArray[].getClass().getName() one of { [null], [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null] })
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.theArray[].getClass().getName() one of { [null], [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null] }
+this.topOfStack == -1
+return.getClass().getName() == java.lang.String.class
+size(this.theArray[]) one of { 1, 62 }
+return.getClass().getName() in orig(this.theArray[].getClass().getName())
+===========================================================================
+DataStructures.TestDriverEvosuite.main(java.lang.String[]):::ENTER
+args has only one value
+args.getClass().getName() == java.lang.String[].class
+args[] == []
+args[].toString == []
+===========================================================================
+DataStructures.TestDriverEvosuite.main(java.lang.String[]):::EXIT
+args[] == orig(args[])
+args[] == []
+args[].toString == []
+===========================================================================
+DataStructures.Underflow:::OBJECT
+this has only one value
+===========================================================================
+DataStructures.Underflow.Underflow():::EXIT
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

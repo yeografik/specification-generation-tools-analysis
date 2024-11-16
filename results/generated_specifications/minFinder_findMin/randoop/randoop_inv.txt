@@ -1,0 +1,14 @@
+===========================================================================
+examples.MinFinder:::OBJECT
+===========================================================================
+examples.MinFinder.findMin():::ENTER
+this._var88 != null
+===========================================================================
+examples.MinFinder.findMin():::EXIT
+this._var88 == \old(this._var88)
+daikon.Quant.pairwiseEqual(this._var88, \old(this._var88))
+this._var811 == \result
+this._var811.val == \result.val
+\result == \old(this._var811)
+\result.val == \old(this._var811.val)
+this._var88 != null

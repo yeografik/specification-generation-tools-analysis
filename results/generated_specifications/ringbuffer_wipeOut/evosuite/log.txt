@@ -1,0 +1,280 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.rules.TestRule - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.runners.model.Statement - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.LoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.ILoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.event.LoggingEvent - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.SubstituteLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.Logger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.Util - classfile version (49) is out of date and may not be processed correctly.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLogger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.MarkerIgnoringBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NamedLoggerBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.internal.AssumptionViolatedException - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.SelfDescribing - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Matcher - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Description - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 4 times.  Unmatched entries are ignored!
+Unterminated calls:
+  examples.RingBuffer.remove() : 1 invocation
+  examples.RingBuffer.extend(java.lang.Object) : 1 invocation
+  examples.RingBuffer.item() : 1 invocation
+  examples.RingBuffer.RingBuffer(int) : 1 invocation
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+examples.RingBuffer:::OBJECT
+this.data != null
+this.start one of { 1, 2, 3 }
+this.free one of { 1, 2, 3 }
+this.capacity_ >= 1
+size(this.data[]) >= 1
+===========================================================================
+examples.RingBuffer.RingBuffer(int):::ENTER
+n >= 1
+===========================================================================
+examples.RingBuffer.RingBuffer(int):::EXIT
+this.start == this.free
+this.capacity_ == orig(n)
+this.data[] == [null]
+this.data[] elements == null
+this.data[].getClass().getName() == [null]
+this.data[].getClass().getName() elements == null
+this.start == 1
+size(this.data[]) == 1
+this.start <= this.capacity_
+===========================================================================
+examples.RingBuffer.capacity():::ENTER
+this.start == this.free
+this.start == this.capacity_
+this has only one value
+this.data has only one value
+this.data[] == [null]
+this.data[] elements == null
+this.data[].getClass().getName() == [null]
+this.data[].getClass().getName() elements == null
+this.start == 1
+size(this.data[]) == 1
+===========================================================================
+examples.RingBuffer.capacity():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == return
+this.free == return
+this.capacity_ == return
+return == orig(this.start)
+return == orig(this.free)
+return == orig(this.capacity_)
+this.data has only one value
+this.data[] == [null]
+this.data[] elements == null
+this.data[].getClass().getName() == [null]
+this.data[].getClass().getName() elements == null
+return == 1
+size(this.data[]) == 1
+===========================================================================
+examples.RingBuffer.count():::ENTER
+this.free one of { 1, 2 }
+===========================================================================
+examples.RingBuffer.count():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == orig(this.start)
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+this.free one of { 1, 2 }
+return one of { 0, 1, 2 }
+===========================================================================
+examples.RingBuffer.dataCount():::ENTER
+this.start one of { 1, 2 }
+===========================================================================
+examples.RingBuffer.dataCount():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == orig(this.start)
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+this.start one of { 1, 2 }
+return >= 2
+this.start <= return
+this.free <= return
+this.capacity_ - return + 1 == 0
+===========================================================================
+examples.RingBuffer.extend(java.lang.Object):::ENTER
+this.start one of { 1, 2 }
+size(this.data[]) one of { 1, 2, 3 }
+this.start <= this.free
+===========================================================================
+examples.RingBuffer.extend(java.lang.Object):::EXIT
+this.data == orig(this.data)
+this.start == orig(this.start)
+this.capacity_ == orig(this.capacity_)
+size(this.data[])-1 == orig(size(this.data[]))
+this.start one of { 1, 2 }
+size(this.data[]) one of { 2, 3, 4 }
+orig(a_value.getClass().getName()) in this.data[].getClass().getName()
+this.start != this.free
+this.start <= orig(this.free)
+this.free != orig(this.free)
+===========================================================================
+examples.RingBuffer.isEmpty():::ENTER
+this.start one of { 1, 2 }
+this.free one of { 1, 2 }
+===========================================================================
+examples.RingBuffer.isEmpty():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == orig(this.start)
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+(return == false)  <==>  (size(this.data[]) one of { 2, 3, 4 })
+(return == false)  <==>  (this.start != this.free)
+(return == false)  ==>  (this.free one of { 1, 2 })
+(return == false)  ==>  (this.start one of { 1, 2 })
+(return == true)  <==>  (size(this.data[]) == 1)
+(return == true)  <==>  (this.start == this.free)
+(return == true)  ==>  (this.capacity_ one of { 1, 294, 1481 })
+(return == true)  ==>  (this.data[] == [null])
+(return == true)  ==>  (this.data[] elements == null)
+(return == true)  ==>  (this.data[].getClass().getName() == [null])
+(return == true)  ==>  (this.data[].getClass().getName() elements == null)
+(return == true)  ==>  (this.free == 1)
+(return == true)  ==>  (this.start == 1)
+this.start one of { 1, 2 }
+this.free one of { 1, 2 }
+===========================================================================
+examples.RingBuffer.isEmpty():::EXIT;condition="return == true"
+this.start == this.free
+this.start == orig(this.free)
+this.data[] == [null]
+this.data[] elements == null
+this.data[].getClass().getName() == [null]
+this.data[].getClass().getName() elements == null
+this.start == 1
+this.capacity_ one of { 1, 294, 1481 }
+return == true
+size(this.data[]) == 1
+===========================================================================
+examples.RingBuffer.isEmpty():::EXIT;condition="not(return == true)"
+return == false
+size(this.data[]) one of { 2, 3, 4 }
+this.start != this.free
+===========================================================================
+examples.RingBuffer.isFull():::ENTER
+===========================================================================
+examples.RingBuffer.isFull():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == orig(this.start)
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+(return == false)  ==>  (size(this.data[]) >= 1)
+(return == false)  ==>  (this.free one of { 1, 2, 3 })
+(return == false)  ==>  (this.start one of { 1, 2, 3 })
+(return == true)  ==>  (size(this.data[]) one of { 2, 3, 4 })
+(return == true)  ==>  (this.capacity_ == 1)
+(return == true)  ==>  (this.free one of { 1, 2 })
+(return == true)  ==>  (this.start one of { 1, 2 })
+===========================================================================
+examples.RingBuffer.isFull():::EXIT;condition="return == true"
+this.start one of { 1, 2 }
+this.free one of { 1, 2 }
+this.capacity_ == 1
+return == true
+size(this.data[]) one of { 2, 3, 4 }
+===========================================================================
+examples.RingBuffer.isFull():::EXIT;condition="not(return == true)"
+return == false
+===========================================================================
+examples.RingBuffer.item():::ENTER
+this.data[].getClass().getName() one of { [null, null], [null, java.lang.Integer] }
+this.start == 1
+this.free == 2
+this.capacity_ one of { 225, 1133 }
+size(this.data[]) == 2
+===========================================================================
+examples.RingBuffer.item():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == orig(this.start)
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+this.data[].getClass().getName() one of { [null, null], [null, java.lang.Integer] }
+this.start == 1
+this.free == 2
+this.capacity_ one of { 225, 1133 }
+return.getClass().getName() == java.lang.Integer.class
+size(this.data[]) == 2
+return.getClass().getName() in this.data[].getClass().getName()
+===========================================================================
+examples.RingBuffer.remove():::ENTER
+this.data[] elements == null
+this.data[].getClass().getName() elements == null
+this.start one of { 1, 2 }
+this.free one of { 1, 2 }
+this.capacity_ one of { 1, 2 }
+size(this.data[]) one of { 2, 3, 4 }
+===========================================================================
+examples.RingBuffer.remove():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.free == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+this.data[] elements == null
+this.data[].getClass().getName() elements == null
+this.free one of { 1, 2 }
+this.capacity_ one of { 1, 2 }
+size(this.data[]) one of { 2, 3, 4 }
+===========================================================================
+examples.RingBuffer.wipeOut():::ENTER
+this.data[].getClass().getName() one of { [null, java.lang.String], [null, java.lang.String, java.lang.String] }
+this.start one of { 1, 2 }
+this.free one of { 1, 2 }
+this.capacity_ == 1
+size(this.data[]) one of { 2, 3 }
+===========================================================================
+examples.RingBuffer.wipeOut():::EXIT
+this.data == orig(this.data)
+this.data[] == orig(this.data[])
+this.start == this.free
+this.start == orig(this.free)
+this.capacity_ == orig(this.capacity_)
+this.data[].getClass().getName() one of { [null, java.lang.String], [null, java.lang.String, java.lang.String] }
+this.start one of { 1, 2 }
+this.capacity_ == 1
+size(this.data[]) one of { 2, 3 }
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::ENTER
+args has only one value
+args.getClass().getName() == java.lang.String[].class
+args[] == []
+args[].toString == []
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::EXIT
+args[] == orig(args[])
+args[] == []
+args[].toString == []
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

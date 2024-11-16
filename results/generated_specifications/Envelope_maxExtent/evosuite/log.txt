@@ -1,0 +1,130 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.rules.TestRule - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.runners.model.Statement - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.LoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.ILoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.event.LoggingEvent - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.SubstituteLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.Logger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.Util - classfile version (49) is out of date and may not be processed correctly.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLogger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.MarkerIgnoringBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NamedLoggerBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+===========================================================================
+jts.Envelope:::OBJECT
+this.minx <= this.maxx
+this.miny <= this.maxy
+===========================================================================
+jts.Envelope.Envelope(double, double, double, double):::ENTER
+===========================================================================
+jts.Envelope.Envelope(double, double, double, double):::EXIT
+this.minx <= orig(x1)
+this.minx <= orig(x2)
+this.maxx >= orig(x1)
+this.maxx >= orig(x2)
+this.miny <= orig(y1)
+this.miny <= orig(y2)
+this.maxy >= orig(y1)
+this.maxy >= orig(y2)
+===========================================================================
+jts.Envelope.getHeight():::ENTER
+===========================================================================
+jts.Envelope.getHeight():::EXIT163
+===========================================================================
+jts.Envelope.getHeight():::EXIT
+this.minx == orig(this.minx)
+this.maxx == orig(this.maxx)
+this.miny == orig(this.miny)
+this.maxy == orig(this.maxy)
+return >= 0.0
+this.minx < return
+this.miny <= return
+===========================================================================
+jts.Envelope.getWidth():::ENTER
+===========================================================================
+jts.Envelope.getWidth():::EXIT151
+===========================================================================
+jts.Envelope.getWidth():::EXIT
+this.minx == orig(this.minx)
+this.maxx == orig(this.maxx)
+this.miny == orig(this.miny)
+this.maxy == orig(this.maxy)
+return >= 0.0
+this.miny != return
+this.maxy != return
+===========================================================================
+jts.Envelope.init(double, double, double, double):::ENTER
+this.minx == this.maxx
+this.minx one of { -1199.4, 0.0, 798.8057136875461 }
+this.miny one of { -1199.4, -1.0, 0.0 }
+this.maxy one of { -800.3517549063387, 0.0, 798.8057136875461 }
+this.minx >= this.miny
+this.minx <= this.maxy
+===========================================================================
+jts.Envelope.init(double, double, double, double):::EXIT
+this.minx <= orig(x1)
+this.minx <= orig(x2)
+this.maxx >= orig(x1)
+this.maxx >= orig(x2)
+this.miny <= orig(y1)
+this.miny <= orig(y2)
+this.maxy >= orig(y1)
+this.maxy >= orig(y2)
+===========================================================================
+jts.Envelope.isEnvelopeNull():::ENTER
+===========================================================================
+jts.Envelope.isEnvelopeNull():::EXIT
+this.minx == orig(this.minx)
+this.maxx == orig(this.maxx)
+this.miny == orig(this.miny)
+this.maxy == orig(this.maxy)
+return == false
+===========================================================================
+jts.Envelope.isEnvelopeNull():::EXIT;condition="not(return == true)"
+===========================================================================
+jts.Envelope.maxExtent():::ENTER
+===========================================================================
+jts.Envelope.maxExtent():::EXIT
+this.minx == orig(this.minx)
+this.maxx == orig(this.maxx)
+this.miny == orig(this.miny)
+this.maxy == orig(this.maxy)
+this.minx < return
+this.maxx < return
+this.miny < return
+this.maxy != return
+===========================================================================
+jts.TestDriverEvosuite.main(java.lang.String[]):::ENTER
+args has only one value
+args.getClass().getName() == java.lang.String[].class
+args[] == []
+args[].toString == []
+===========================================================================
+jts.TestDriverEvosuite.main(java.lang.String[]):::EXIT
+args[] == orig(args[])
+args[] == []
+args[].toString == []
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

@@ -1,0 +1,16 @@
+===========================================================================
+examples.SimpleMethods:::OBJECT
+===========================================================================
+examples.SimpleMethods.incrementNumberAtIndex(int[], int):::ENTER
+this != null
+intArray != null
+("oneOf.java.jpp: SEQUENCE unimplemented" != null)
+daikon.Quant.subsetOf(intArray, new long[] { -144, 0 })
+ind == 0
+daikon.Quant.size(intArray) == 6
+daikon.Quant.getElement_int(intArray, ind) == -144
+===========================================================================
+examples.SimpleMethods.incrementNumberAtIndex(int[], int):::EXIT
+("oneOf.java.jpp: SEQUENCE unimplemented" != null)
+daikon.Quant.subsetOf(intArray, new long[] { -143, 0 })
+daikon.Quant.getElement_int(intArray, \old(ind)) == -143

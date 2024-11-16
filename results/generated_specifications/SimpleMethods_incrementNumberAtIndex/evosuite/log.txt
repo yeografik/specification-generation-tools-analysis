@@ -1,0 +1,105 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+java.lang.NullPointerException
+	at org.evosuite.runtime.EvoAssertions.assertThrownBy(EvoAssertions.java:86)
+	at org.evosuite.runtime.EvoAssertions.verifyException(EvoAssertions.java:49)
+	at examples.SimpleMethods_ESTest.test2(SimpleMethods_ESTest.java:57)
+	at examples.TestDriverEvosuite.main(TestDriverEvosuite.java:25)
+Warning: Target exited with 1 status.
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.rules.TestRule - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.runners.model.Statement - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.LoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.event.LoggingEvent - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.ILoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.SubstituteLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.Logger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLoggerFactory - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.Util - classfile version (49) is out of date and may not be processed correctly.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Chicory warning: ClassFile: org.slf4j.helpers.NOPLogger - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.MarkerIgnoringBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.slf4j.helpers.NamedLoggerBase - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.internal.ExactComparisonCriteria - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.internal.ComparisonCriteria - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.internal.ArrayComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.internal.AssumptionViolatedException - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.SelfDescribing - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Matcher - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.hamcrest.Description - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 2 times.  Unmatched entries are ignored!
+Unterminated calls:
+  examples.SimpleMethods.incrementNumberAtIndex(int[], int) : 2 invocations
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+examples.SimpleMethods:::OBJECT
+===========================================================================
+examples.SimpleMethods.SimpleMethods():::EXIT
+===========================================================================
+examples.SimpleMethods.incrementNumberAtIndex(int[], int):::ENTER
+this has only one value
+intArray has only one value
+intArray[] == [-144, 0, 0, 0, 0, 0]
+intArray[] elements one of { -144, 0 }
+ind == 0
+size(intArray[]) == 6
+intArray[ind] == -144
+===========================================================================
+examples.SimpleMethods.incrementNumberAtIndex(int[], int):::EXIT
+intArray[] == [-143, 0, 0, 0, 0, 0]
+intArray[] elements one of { -143, 0 }
+intArray[orig(ind)] == -143
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::ENTER
+args has only one value
+args.getClass().getName() == java.lang.String[].class
+args[] == []
+args[].toString == []
+===========================================================================
+examples.TestDriverEvosuite.main(java.lang.String[]):::EXIT
+args[] == orig(args[])
+args[] == []
+args[].toString == []
+===========================================================================
+org.junit.internal.ComparisonCriteria:::OBJECT
+this has only one value
+this.getClass().getName() == org.junit.internal.ExactComparisonCriteria.class
+===========================================================================
+org.junit.internal.ComparisonCriteria.ComparisonCriteria():::EXIT
+===========================================================================
+org.junit.internal.ComparisonCriteria.arrayEquals(java.lang.String, java.lang.Object, java.lang.Object):::ENTER
+expecteds.getClass().getName() == actuals.getClass().getName()
+message == null
+expecteds has only one value
+expecteds.getClass().getName() == int[].class
+actuals has only one value
+===========================================================================
+org.junit.internal.ComparisonCriteria.arrayEquals(java.lang.String, java.lang.Object, java.lang.Object):::EXIT33
+===========================================================================
+org.junit.internal.ComparisonCriteria.arrayEquals(java.lang.String, java.lang.Object, java.lang.Object):::EXIT
+===========================================================================
+org.junit.internal.ExactComparisonCriteria:::OBJECT
+this has only one value
+===========================================================================
+org.junit.internal.ExactComparisonCriteria.ExactComparisonCriteria():::EXIT
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

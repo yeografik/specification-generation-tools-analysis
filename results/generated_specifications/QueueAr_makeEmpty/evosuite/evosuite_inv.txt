@@ -1,0 +1,54 @@
+===========================================================================
+DataStructures.QueueAr:::OBJECT
+daikon.Quant.getElement_Object(this.theArray, this.front) == daikon.Quant.getElement_Object(this.theArray, this.back)
+this.theArray != null
+this.theArray.getClass().getName() == java.lang.Object[].class.getName()
+this.currentSize == 0 || this.currentSize == 1 || this.currentSize == 2
+this.front == 0 || this.front == 1 || this.front == 2
+this.back >= 0
+daikon.Quant.size(this.theArray) >= 1
+this.currentSize <= daikon.Quant.size(this.theArray)
+this.front <= daikon.Quant.size(this.theArray)-1
+this.back <= daikon.Quant.size(this.theArray)-1
+===========================================================================
+DataStructures.QueueAr.makeEmpty():::ENTER
+this.currentSize == this.front
+this.back == daikon.Quant.size(this.theArray)-1
+daikon.Quant.getElement_Object(this.theArray, this.currentSize) == daikon.Quant.getElement_Object(this.theArray, this.back)
+daikon.Quant.getElement_Object(this.theArray, this.currentSize) == daikon.Quant.getElement_Object(this.theArray, this.back-1)
+this != null
+this.theArray != null
+("oneOf.java.jpp: SEQUENCE unimplemented" != null)
+daikon.Quant.eltsEqual(this.theArray, null)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.theArray), new String[] { null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null })
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.theArray), null)
+this.currentSize == 0
+daikon.Quant.size(this.theArray) == 32
+daikon.Quant.eltsEqual(this.theArray, daikon.Quant.getElement_Object(this.theArray, this.currentSize))
+===========================================================================
+DataStructures.QueueAr.makeEmpty():::EXIT
+this.theArray == \old(this.theArray)
+this.theArray.getClass().getName() == \old(this.theArray.getClass().getName())
+daikon.Quant.pairwiseEqual(this.theArray, \old(this.theArray))
+this.currentSize == this.front
+this.currentSize == \old(this.currentSize)
+this.currentSize == \old(this.front)
+this.back == \old(this.back)
+this.back == daikon.Quant.size(this.theArray)-1
+this.back == \old(daikon.Quant.size(this.theArray))-1
+daikon.Quant.getElement_Object(this.theArray, this.currentSize) == daikon.Quant.getElement_Object(this.theArray, this.back)
+daikon.Quant.getElement_Object(this.theArray, this.currentSize) == daikon.Quant.getElement_Object(this.theArray, this.back-1)
+daikon.Quant.getElement_Object(this.theArray, this.currentSize) == daikon.Quant.getElement_Object(this.theArray, \old(this.back))
+daikon.Quant.getElement_Object(this.theArray, this.currentSize) == daikon.Quant.getElement_Object(this.theArray, \old(this.back)-1)
+daikon.Quant.getElement_Object(this.theArray, this.currentSize) == \old(daikon.Quant.getElement_Object(this.theArray, \new(this.back)))
+daikon.Quant.getElement_Object(this.theArray, this.currentSize) == \old(daikon.Quant.getElement_Object(this.theArray, \new(this.back)-1))
+daikon.Quant.getElement_Object(this.theArray, this.currentSize) == \old(daikon.Quant.getElement_Object(this.theArray, this.back))
+daikon.Quant.getElement_Object(this.theArray, this.currentSize) == \old(daikon.Quant.getElement_Object(this.theArray, this.back-1))
+this.theArray != null
+("oneOf.java.jpp: SEQUENCE unimplemented" != null)
+daikon.Quant.eltsEqual(this.theArray, null)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.theArray), new String[] { null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null })
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.theArray), null)
+this.currentSize == 0
+daikon.Quant.size(this.theArray) == 32
+daikon.Quant.eltsEqual(this.theArray, daikon.Quant.getElement_Object(this.theArray, this.currentSize))

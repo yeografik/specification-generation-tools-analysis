@@ -1,0 +1,22 @@
+===========================================================================
+examples.RingBuffer:::OBJECT
+this.data != null
+this.start >= 1
+this.free >= 1
+this.capacity_ >= 1
+daikon.Quant.size(this.data) >= 1
+===========================================================================
+examples.RingBuffer.extend(java.lang.Object):::ENTER
+a_value.getClass().getName() == java.lang.String.class.getName()
+this.start <= this.free
+===========================================================================
+examples.RingBuffer.extend(java.lang.Object):::EXIT
+this.data == \old(this.data)
+this.start == \old(this.start)
+this.capacity_ == \old(this.capacity_)
+daikon.Quant.size(this.data)-1 == \old(daikon.Quant.size(this.data))
+daikon.Quant.size(this.data) >= 2
+daikon.Quant.memberOf(\old(a_value.getClass().getName()) , daikon.Quant.typeArray(this.data) )
+this.start != this.free
+this.start <= \old(this.free)
+this.free != \old(this.free)

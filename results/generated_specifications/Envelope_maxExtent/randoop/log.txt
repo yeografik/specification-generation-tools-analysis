@@ -1,0 +1,89 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+===========================================================================
+jts.Envelope:::OBJECT
+this.minx <= this.maxx
+this.miny <= this.maxy
+===========================================================================
+jts.Envelope.Envelope(double, double, double, double):::ENTER
+===========================================================================
+jts.Envelope.Envelope(double, double, double, double):::EXIT
+this.minx <= orig(x1)
+this.minx <= orig(x2)
+this.maxx >= orig(x1)
+this.maxx >= orig(x2)
+this.miny <= orig(y1)
+this.miny <= orig(y2)
+this.maxy >= orig(y1)
+this.maxy >= orig(y2)
+===========================================================================
+jts.Envelope.getHeight():::ENTER
+===========================================================================
+jts.Envelope.getHeight():::EXIT163
+===========================================================================
+jts.Envelope.getHeight():::EXIT
+this.minx == orig(this.minx)
+this.maxx == orig(this.maxx)
+this.miny == orig(this.miny)
+this.maxy == orig(this.maxy)
+this.miny - this.maxy + return == 0
+===========================================================================
+jts.Envelope.getWidth():::ENTER
+===========================================================================
+jts.Envelope.getWidth():::EXIT151
+===========================================================================
+jts.Envelope.getWidth():::EXIT
+this.minx == orig(this.minx)
+this.maxx == orig(this.maxx)
+this.miny == orig(this.miny)
+this.maxy == orig(this.maxy)
+return >= 0.0
+this.minx - this.maxx + return == 0
+===========================================================================
+jts.Envelope.init(double, double, double, double):::ENTER
+===========================================================================
+jts.Envelope.init(double, double, double, double):::EXIT
+this.minx <= orig(x1)
+this.minx <= orig(x2)
+this.maxx >= orig(x1)
+this.maxx >= orig(x2)
+this.miny <= orig(y1)
+this.miny <= orig(y2)
+this.maxy >= orig(y1)
+this.maxy >= orig(y2)
+===========================================================================
+jts.Envelope.isEnvelopeNull():::ENTER
+===========================================================================
+jts.Envelope.isEnvelopeNull():::EXIT
+this.minx == orig(this.minx)
+this.maxx == orig(this.maxx)
+this.miny == orig(this.miny)
+this.maxy == orig(this.maxy)
+return == false
+===========================================================================
+jts.Envelope.isEnvelopeNull():::EXIT;condition="not(return == true)"
+===========================================================================
+jts.Envelope.maxExtent():::ENTER
+===========================================================================
+jts.Envelope.maxExtent():::EXIT
+this.minx == orig(this.minx)
+this.maxx == orig(this.maxx)
+this.miny == orig(this.miny)
+this.maxy == orig(this.maxy)
+this.minx != return
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

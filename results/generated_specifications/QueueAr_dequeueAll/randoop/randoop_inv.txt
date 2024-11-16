@@ -1,0 +1,29 @@
+===========================================================================
+DataStructures.QueueAr:::OBJECT
+this.theArray != null
+this.theArray.getClass().getName() == java.lang.Object[].class.getName()
+this.currentSize >= 0
+this.front >= 0
+this.back >= -1
+this.currentSize <= daikon.Quant.size(this.theArray)
+this.front <= daikon.Quant.size(this.theArray)
+this.back <= daikon.Quant.size(this.theArray)-1
+===========================================================================
+DataStructures.QueueAr.dequeueAll():::ENTER
+this.currentSize == 0 || this.currentSize == 1 || this.currentSize == 2
+this.front == 0 || this.front == 1
+===========================================================================
+DataStructures.QueueAr.dequeueAll():::EXIT
+this.theArray == \old(this.theArray)
+this.theArray.getClass().getName() == \old(this.theArray.getClass().getName())
+this.back == \old(this.back)
+daikon.Quant.size(this.theArray) == \old(daikon.Quant.size(this.theArray))
+daikon.Quant.eltsEqual(this.theArray, null)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.theArray), null)
+this.currentSize == 0
+this.currentSize <= this.front
+this.currentSize <= \old(this.currentSize)
+this.currentSize <= \old(this.front)
+this.front >= \old(this.front)
+\old(this.currentSize) <= daikon.Quant.size(this.theArray)
+\old(this.front) <= daikon.Quant.size(this.theArray)

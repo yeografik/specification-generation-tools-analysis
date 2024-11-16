@@ -1,0 +1,393 @@
+===========================================================================
+examples.Composite:::OBJECT
+this.children.getClass().getName() == this.parent.children.getClass().getName()
+this.children.getClass().getName() == this.parent.parent.children.getClass().getName()
+this.children.getClass().getName() == this.parent.max_child.children.getClass().getName()
+this.children.getClass().getName() == this.max_child.children.getClass().getName()
+this.children.getClass().getName() == this.max_child.max_child.children.getClass().getName()
+this.parent.children.getClass().getName() == this.parent.parent.children.getClass().getName()
+this.parent.children.getClass().getName() == this.parent.max_child.children.getClass().getName()
+this.parent.children.getClass().getName() == this.max_child.children.getClass().getName()
+this.parent.children.getClass().getName() == this.max_child.max_child.children.getClass().getName()
+this.parent.parent.children.getClass().getName() == this.parent.max_child.children.getClass().getName()
+this.parent.parent.children.getClass().getName() == this.max_child.children.getClass().getName()
+this.parent.parent.children.getClass().getName() == this.max_child.max_child.children.getClass().getName()
+this.parent.parent.ancestors.getClass().getName() == this.parent.ancestors.getClass().getName()
+this.parent.parent.ancestors.getClass().getName() == this.parent.max_child.ancestors.getClass().getName()
+this.parent.parent.ancestors.getClass().getName() == this.ancestors.getClass().getName()
+this.parent.parent.ancestors.getClass().getName() == this.max_child.ancestors.getClass().getName()
+this.parent.parent.ancestors.getClass().getName() == this.max_child.max_child.ancestors.getClass().getName()
+this.parent.value == this.parent.max_child.init_value
+this.parent.ancestors.getClass().getName() == this.parent.max_child.ancestors.getClass().getName()
+this.parent.ancestors.getClass().getName() == this.ancestors.getClass().getName()
+this.parent.ancestors.getClass().getName() == this.max_child.ancestors.getClass().getName()
+this.parent.ancestors.getClass().getName() == this.max_child.max_child.ancestors.getClass().getName()
+this.parent.max_child.children.getClass().getName() == this.max_child.children.getClass().getName()
+this.parent.max_child.children.getClass().getName() == this.max_child.max_child.children.getClass().getName()
+this.parent.max_child.ancestors.getClass().getName() == this.ancestors.getClass().getName()
+this.parent.max_child.ancestors.getClass().getName() == this.max_child.ancestors.getClass().getName()
+this.parent.max_child.ancestors.getClass().getName() == this.max_child.max_child.ancestors.getClass().getName()
+this.value == this.max_child.init_value
+this.ancestors.getClass().getName() == this.max_child.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == this.max_child.max_child.ancestors.getClass().getName()
+this.max_child.children.getClass().getName() == this.max_child.parent.children.getClass().getName()
+this.max_child.children.getClass().getName() == this.max_child.max_child.children.getClass().getName()
+this.max_child.parent.ancestors.getClass().getName() == this.max_child.ancestors.getClass().getName()
+this.max_child.value == this.max_child.max_child.value
+this.max_child.ancestors.getClass().getName() == this.max_child.max_child.ancestors.getClass().getName()
+this.max_child.max_child.value == this.max_child.max_child.init_value
+this.children != null
+daikon.Quant.eltsNotEqual(this.children, null)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.children), "examples.Composite")
+this.children.getClass().getName() == java.util.LinkedList.class.getName()
+this.parent.children != null
+daikon.Quant.eltsNotEqual(this.parent.children, null)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.parent.children), "examples.Composite")
+this.parent.children.getClass().getName() == java.util.LinkedList.class.getName()
+this.parent.parent.children != null
+daikon.Quant.eltsNotEqual(this.parent.parent.children, null)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.parent.parent.children), "examples.Composite")
+this.parent.parent.children.getClass().getName() == java.util.LinkedList.class.getName()
+this.parent.parent.ancestors != null
+this.parent.parent.ancestors.getClass().getName() == java.util.HashSet.class.getName()
+this.parent.ancestors != null
+this.parent.ancestors.getClass().getName() == java.util.HashSet.class.getName()
+this.parent.max_child.children != null
+daikon.Quant.eltsNotEqual(this.parent.max_child.children, null)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.parent.max_child.children), "examples.Composite")
+this.parent.max_child.children.getClass().getName() == java.util.LinkedList.class.getName()
+this.parent.max_child.parent != null
+this.parent.max_child.ancestors != null
+this.parent.max_child.ancestors.getClass().getName() == java.util.HashSet.class.getName()
+this.ancestors != null
+this.ancestors.getClass().getName() == java.util.HashSet.class.getName()
+this.max_child.children != null
+daikon.Quant.eltsNotEqual(this.max_child.children, null)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.max_child.children), "examples.Composite")
+this.max_child.children.getClass().getName() == java.util.LinkedList.class.getName()
+this.max_child.parent != null
+this.max_child.parent.children != null
+daikon.Quant.eltsNotEqual(this.max_child.parent.children, null)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this.max_child.parent.children), "examples.Composite")
+this.max_child.parent.ancestors != null
+this.max_child.parent.max_child != null
+this.max_child.ancestors != null
+this.max_child.ancestors.getClass().getName() == java.util.HashSet.class.getName()
+this.max_child.max_child.children != null
+("oneOf.java.jpp: SEQUENCE unimplemented" != null)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.max_child.max_child.children), new String[] {  })
+this.max_child.max_child.children.getClass().getName() == java.util.LinkedList.class.getName()
+this.max_child.max_child.parent != null
+this.max_child.max_child.value >= -1
+this.max_child.max_child.ancestors != null
+this.max_child.max_child.ancestors.getClass().getName() == java.util.HashSet.class.getName()
+this.max_child.max_child.max_child == null
+daikon.Quant.size(this.parent.parent.children) >= 1
+daikon.Quant.size(this.max_child.parent.children) >= 1
+this.children.getClass().getName() != this.parent.parent.ancestors.getClass().getName()
+this.children.getClass().getName() != this.parent.ancestors.getClass().getName()
+this.children.getClass().getName() != this.parent.max_child.ancestors.getClass().getName()
+this.children.getClass().getName() != this.ancestors.getClass().getName()
+this.children.getClass().getName() != this.max_child.ancestors.getClass().getName()
+this.children.getClass().getName() != this.max_child.max_child.ancestors.getClass().getName()
+this.parent.children.getClass().getName() != this.parent.parent.ancestors.getClass().getName()
+this.parent.children.getClass().getName() != this.parent.ancestors.getClass().getName()
+this.parent.children.getClass().getName() != this.parent.max_child.ancestors.getClass().getName()
+this.parent.children.getClass().getName() != this.ancestors.getClass().getName()
+this.parent.children.getClass().getName() != this.max_child.ancestors.getClass().getName()
+this.parent.children.getClass().getName() != this.max_child.max_child.ancestors.getClass().getName()
+this.parent.parent.children.getClass().getName() != this.parent.parent.ancestors.getClass().getName()
+this.parent.parent.children.getClass().getName() != this.parent.ancestors.getClass().getName()
+this.parent.parent.children.getClass().getName() != this.parent.max_child.ancestors.getClass().getName()
+this.parent.parent.children.getClass().getName() != this.ancestors.getClass().getName()
+this.parent.parent.children.getClass().getName() != this.max_child.ancestors.getClass().getName()
+this.parent.parent.children.getClass().getName() != this.max_child.max_child.ancestors.getClass().getName()
+this.parent.parent.value >= this.parent.parent.init_value
+this.parent.parent.value >= this.parent.value
+this.parent.parent.value >= this.parent.init_value
+this.parent.parent.value >= this.parent.max_child.init_value
+this.parent.parent.value > this.max_child.parent.init_value
+this.parent.parent.value >= this.max_child.init_value
+this.parent.parent.value < this.max_child.max_child.value
+this.parent.parent.init_value < this.max_child.max_child.value
+this.parent.parent.ancestors.getClass().getName() != this.parent.max_child.children.getClass().getName()
+this.parent.parent.ancestors.getClass().getName() != this.max_child.children.getClass().getName()
+this.parent.parent.ancestors.getClass().getName() != this.max_child.max_child.children.getClass().getName()
+this.parent.value >= this.parent.init_value
+this.parent.value <= this.parent.max_child.value
+this.parent.value > this.max_child.parent.init_value
+this.parent.value >= this.max_child.init_value
+this.parent.value < this.max_child.max_child.value
+this.parent.init_value < this.parent.max_child.value
+this.parent.init_value < this.parent.max_child.init_value
+this.parent.init_value < this.max_child.max_child.value
+this.parent.ancestors.getClass().getName() != this.parent.max_child.children.getClass().getName()
+this.parent.ancestors.getClass().getName() != this.max_child.children.getClass().getName()
+this.parent.ancestors.getClass().getName() != this.max_child.max_child.children.getClass().getName()
+this.parent.max_child.children.getClass().getName() != this.parent.max_child.ancestors.getClass().getName()
+this.parent.max_child.children.getClass().getName() != this.ancestors.getClass().getName()
+this.parent.max_child.children.getClass().getName() != this.max_child.ancestors.getClass().getName()
+this.parent.max_child.children.getClass().getName() != this.max_child.max_child.ancestors.getClass().getName()
+this.parent.max_child.value >= this.parent.max_child.init_value
+this.parent.max_child.value > this.max_child.parent.init_value
+this.parent.max_child.value >= this.max_child.init_value
+this.parent.max_child.value <= this.max_child.max_child.value
+this.parent.max_child.init_value > this.max_child.parent.init_value
+this.parent.max_child.init_value >= this.max_child.init_value
+this.parent.max_child.init_value < this.max_child.max_child.value
+this.parent.max_child.ancestors.getClass().getName() != this.max_child.children.getClass().getName()
+this.parent.max_child.ancestors.getClass().getName() != this.max_child.max_child.children.getClass().getName()
+this.value >= this.init_value
+this.value <= this.max_child.parent.value
+this.value > this.max_child.parent.init_value
+this.value <= this.max_child.value
+this.value < this.max_child.max_child.value
+this.init_value < this.max_child.parent.value
+this.init_value < this.max_child.value
+this.init_value < this.max_child.init_value
+this.init_value < this.max_child.max_child.value
+this.ancestors.getClass().getName() != this.max_child.children.getClass().getName()
+this.ancestors.getClass().getName() != this.max_child.max_child.children.getClass().getName()
+this.max_child.children.getClass().getName() != this.max_child.ancestors.getClass().getName()
+this.max_child.children.getClass().getName() != this.max_child.max_child.ancestors.getClass().getName()
+this.max_child.parent.value > this.max_child.parent.init_value
+this.max_child.parent.value >= this.max_child.init_value
+this.max_child.parent.value <= this.max_child.max_child.value
+this.max_child.parent.init_value < this.max_child.value
+this.max_child.parent.init_value < this.max_child.init_value
+this.max_child.parent.init_value < this.max_child.max_child.value
+this.max_child.value >= this.max_child.init_value
+this.max_child.init_value < this.max_child.max_child.value
+this.max_child.ancestors.getClass().getName() != this.max_child.max_child.children.getClass().getName()
+this.max_child.max_child.children.getClass().getName() != this.max_child.max_child.ancestors.getClass().getName()
+===========================================================================
+examples.Composite.addChild(examples.Composite):::ENTER
+this == this.max_child.parent
+this.children == this.max_child.parent.children
+this.children.getClass().getName() == c.children.getClass().getName()
+this.parent == this.max_child.parent.parent
+this.parent.value == this.parent.max_child.value
+this.parent.max_child.value == this.parent.max_child.init_value
+this.parent.max_child.max_child == this.max_child.max_child
+this.parent.max_child.max_child == c.parent
+this.value == this.max_child.value
+this.init_value == this.max_child.parent.init_value
+this.ancestors == this.max_child.parent.ancestors
+this.ancestors.getClass().getName() == c.ancestors.getClass().getName()
+this.max_child == this.max_child.parent.max_child
+this.max_child.parent.value == this.max_child.value
+this.max_child.value == this.max_child.init_value
+this.max_child.max_child == c.parent
+c.value == c.init_value
+this.parent.parent.init_value != 0
+this.parent.max_child.max_child == null
+("oneOf.java.jpp: SEQUENCE unimplemented" != null)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.max_child.children), new String[] {  })
+this.max_child.max_child == null
+c != null
+c.children != null
+("oneOf.java.jpp: SEQUENCE unimplemented" != null)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(c.children), new String[] {  })
+c.parent == null
+c.ancestors != null
+c.max_child == null
+daikon.Quant.size(this.parent.children) >= 1
+daikon.Quant.size(this.parent.parent.children) == 1 || daikon.Quant.size(this.parent.parent.children) == 2 || daikon.Quant.size(this.parent.parent.children) == 3
+this.parent.parent.value >= this.parent.max_child.value
+this.parent.parent.value >= this.value
+this.parent.parent.value >= this.init_value
+this.parent.parent.value >= this.max_child.value
+this.parent.parent.init_value < this.max_child.value
+this.parent.value >= this.value
+this.parent.value >= this.init_value
+this.parent.value >= this.max_child.value
+this.parent.max_child.value >= this.value
+this.parent.max_child.value >= this.init_value
+this.parent.max_child.value >= this.max_child.value
+===========================================================================
+examples.Composite.addChild(examples.Composite):::EXIT
+this.children == this.max_child.parent.children
+this.children == c.parent.children
+this.children == \old(this.children)
+this.children == \old(this.max_child.parent.children)
+this.children.getClass().getName() == c.children.getClass().getName()
+this.children.getClass().getName() == c.parent.children.getClass().getName()
+this.children.getClass().getName() == \old(this.children.getClass().getName())
+this.children.getClass().getName() == \old(this.parent.max_child.children.getClass().getName())
+this.children.getClass().getName() == \old(this.max_child.children.getClass().getName())
+this.children.getClass().getName() == \old(c.children.getClass().getName())
+this.parent == this.max_child.parent.parent
+this.parent == c.parent.parent
+this.parent == \old(this.parent)
+this.parent == \old(this.max_child.parent.parent)
+this.parent.children == \old(this.parent.children)
+daikon.Quant.pairwiseEqual(this.parent.children, \old(this.parent.children))
+this.parent.children.getClass().getName() == \old(this.parent.children.getClass().getName())
+this.parent.children.getClass().getName() == \old(this.parent.max_child.children.getClass().getName())
+this.parent.children.getClass().getName() == \old(this.max_child.children.getClass().getName())
+this.parent.parent == \old(this.parent.parent)
+this.parent.parent.children == \old(this.parent.parent.children)
+daikon.Quant.pairwiseEqual(this.parent.parent.children, \old(this.parent.parent.children))
+this.parent.parent.children.getClass().getName() == \old(this.parent.parent.children.getClass().getName())
+this.parent.parent.children.getClass().getName() == \old(this.parent.max_child.children.getClass().getName())
+this.parent.parent.children.getClass().getName() == \old(this.max_child.children.getClass().getName())
+this.parent.parent.parent == \old(this.parent.parent.parent)
+this.parent.parent.init_value == \old(this.parent.parent.init_value)
+this.parent.parent.ancestors == \old(this.parent.parent.ancestors)
+this.parent.parent.ancestors.getClass().getName() == \old(this.parent.parent.ancestors.getClass().getName())
+this.parent.parent.ancestors.getClass().getName() == \old(this.parent.max_child.ancestors.getClass().getName())
+this.parent.parent.ancestors.getClass().getName() == \old(this.max_child.ancestors.getClass().getName())
+this.parent.value == this.parent.max_child.value
+this.parent.init_value == \old(this.parent.init_value)
+this.parent.ancestors == \old(this.parent.ancestors)
+this.parent.ancestors.getClass().getName() == \old(this.parent.ancestors.getClass().getName())
+this.parent.ancestors.getClass().getName() == \old(this.parent.max_child.ancestors.getClass().getName())
+this.parent.ancestors.getClass().getName() == \old(this.max_child.ancestors.getClass().getName())
+this.parent.max_child.children.getClass().getName() == \old(this.parent.max_child.children.getClass().getName())
+this.parent.max_child.children.getClass().getName() == \old(this.max_child.children.getClass().getName())
+this.parent.max_child.value == this.parent.max_child.init_value
+this.parent.max_child.ancestors.getClass().getName() == \old(this.parent.max_child.ancestors.getClass().getName())
+this.parent.max_child.ancestors.getClass().getName() == \old(this.max_child.ancestors.getClass().getName())
+this.parent.max_child.max_child == this.max_child.max_child
+this.parent.max_child.max_child == \old(this.parent.max_child.max_child)
+this.parent.max_child.max_child == \old(this.max_child.max_child)
+this.parent.max_child.max_child == \old(c.parent)
+this.value == this.max_child.value
+this.value == c.parent.value
+this.init_value == this.max_child.parent.init_value
+this.init_value == c.parent.init_value
+this.init_value == \old(this.init_value)
+this.init_value == \old(this.max_child.parent.init_value)
+this.ancestors == this.max_child.parent.ancestors
+this.ancestors == c.parent.ancestors
+this.ancestors == \old(this.ancestors)
+this.ancestors == \old(this.max_child.parent.ancestors)
+this.ancestors.getClass().getName() == c.parent.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == c.ancestors.getClass().getName()
+this.ancestors.getClass().getName() == \old(this.parent.max_child.ancestors.getClass().getName())
+this.ancestors.getClass().getName() == \old(this.ancestors.getClass().getName())
+this.ancestors.getClass().getName() == \old(this.max_child.ancestors.getClass().getName())
+this.ancestors.getClass().getName() == \old(c.ancestors.getClass().getName())
+this.max_child == this.max_child.parent.max_child
+this.max_child == c.parent.max_child
+daikon.Quant.pairwiseEqual(this.max_child.children, \old(this.max_child.children))
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.max_child.children), \old(daikon.Quant.typeArray(this.max_child.children)))
+this.max_child.children.getClass().getName() == \old(this.parent.max_child.children.getClass().getName())
+this.max_child.children.getClass().getName() == \old(this.max_child.children.getClass().getName())
+this.max_child.parent == c.parent
+this.max_child.parent == \old(this)
+this.max_child.parent == \old(this.max_child.parent)
+this.max_child.parent.children == \old(this.max_child.parent.children)
+this.max_child.parent.parent == \old(this.max_child.parent.parent)
+this.max_child.parent.value == this.max_child.value
+this.max_child.parent.init_value == \old(this.max_child.parent.init_value)
+this.max_child.parent.ancestors == \old(this.max_child.parent.ancestors)
+this.max_child.value == this.max_child.init_value
+this.max_child.ancestors.getClass().getName() == \old(this.parent.max_child.ancestors.getClass().getName())
+this.max_child.ancestors.getClass().getName() == \old(this.max_child.ancestors.getClass().getName())
+this.max_child.max_child == \old(this.parent.max_child.max_child)
+this.max_child.max_child == \old(this.max_child.max_child)
+this.max_child.max_child == \old(c.parent)
+c.children == \old(c.children)
+daikon.Quant.pairwiseEqual(c.children, \old(c.children))
+c.parent == \old(this)
+c.parent == \old(this.max_child.parent)
+c.value == c.init_value
+c.value == \old(c.value)
+c.value == \old(c.init_value)
+c.ancestors == \old(c.ancestors)
+c.max_child == \old(c.max_child)
+daikon.Quant.size(this.children)-1 == \old(daikon.Quant.size(this.children))
+daikon.Quant.size(this.max_child.parent.children)-1 == \old(daikon.Quant.size(this.max_child.parent.children))
+this.parent.parent.init_value != 0
+this.parent.max_child.max_child == null
+("oneOf.java.jpp: SEQUENCE unimplemented" != null)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(this.max_child.children), new String[] {  })
+this.max_child.max_child == null
+c.children != null
+("oneOf.java.jpp: SEQUENCE unimplemented" != null)
+daikon.Quant.pairwiseEqual(daikon.Quant.typeArray(c.children), new String[] {  })
+c.parent != null
+daikon.Quant.eltsNotEqual(c.parent.children, null)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(c.parent.children), "examples.Composite")
+c.ancestors != null
+c.max_child == null
+daikon.Quant.size(this.children) >= 1
+daikon.Quant.size(this.parent.children) >= 1
+daikon.Quant.size(this.parent.parent.children) == 1 || daikon.Quant.size(this.parent.parent.children) == 2 || daikon.Quant.size(this.parent.parent.children) == 3
+daikon.Quant.size(c.parent.children) >= 1
+this.children.getClass().getName() != \old(this.parent.max_child.ancestors.getClass().getName())
+this.children.getClass().getName() != \old(this.max_child.ancestors.getClass().getName())
+this.parent.children.getClass().getName() != \old(this.parent.max_child.ancestors.getClass().getName())
+this.parent.children.getClass().getName() != \old(this.max_child.ancestors.getClass().getName())
+this.parent.parent.children.getClass().getName() != \old(this.parent.max_child.ancestors.getClass().getName())
+this.parent.parent.children.getClass().getName() != \old(this.max_child.ancestors.getClass().getName())
+this.parent.parent.value >= this.parent.max_child.value
+this.parent.parent.value >= this.value
+this.parent.parent.value >= this.init_value
+this.parent.parent.value >= this.max_child.value
+this.parent.parent.value >= c.value
+this.parent.parent.value >= \old(this.parent.parent.value)
+this.parent.parent.value >= \old(this.parent.value)
+this.parent.parent.value >= \old(this.parent.max_child.value)
+this.parent.parent.value >= \old(this.value)
+this.parent.parent.value > \old(this.max_child.parent.init_value)
+this.parent.parent.value >= \old(this.max_child.value)
+this.parent.parent.init_value <= \old(this.parent.parent.value)
+this.parent.parent.init_value < \old(this.max_child.value)
+this.parent.parent.ancestors.getClass().getName() != \old(this.parent.max_child.children.getClass().getName())
+this.parent.parent.ancestors.getClass().getName() != \old(this.max_child.children.getClass().getName())
+this.parent.value >= this.value
+this.parent.value >= this.init_value
+this.parent.value >= this.max_child.value
+this.parent.value >= c.value
+this.parent.value >= \old(this.parent.value)
+this.parent.value >= \old(this.parent.max_child.value)
+this.parent.value >= \old(this.value)
+this.parent.value > \old(this.max_child.parent.init_value)
+this.parent.value >= \old(this.max_child.value)
+this.parent.init_value <= \old(this.parent.parent.value)
+this.parent.init_value <= \old(this.parent.value)
+this.parent.init_value < \old(this.parent.max_child.value)
+this.parent.ancestors.getClass().getName() != \old(this.parent.max_child.children.getClass().getName())
+this.parent.ancestors.getClass().getName() != \old(this.max_child.children.getClass().getName())
+this.parent.max_child.children.getClass().getName() != \old(this.parent.max_child.ancestors.getClass().getName())
+this.parent.max_child.children.getClass().getName() != \old(this.max_child.ancestors.getClass().getName())
+this.parent.max_child.value >= this.value
+this.parent.max_child.value >= this.init_value
+this.parent.max_child.value >= this.max_child.value
+this.parent.max_child.value >= c.value
+this.parent.max_child.value >= \old(this.parent.value)
+this.parent.max_child.value >= \old(this.parent.max_child.value)
+this.parent.max_child.value >= \old(this.value)
+this.parent.max_child.value > \old(this.max_child.parent.init_value)
+this.parent.max_child.value >= \old(this.max_child.value)
+this.parent.max_child.ancestors.getClass().getName() != \old(this.parent.max_child.children.getClass().getName())
+this.parent.max_child.ancestors.getClass().getName() != \old(this.max_child.children.getClass().getName())
+this.value >= c.value
+this.value >= \old(this.value)
+this.value > \old(this.max_child.parent.init_value)
+this.value >= \old(this.max_child.value)
+this.init_value <= \old(this.parent.parent.value)
+this.init_value <= \old(this.parent.value)
+this.init_value <= \old(this.parent.max_child.value)
+this.init_value <= \old(this.value)
+this.init_value < \old(this.max_child.value)
+this.ancestors.getClass().getName() != \old(this.parent.max_child.children.getClass().getName())
+this.ancestors.getClass().getName() != \old(this.max_child.children.getClass().getName())
+daikon.Quant.isReverse(this.max_child.children, \old(this.max_child.children))
+this.max_child.children.getClass().getName() != \old(this.parent.max_child.ancestors.getClass().getName())
+this.max_child.children.getClass().getName() != \old(this.max_child.ancestors.getClass().getName())
+this.max_child.parent.init_value <= \old(this.parent.parent.value)
+this.max_child.parent.init_value <= \old(this.parent.value)
+this.max_child.parent.init_value <= \old(this.parent.max_child.value)
+this.max_child.parent.init_value <= \old(this.value)
+this.max_child.parent.init_value < \old(this.max_child.value)
+this.max_child.value >= c.value
+this.max_child.value >= \old(this.value)
+this.max_child.value > \old(this.max_child.parent.init_value)
+this.max_child.value >= \old(this.max_child.value)
+this.max_child.ancestors.getClass().getName() != \old(this.parent.max_child.children.getClass().getName())
+this.max_child.ancestors.getClass().getName() != \old(this.max_child.children.getClass().getName())
+daikon.Quant.size(this.parent.max_child.children)-1 <= \old(daikon.Quant.size(this.parent.max_child.children))
+daikon.Quant.size(this.max_child.parent.children) - \old(daikon.Quant.size(this.max_child.parent.children)) - 1 == 0

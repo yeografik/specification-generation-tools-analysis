@@ -1,0 +1,189 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 974 times.  Unmatched entries are ignored!
+Unterminated calls:
+  DataStructures.StackAr.push(java.lang.Object) : 462 invocations
+  DataStructures.StackAr.pop() : 499 invocations
+  DataStructures.StackAr.StackAr(int) : 13 invocations
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+DataStructures.Overflow:::OBJECT
+===========================================================================
+DataStructures.Overflow.Overflow():::EXIT
+===========================================================================
+DataStructures.StackAr:::OBJECT
+this.theArray != null
+this.theArray.getClass().getName() == java.lang.Object[].class
+this.topOfStack >= -1
+this.topOfStack <= size(this.theArray[])-1
+===========================================================================
+DataStructures.StackAr.StackAr(int):::ENTER
+capacity >= 0
+===========================================================================
+DataStructures.StackAr.StackAr(int):::EXIT
+orig(capacity) == size(this.theArray[])
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.topOfStack == -1
+===========================================================================
+DataStructures.StackAr.isEmpty():::ENTER
+===========================================================================
+DataStructures.StackAr.isEmpty():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.theArray[] == orig(this.theArray[])
+this.topOfStack == orig(this.topOfStack)
+(this.topOfStack == -1)  <==>  (return == true)
+(this.topOfStack == -1)  ==>  (this.theArray[] elements == null)
+(this.topOfStack == -1)  ==>  (this.theArray[].getClass().getName() elements == null)
+(this.topOfStack one of { 0, 1, 2 })  <==>  (return == false)
+(this.topOfStack one of { 0, 1, 2 })  ==>  (size(this.theArray[]) >= 1)
+===========================================================================
+DataStructures.StackAr.isEmpty():::EXIT;condition="return == true"
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.topOfStack == -1
+return == true
+===========================================================================
+DataStructures.StackAr.isEmpty():::EXIT;condition="not(return == true)"
+this.topOfStack one of { 0, 1, 2 }
+return == false
+size(this.theArray[]) >= 1
+===========================================================================
+DataStructures.StackAr.isFull():::ENTER
+===========================================================================
+DataStructures.StackAr.isFull():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.theArray[] == orig(this.theArray[])
+this.topOfStack == orig(this.topOfStack)
+(return == false)  <==>  (this.topOfStack < size(this.theArray[])-1)
+(return == false)  ==>  (size(this.theArray[]) >= 1)
+(return == true)  <==>  (this.topOfStack == size(this.theArray[])-1)
+(return == true)  ==>  (size(this.theArray[]) one of { 0, 1, 2 })
+===========================================================================
+DataStructures.StackAr.isFull():::EXIT;condition="return == true"
+this.topOfStack == size(this.theArray[])-1
+this.topOfStack == orig(size(this.theArray[]))-1
+return == true
+size(this.theArray[]) one of { 0, 1, 2 }
+===========================================================================
+DataStructures.StackAr.isFull():::EXIT;condition="not(return == true)"
+return == false
+size(this.theArray[]) >= 1
+this.topOfStack < size(this.theArray[])-1
+===========================================================================
+DataStructures.StackAr.makeEmpty():::ENTER
+===========================================================================
+DataStructures.StackAr.makeEmpty():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+size(this.theArray[]) == orig(size(this.theArray[]))
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.topOfStack == -1
+this.topOfStack <= orig(this.topOfStack)
+orig(this.topOfStack) <= size(this.theArray[])-1
+===========================================================================
+DataStructures.StackAr.pop():::ENTER
+this.topOfStack one of { 0, 1, 2 }
+size(this.theArray[]) >= 1
+===========================================================================
+DataStructures.StackAr.pop():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+size(this.theArray[]) == orig(size(this.theArray[]))
+this.topOfStack one of { -1, 0, 1 }
+size(this.theArray[]) >= 1
+this.theArray[orig(this.topOfStack)] == null
+this.topOfStack < orig(this.topOfStack)
+this.topOfStack < size(this.theArray[])-1
+orig(this.topOfStack) <= size(this.theArray[])-1
+===========================================================================
+DataStructures.StackAr.push(java.lang.Object):::ENTER
+size(this.theArray[]) >= 1
+this.theArray.getClass().getName() != x.getClass().getName()
+this.topOfStack < size(this.theArray[])-1
+===========================================================================
+DataStructures.StackAr.push(java.lang.Object):::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+orig(x) == this.theArray[this.topOfStack]
+size(this.theArray[]) == orig(size(this.theArray[]))
+this.topOfStack >= 0
+size(this.theArray[]) >= 1
+orig(this.theArray[post(this.topOfStack)]) == null
+this.theArray.getClass().getName() != orig(x.getClass().getName())
+orig(x.getClass().getName()) in this.theArray[].getClass().getName()
+this.topOfStack - orig(this.topOfStack) - 1 == 0
+orig(this.topOfStack) < size(this.theArray[])-1
+===========================================================================
+DataStructures.StackAr.top():::ENTER
+===========================================================================
+DataStructures.StackAr.top():::EXIT76
+this.theArray[] elements == null
+this.theArray[].getClass().getName() elements == null
+this.topOfStack == -1
+return == null
+this.theArray[] elements == return
+===========================================================================
+DataStructures.StackAr.top():::EXIT77
+return == this.theArray[this.topOfStack]
+return == this.theArray[orig(this.topOfStack)]
+return == orig(this.theArray[post(this.topOfStack)])
+return == orig(this.theArray[this.topOfStack])
+this.topOfStack one of { 0, 1, 2 }
+size(this.theArray[]) >= 1
+===========================================================================
+DataStructures.StackAr.top():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+this.theArray[] == orig(this.theArray[])
+this.topOfStack == orig(this.topOfStack)
+(this.topOfStack == -1)  ==>  (return == null)
+(this.topOfStack == -1)  ==>  (this.theArray[] elements == null)
+(this.topOfStack == -1)  ==>  (this.theArray[] elements == return)
+(this.topOfStack == -1)  ==>  (this.theArray[].getClass().getName() elements == null)
+(this.topOfStack one of { 0, 1, 2 })  ==>  (return == orig(this.theArray[post(this.topOfStack)]))
+(this.topOfStack one of { 0, 1, 2 })  ==>  (return == orig(this.theArray[this.topOfStack]))
+(this.topOfStack one of { 0, 1, 2 })  ==>  (return == this.theArray[orig(this.topOfStack)])
+(this.topOfStack one of { 0, 1, 2 })  ==>  (return == this.theArray[this.topOfStack])
+(this.topOfStack one of { 0, 1, 2 })  ==>  (return.getClass().getName() in this.theArray[].getClass().getName())
+(this.topOfStack one of { 0, 1, 2 })  ==>  (size(this.theArray[]) >= 1)
+(this.topOfStack one of { 0, 1, 2 })  ==>  (this.theArray.getClass().getName() != return.getClass().getName())
+this.theArray.getClass().getName() != return.getClass().getName()
+return.getClass().getName() in this.theArray[].getClass().getName()
+===========================================================================
+DataStructures.StackAr.topAndPop():::ENTER
+this.topOfStack one of { -1, 0, 1 }
+===========================================================================
+DataStructures.StackAr.topAndPop():::EXIT
+this.theArray == orig(this.theArray)
+this.theArray.getClass().getName() == orig(this.theArray.getClass().getName())
+size(this.theArray[]) == orig(size(this.theArray[]))
+this.topOfStack one of { -1, 0 }
+this.theArray.getClass().getName() != return.getClass().getName()
+this.topOfStack <= orig(this.topOfStack)
+return.getClass().getName() in orig(this.theArray[].getClass().getName())
+orig(this.topOfStack) <= size(this.theArray[])-1
+===========================================================================
+DataStructures.Underflow:::OBJECT
+===========================================================================
+DataStructures.Underflow.Underflow():::EXIT
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

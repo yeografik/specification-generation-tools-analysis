@@ -1,0 +1,263 @@
+
+=======================================================================
+                    first daikon command
+=======================================================================
+
+=======================================================================
+                    second daikon command
+=======================================================================
+Chicory warning: ClassFile: org.junit.Assert - classfile version (49) is out of date and may not be processed correctly.
+Chicory warning: ClassFile: org.junit.ComparisonFailure - classfile version (49) is out of date and may not be processed correctly.
+Daikon version 5.8.16, released November 9, 2022; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 3 times.  Unmatched entries are ignored!
+Unterminated calls:
+  examples.ListComp02.insert_r(examples.R) : 1 invocation
+  examples.ListComp02.q() : 2 invocations
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+examples.ListComp02:::OBJECT
+===========================================================================
+examples.ListComp02.ListComp02():::EXIT
+this._var49[] == []
+this._var49[].getClass().getName() == []
+this._var50[] == []
+this._var50[].getClass().getName() == []
+===========================================================================
+examples.ListComp02.ListComp02(java.util.ArrayList, java.util.ArrayList):::ENTER
+Rs[] elements != null
+Rs[].getClass().getName() elements == examples.R.class
+Rs[].getClass().getName() one of { [examples.R], [examples.R, examples.R, examples.R, examples.R, examples.R, examples.R] }
+Ss[] elements != null
+Ss[].getClass().getName() == [examples.S, examples.S]
+Ss[].getClass().getName() elements == examples.S.class
+size(Rs[]) one of { 1, 6 }
+size(Ss[]) == 2
+===========================================================================
+examples.ListComp02.ListComp02(java.util.ArrayList, java.util.ArrayList):::EXIT
+this._var49 == orig(Rs)
+this._var50 == orig(Ss)
+Rs[] == orig(Rs[])
+Ss[] == orig(Ss[])
+this._var49[] elements != null
+this._var49[].getClass().getName() elements == examples.R.class
+this._var49[].getClass().getName() one of { [examples.R], [examples.R, examples.R, examples.R, examples.R, examples.R, examples.R] }
+this._var50[] elements != null
+this._var50[].getClass().getName() == [examples.S, examples.S]
+this._var50[].getClass().getName() elements == examples.S.class
+Rs[] elements != null
+Rs[].getClass().getName() elements == examples.R.class
+Rs[].getClass().getName() one of { [examples.R], [examples.R, examples.R, examples.R, examples.R, examples.R, examples.R] }
+Ss[] elements != null
+Ss[].getClass().getName() == [examples.S, examples.S]
+Ss[].getClass().getName() elements == examples.S.class
+size(this._var49[]) one of { 1, 6 }
+size(this._var50[]) == 2
+===========================================================================
+examples.ListComp02.clear():::ENTER
+this._var49[] elements != null
+this._var49[].getClass().getName() elements == examples.R.class
+===========================================================================
+examples.ListComp02.clear():::EXIT
+this._var49 != null
+this._var49[] == []
+this._var49[].getClass().getName() == []
+this._var50 != null
+this._var50[] == []
+this._var50[].getClass().getName() == []
+size(this._var49[]) <= orig(size(this._var49[]))
+size(this._var49[])-1 <= orig(size(this._var49[]))-1
+size(this._var50[]) <= orig(size(this._var50[]))
+size(this._var50[])-1 <= orig(size(this._var50[]))-1
+===========================================================================
+examples.ListComp02.insert_r(examples.R):::ENTER
+this._var49 != null
+this._var49[] elements != null
+this._var49[].getClass().getName() elements == examples.R.class
+this._var50[] elements != null
+this._var50[].getClass().getName() elements == examples.S.class
+r.A != null
+r.B != null
+r.B.toString one of { "", "hi!" }
+===========================================================================
+examples.ListComp02.insert_r(examples.R):::EXIT
+this._var49 == orig(this._var49)
+this._var50 == orig(this._var50)
+this._var50[] == orig(this._var50[])
+r.A == orig(r.A)
+r.B == orig(r.B)
+r.B.toString == orig(r.B.toString)
+size(this._var49[])-1 == orig(size(this._var49[]))
+this._var49 != null
+this._var50[] elements != null
+this._var50[].getClass().getName() elements == examples.S.class
+r.A != null
+r.B != null
+r.B.toString one of { "", "hi!" }
+size(this._var49[]) >= 1
+===========================================================================
+examples.ListComp02.insert_s(examples.S):::ENTER
+this._var49 != null
+this._var49[] elements != null
+this._var49[].getClass().getName() elements == examples.R.class
+this._var50 != null
+this._var50[] elements != null
+this._var50[].getClass().getName() elements == examples.S.class
+s.B != null
+s.B.toString one of { "", "hi!" }
+s.C != null
+===========================================================================
+examples.ListComp02.insert_s(examples.S):::EXIT
+this._var49 == orig(this._var49)
+this._var49[] == orig(this._var49[])
+this._var50 == orig(this._var50)
+s.B == orig(s.B)
+s.B.toString == orig(s.B.toString)
+s.C == orig(s.C)
+size(this._var50[])-1 == orig(size(this._var50[]))
+this._var49 != null
+this._var49[] elements != null
+this._var49[].getClass().getName() elements == examples.R.class
+this._var50 != null
+s.B != null
+s.B.toString one of { "", "hi!" }
+s.C != null
+===========================================================================
+examples.R:::OBJECT
+this.A != null
+this.B != null
+this.B.toString one of { "", "hi!" }
+===========================================================================
+examples.R.R(java.lang.Integer, java.lang.String):::ENTER
+A != null
+B != null
+B.toString one of { "", "hi!" }
+===========================================================================
+examples.R.R(java.lang.Integer, java.lang.String):::EXIT
+this.A == orig(A)
+this.B == orig(B)
+B.toString == orig(B.toString)
+B.toString one of { "", "hi!" }
+===========================================================================
+examples.R.equals(java.lang.Object):::ENTER
+===========================================================================
+examples.R.equals(java.lang.Object):::EXIT31
+this.B has only one value
+this.B.toString == "hi!"
+return == false
+orig(other) == null
+===========================================================================
+examples.R.equals(java.lang.Object):::EXIT31;condition="not(return == true)"
+===========================================================================
+examples.R.equals(java.lang.Object):::EXIT35
+return == false
+orig(other) != null
+===========================================================================
+examples.R.equals(java.lang.Object):::EXIT35;condition="not(return == true)"
+===========================================================================
+examples.R.equals(java.lang.Object):::EXIT43
+(return == false)  ==>  (this.B.toString one of { "", "hi!" })
+(return == true)  ==>  (orig(other) has only one value)
+(return == true)  ==>  (orig(this) has only one value)
+(return == true)  ==>  (this.A has only one value)
+(return == true)  ==>  (this.B has only one value)
+(return == true)  ==>  (this.B.toString == "hi!")
+orig(other) != null
+orig(other.getClass().getName()) == examples.R.class
+===========================================================================
+examples.R.equals(java.lang.Object):::EXIT43;condition="return == true"
+===========================================================================
+examples.R.equals(java.lang.Object):::EXIT43;condition="not(return == true)"
+===========================================================================
+examples.R.equals(java.lang.Object):::EXIT
+this.A == orig(this.A)
+this.B == orig(this.B)
+this.B.toString == orig(this.B.toString)
+(return == false)  ==>  (this.B.toString one of { "", "hi!" })
+(return == true)  ==>  (orig(other) has only one value)
+(return == true)  ==>  (orig(other.getClass().getName()) == examples.R.class)
+(return == true)  ==>  (orig(this) has only one value)
+(return == true)  ==>  (this.A has only one value)
+(return == true)  ==>  (this.B has only one value)
+(return == true)  ==>  (this.B.toString == "hi!")
+===========================================================================
+examples.R.equals(java.lang.Object):::EXIT;condition="return == true"
+this.A has only one value
+this.B has only one value
+this.B.toString == "hi!"
+return == true
+orig(this) has only one value
+orig(other) has only one value
+orig(other.getClass().getName()) == examples.R.class
+===========================================================================
+examples.R.equals(java.lang.Object):::EXIT;condition="not(return == true)"
+return == false
+===========================================================================
+examples.R.getB():::ENTER
+===========================================================================
+examples.R.getB():::EXIT
+this.A == orig(this.A)
+this.B == return
+this.B.toString == orig(this.B.toString)
+return == orig(this.B)
+return != null
+return.toString one of { "", "hi!" }
+===========================================================================
+examples.S:::OBJECT
+this.B != null
+this.B.toString one of { "", "hi!" }
+this.C != null
+===========================================================================
+examples.S.S(java.lang.String, java.lang.Integer):::ENTER
+B != null
+B.toString one of { "", "hi!" }
+C != null
+===========================================================================
+examples.S.S(java.lang.String, java.lang.Integer):::EXIT
+this.B == orig(B)
+this.C == orig(C)
+B.toString == orig(B.toString)
+B.toString one of { "", "hi!" }
+===========================================================================
+examples.S.equals(java.lang.Object):::ENTER
+===========================================================================
+examples.S.equals(java.lang.Object):::EXIT31
+orig(other) == null
+===========================================================================
+examples.S.equals(java.lang.Object):::EXIT31;condition="not(return == true)"
+===========================================================================
+examples.S.equals(java.lang.Object):::EXIT35
+orig(other) != null
+===========================================================================
+examples.S.equals(java.lang.Object):::EXIT35;condition="not(return == true)"
+===========================================================================
+examples.S.equals(java.lang.Object):::EXIT43
+orig(other) != null
+orig(other.getClass().getName()) == examples.S.class
+===========================================================================
+examples.S.equals(java.lang.Object):::EXIT43;condition="not(return == true)"
+===========================================================================
+examples.S.equals(java.lang.Object):::EXIT
+this.B == orig(this.B)
+this.B.toString == orig(this.B.toString)
+this.C == orig(this.C)
+return == false
+===========================================================================
+examples.S.equals(java.lang.Object):::EXIT;condition="not(return == true)"
+===========================================================================
+examples.S.getB():::ENTER
+===========================================================================
+examples.S.getB():::EXIT
+this.B == return
+this.B.toString == orig(this.B.toString)
+this.C == orig(this.C)
+return == orig(this.B)
+return != null
+return.toString one of { "", "hi!" }
+Exiting Daikon.
+
+=======================================================================
+                    printing invariants
+=======================================================================

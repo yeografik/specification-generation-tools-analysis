@@ -1,0 +1,8 @@
+===========================================================================
+examples.MaxBag:::OBJECT
+this._var4384._0 == this._var5992
+this._var4384._0 != null
+this._var4384._1 != null
+this._var4384._1.getClass().getName() == java.lang.Integer[].class.getName()
+daikon.Quant.eltsNotEqual(this._var66253, null)
+daikon.Quant.eltsEqual(daikon.Quant.typeArray(this._var66253), "java.lang.Integer")
